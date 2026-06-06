@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import { supabase } from "@/lib/supabase";
-import { Mail, Globe, MapPin, Instagram, Facebook, Linkedin } from "lucide-react";
+
 
 async function getSightings() {
   const { data } = await supabase
@@ -20,9 +20,6 @@ export default async function Home() {
 
       {/* HERO */}
       <section className="relative h-screen bg-black text-white overflow-hidden">
-
-        {/* Navbar */}
-        <Navbar />
 
         <div className="grid md:grid-cols-2 h-full">
 
@@ -51,7 +48,7 @@ export default async function Home() {
             {/* BUTTON */}
             <div className="flex gap-4 mt-8">
 
-              <a href="https://example.com" target="_blank">
+              <a href="/program">
                 <button className="bg-yellow-400 text-black px-6 py-3 rounded-md font-semibold">
                   JELAJAHI PROGRAM →
                 </button>
@@ -107,9 +104,11 @@ export default async function Home() {
             untuk generasi mendatang.
           </p>
 
-          <button className="border border-yellow-500 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-500 hover:text-white transition">
-            SELENGKAPNYA →
-          </button>
+          <a href="/tentang">
+            <button className="border border-yellow-500 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-500 hover:text-white transition">
+              SELENGKAPNYA →
+            </button>
+          </a>
 
         </div>
 
@@ -211,9 +210,12 @@ export default async function Home() {
             PROGRAM UNGGULAN
           </h2>
 
-          <button className="text-black font-semibold">
-            LIHAT SEMUA PROGRAM →
-          </button>
+          <a
+  href="/program"
+  className="text-black font-semibold hover:opacity-70 transition"
+>
+  LIHAT SEMUA PROGRAM →
+</a>
         </div>
 
         {/* CARD LIST */}
@@ -427,9 +429,11 @@ export default async function Home() {
             </p>
 
             {/* BUTTON */}
+            <a href="/program#dampak-kami">
             <button className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
               PELAJARI CARA KAMI BEKERJA
             </button>
+            </a>
 
           </div>
 
@@ -456,17 +460,36 @@ export default async function Home() {
 
         {/* TENTANG */}
         <div>
-          <h3 className="font-semibold mb-4 text-sm tracking-wide">
-            TENTANG KAMI
-          </h3>
+  <h3 className="font-semibold mb-4 text-sm tracking-wide">
+    TENTANG KAMI
+  </h3>
 
-          <ul className="space-y-2 text-gray-400 text-sm">
-            <li>Visi dan Misi</li>
-            <li>Tim Kami</li>
-            <li>Kemitraan</li>
-            <li>Dokumen</li>
-          </ul>
-        </div>
+  <ul className="space-y-2 text-gray-400 text-sm">
+    <li>
+      <a href="/tentang#visi-misi" className="hover:text-yellow-400">
+        Visi dan Misi
+      </a>
+    </li>
+
+    <li>
+      <a href="/tentang#tim-kami" className="hover:text-yellow-400">
+        Tim Kami
+      </a>
+    </li>
+
+    <li>
+      <a href="/tentang#kemitraan" className="hover:text-yellow-400">
+        Kemitraan
+      </a>
+    </li>
+
+    <li>
+      <a href="/tentang#dokumen" className="hover:text-yellow-400">
+        Dokumen
+      </a>
+    </li>
+  </ul>
+</div>
 
         {/* KONTAK */}
         <div>
@@ -475,12 +498,12 @@ export default async function Home() {
           </h3>
 
           <ul className="space-y-3 text-gray-400 text-sm">
-            <li className="flex items-center gap-2">
+            {/* <li className="flex items-center gap-2">
                 <Mail size={16} className="text-yellow-400" />
                 freshwaterfishofindonesia@gmail.com
-              </li>
+              </li> */}
 
-              <li className="flex items-center gap-2">
+              {/* <li className="flex items-center gap-2">
                 <Globe size={16} className="text-yellow-400" />
                 ffoi.or.id
               </li>
@@ -488,7 +511,7 @@ export default async function Home() {
               <li className="flex items-center gap-2">
                 <MapPin size={16} className="text-yellow-400" />
                 Indonesia
-              </li>
+              </li> */}
             </ul>
         </div>
 
@@ -500,17 +523,32 @@ export default async function Home() {
 
           {/* SOCIAL ICON */}
           <div className="flex gap-4 mb-6">
-            <Instagram className="w-6 h-6 text-white hover:text-yellow-400 cursor-pointer" />
-            <Facebook className="w-6 h-6 text-white hover:text-yellow-400 cursor-pointer" />
-            <Linkedin className="w-6 h-6 text-white hover:text-yellow-400 cursor-pointer" />
-          </div>
+  <a
+    href="https://www.instagram.com/freshwaterfishofindonesia?igsh=MXR4N25oeHEyN3pwcg=="
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram FFOI"
+  >
+    {/* <Instagram className="w-6 h-6 text-white hover:text-yellow-400 transition cursor-pointer" /> */}
+  </a>
+
+  <a
+    href="https://www.facebook.com/share/1FMzGXXemk/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Facebook FFOI"
+  >
+    {/* <Facebook className="w-6 h-6 text-white hover:text-yellow-400 transition cursor-pointer" /> */}
+  </a>
+
+</div>
 
           {/* EMAIL INPUT */}
           <div className="flex items-center border border-yellow-400 rounded-full overflow-hidden max-w-sm">
 
-            <div className="bg-yellow-400 px-4 py-3 text-black">
+            {/* <div className="bg-yellow-400 px-4 py-3 text-black">
               <Mail size={18} />
-            </div>
+            </div> */}
 
             <input
               type="text"
