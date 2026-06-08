@@ -148,6 +148,11 @@ export default function RegisterPage() {
             </p>
             </div>
         </div>
+
+        {/* COPYRIGHT */}
+            <div className="text-center text-gray-500 text-xs py-6">
+              2026 Yayasan Freshwater Fish of Indonesia (FFOI). All rights reserved.
+            </div>
         </main>
     );
 }

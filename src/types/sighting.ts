@@ -36,4 +36,8 @@ export interface Sighting {
   diperbarui_pada: string;
 
   spesies_baru: boolean;
+
+  catatan_admin: string | null;
+
+  ditinjau_pada: string | null;
 }

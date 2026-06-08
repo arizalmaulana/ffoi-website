@@ -38,7 +38,7 @@ export default function DatabaseTable({
               
               <td className="p-3">
                 <Link
-                  href={`/database/${item.id}`}
+                  href={`/database/species/${item.id}`}
                   className="italic text-yellow-400"
                 >
                   {item.species}

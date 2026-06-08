@@ -1,20 +1,51 @@
 import Navbar from "@/components/Navbar";
 import { supabase } from "@/lib/supabase";
 
+import {
+  FaFacebook,
+  FaInstagram,
+  FaYoutube,
+  FaMailBulk,
+  FaGlobe,
+  FaMapMarker,
+} from "react-icons/fa";
+
+import Link from "next/link";
+
+import HomepageDatabase
+from "@/components/home/HomepageDatabase";
+
+import {
+  getHomepageSpecies,
+} from "@/services/public-database.service";
 
 async function getSightings() {
-  const { data } = await supabase
-    .from("sighting")
-    .select("*")
-    .order("dibuat_pada", { ascending: false })
-    .limit(6);
+
+  const { data } =
+    await supabase
+      .from("sighting")
+      .select("*")
+      .order(
+        "dibuat_pada",
+        {
+          ascending: false,
+        }
+      )
+      .limit(6);
 
   return data || [];
 }
 
 export default async function Home() {
 
-  const data = await getSightings();
+  const [
+    data,
+    homepageSpecies,
+  ] = await Promise.all([
+    getSightings(),
+    getHomepageSpecies(),
+  ]);
+
   return (
     <main>
 
@@ -46,21 +77,37 @@ export default async function Home() {
             </p>
 
             {/* BUTTON */}
-            <div className="flex gap-4 mt-8">
+            <div className="flex flex-wrap gap-4 mt-8">
+  {/* Tombol 1: Jelajahi Program (Primary Glow) */}
+  <Link href="/program" passHref>
+    <button className="group relative bg-yellow-400 text-black px-8 py-3.5 rounded-full font-bold flex items-center gap-2 overflow-hidden transition-all duration-300 ease-out hover:bg-yellow-300 hover:shadow-[0_0_20px_rgba(250,204,21,0.5)] hover:-translate-y-1 active:translate-y-0 active:scale-95">
+      <span>JELAJAHI PROGRAM</span>
+      {/* Panah akan bergeser ke kanan saat di-hover */}
+      <span className="transition-transform duration-300 group-hover:translate-x-1.5">
+        →
+      </span>
+    </button>
+  </Link>
 
-              <a href="/program">
-                <button className="bg-yellow-400 text-black px-6 py-3 rounded-md font-semibold">
-                  JELAJAHI PROGRAM →
-                </button>
-              </a>
-
-              <a href="https://youtube.com" target="_blank">
-                <button className="bg-white text-black px-6 py-3 rounded-md flex items-center gap-2">
-                  ▶ TONTON VIDEO
-                </button>
-              </a>
-
-            </div>
+  {/* Tombol 2: Tonton Video (Glassmorphism & Outline) */}
+  <a 
+    href="https://youtube.com/@ffoi.ikanindonesia?si=6SpYuiAdPxIsGcJn" 
+    target="_blank" 
+    rel="noopener noreferrer"
+  >
+    <button className="group bg-white/5 backdrop-blur-sm border border-white/20 text-white px-8 py-3.5 rounded-full font-bold flex items-center gap-3 transition-all duration-300 hover:bg-white/10 hover:border-white/50 hover:-translate-y-1 active:translate-y-0 active:scale-95">
+      {/* Icon Play SVG dengan efek scale saat di-hover */}
+      <svg 
+        className="w-5 h-5 text-yellow-400 transition-transform duration-300 group-hover:scale-110" 
+        fill="currentColor" 
+        viewBox="0 0 24 24"
+      >
+        <path d="M8 5v14l11-7z" />
+      </svg>
+      <span>TONTON VIDEO</span>
+    </button>
+  </a>
+</div>
 
           </div>
 
@@ -129,77 +176,88 @@ export default async function Home() {
 
       {/* ================= FOKUS KAMI ================= */}
       <section className="bg-black text-white py-24 px-10">
+  {/* TITLE */}
+  <div className="flex items-center justify-center mb-20">
+    <div className="h-[2px] w-24 bg-yellow-500 mr-6"></div>
+    <h2 className="text-3xl font-bold text-yellow-500 tracking-[0.2em]">
+      FOKUS KAMI
+    </h2>
+    <div className="h-[2px] w-24 bg-yellow-500 ml-6"></div>
+  </div>
 
-        {/* TITLE */}
-        <div className="flex items-center justify-center mb-20">
-          <div className="h-[2px] w-24 bg-yellow-500 mr-6"></div>
-
-          <h2 className="text-3xl font-bold text-yellow-500 tracking-[0.2em]">
-            FOKUS KAMI
-          </h2>
-
-          <div className="h-[2px] w-24 bg-yellow-500 ml-6"></div>
+  {/* GRID */}
+  <div className="grid md:grid-cols-4">
+    {[
+      {
+        // Icon Penelitian (Tabung Reaksi Sains)
+        icon: (
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-16 h-16 text-yellow-500">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+          </svg>
+        ),
+        title: "PENELITIAN",
+        desc: "Studi ilmiah untuk memahami biodiversitas ikan dan ekosistem perairan Air Tawar Indonesia",
+      },
+      {
+        // Icon Konservasi (Perisai/Perlindungan)
+        icon: (
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-16 h-16 text-yellow-500">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+          </svg>
+        ),
+        title: "KONSERVASI",
+        desc: "Melindungi spesies ikan asli dan habitat perairan yang terancam melalui aksi nyata di lapangan",
+      },
+      {
+        // Icon Edukasi (Topi Toga Akademik)
+        icon: (
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-16 h-16 text-yellow-500">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+          </svg>
+        ),
+        title: "EDUKASI",
+        desc: "Meningkatkan kesadaran dan pengetahuan melalui program edukasi dan publikasi ilmiah",
+      },
+      {
+        // Icon Perikanan Berkelanjutan (Siklus Recycle)
+        icon: (
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-16 h-16 text-yellow-500">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+          </svg>
+        ),
+        title: "PERIKANAN BERKELANJUTAN",
+        desc: "Mendukung pengembangan perikanan lokal yang ramah lingkungan dan berkelanjutan",
+      },
+    ].map((item, i) => (
+      <div
+        key={i}
+        className="relative px-6 md:px-10 flex flex-col items-center text-center min-h-[300px]"
+      >
+        {/* ICON WRAPPER (h-24 memastikan tinggi ruang selalu konstan) */}
+        <div className="h-24 flex items-center justify-center mb-4">
+          {item.icon}
         </div>
 
-        {/* GRID */}
-        <div className="grid md:grid-cols-4">
-
-          {[
-            {
-              icon: "/icons/penelitian.png",
-              title: "PENELITIAN",
-              desc: "Studi ilmiah untuk memahami biodiversitas ikan dan ekosistem perairan Air Tawar Indonesia",
-            },
-            {
-              icon: "/icons/konservasi.png",
-              title: "KONSERVASI",
-              desc: "Melindungi spesies ikan asli dan habitat perairan yang terancam melalui aksi nyata di lapangan",
-            },
-            {
-              icon: "/icons/edukasi.png",
-              title: "EDUKASI",
-              desc: "Meningkatkan kesadaran dan pengetahuan melalui program edukasi dan publikasi ilmiah",
-            },
-            {
-              icon: "/icons/perikanan berkelanjutan.png",
-              title: "PERIKANAN BERKELANJUTAN",
-              desc: "Mendukung pengembangan perikanan lokal yang ramah lingkungan dan berkelanjutan",
-            },
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="relative px-6 md:px-10 flex flex-col items-center text-center min-h-[300px]"
-            >
-              {/* ICON WRAPPER (biar sejajar) */}
-              <div className="h-24 flex items-center justify-center mb-4">
-                <img
-                  src={item.icon}
-                  className="w-50 object-contain"
-                />
-              </div>
-
-              {/* TITLE (tinggi konsisten) */}
-              <div className="h-12 flex items-center">
-                <h3 className="font-bold tracking-wide">
-                  {item.title}
-                </h3>
-              </div>
-
-              {/* DESC (flex grow biar rata bawah) */}
-              <p className="text-gray-400 text-sm leading-relaxed max-w-xs mt-2">
-                {item.desc}
-              </p>
-
-              {/* DIVIDER */}
-              {i !== 3 && (
-                <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-40 w-[1px] bg-gray-700"></div>
-              )}
-            </div>
-          ))}
-
+        {/* TITLE (h-12 memastikan baris judul konstan meskipun beda panjang teks) */}
+        <div className="h-12 flex items-center">
+          <h3 className="font-bold tracking-wide">
+            {item.title}
+          </h3>
         </div>
 
-      </section>
+        {/* DESC */}
+        <p className="text-gray-400 text-sm leading-relaxed max-w-xs mt-2">
+          {item.desc}
+        </p>
+
+        {/* DIVIDER */}
+        {i !== 3 && (
+          <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-40 w-[1px] bg-gray-700"></div>
+        )}
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* ================= PROGRAM UNGGULAN ================= */}
       <section className="bg-yellow-400 py-16 px-6 md:px-10">
@@ -279,119 +337,9 @@ export default async function Home() {
       </section>
 
       {/* ================= DATABASE IKAN ================= */}
-      <section className="relative text-white">
-
-        {/* BACKGROUND IMAGE */}
-        <div className="absolute inset-0">
-          <img
-            src="/images/background database.png"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/70"></div>
-        </div>
-
-        <div className="relative z-10 py-20 px-6 md:px-10">
-
-          {/* TITLE */}
-          <div className="mb-10 max-w-2xl">
-            <h2 className="text-4xl md:text-6xl font-bold leading-tight">
-              DATABASE IKAN <br />
-              <span className="text-yellow-400">
-                INDONESIA
-              </span>
-            </h2>
-
-            <p className="mt-4 text-gray-300 text-sm">
-              Jelajahi lebih dari 1.700 spesies ikan asli Indonesia melalui database biodiversitas berbasis sains milik FFOI.
-            </p>
-          </div>
-
-          {/* STATS */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-4xl">
-            {[
-              { title: "1.700+", label: "Spesies Terdokumentasi" },
-              { title: "37", label: "Provinsi Indonesia" },
-              { title: "1.000+", label: "Referensi Ilmiah" },
-              { title: "Terus", label: "Diperbarui" },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10"
-              >
-                <h3 className="font-bold text-lg">{item.title}</h3>
-                <p className="text-xs text-gray-300">{item.label}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* SEARCH */}
-          <div className="flex gap-3 mb-10 max-w-4xl">
-            <input
-              placeholder="Cari spesies ikan, genus, lokasi..."
-              className="flex-1 bg-white/10 backdrop-blur-md border border-white/10 rounded-lg px-4 py-3 text-sm outline-none"
-            />
-
-            <button className="bg-yellow-400 text-black px-6 rounded-lg font-semibold">
-              FILTER
-            </button>
-          </div>
-
-          {/* CARD LIST */}
-          <div className="flex gap-4 overflow-x-auto">
-
-            {[
-              {
-                image: "/images/IMG_6725.jpg",
-                name: "Betta anabatoides",
-                location: "Sumatera",
-              },
-              {
-                image: "/images/IMG_6725.jpg",
-                name: "Channa marulioides",
-                location: "Kalimantan",
-              },
-              {
-                image: "/images/IMG_6725.jpg",
-                name: "Rasbora",
-                location: "Jawa",
-              },
-              {
-                image: "/images/IMG_6725.jpg",
-                name: "Tateurndina",
-                location: "Papua",
-              },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="w-[180px] flex-none bg-white/10 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden"
-              >
-                <img
-                  src={item.image}
-                  className="w-full h-[120px] object-cover"
-                />
-
-                <div className="p-3">
-                  <h4 className="text-sm font-semibold">
-                    {item.name}
-                  </h4>
-                  <p className="text-xs text-gray-300">
-                    {item.location}
-                  </p>
-                </div>
-              </div>
-            ))}
-
-          </div>
-
-          {/* BUTTON */}
-          <div className="mt-10">
-            <button className="border border-yellow-400 text-yellow-400 px-6 py-3 rounded-full font-semibold">
-              JELAJAHI SEMUA 1.700+ SPESIES →
-            </button>
-          </div>
-
-        </div>
-      </section>
+        <HomepageDatabase
+          data={homepageSpecies}
+        />
 
       {/* ================= CTA PERIKANAN ================= */}
       <section className="grid md:grid-cols-[3fr_2fr]">
@@ -429,7 +377,7 @@ export default async function Home() {
             </p>
 
             {/* BUTTON */}
-            <a href="/program#dampak-kami">
+            <a href="/program#cara-kerja">
             <button className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
               PELAJARI CARA KAMI BEKERJA
             </button>
@@ -460,36 +408,36 @@ export default async function Home() {
 
         {/* TENTANG */}
         <div>
-  <h3 className="font-semibold mb-4 text-sm tracking-wide">
-    TENTANG KAMI
-  </h3>
+          <h3 className="font-semibold mb-4 text-sm tracking-wide">
+            TENTANG KAMI
+          </h3>
 
-  <ul className="space-y-2 text-gray-400 text-sm">
-    <li>
-      <a href="/tentang#visi-misi" className="hover:text-yellow-400">
-        Visi dan Misi
-      </a>
-    </li>
+          <ul className="space-y-2 text-gray-400 text-sm">
+            <li>
+              <a href="/tentang#visi-misi" className="hover:text-yellow-400">
+                Visi dan Misi
+              </a>
+            </li>
 
-    <li>
-      <a href="/tentang#tim-kami" className="hover:text-yellow-400">
-        Tim Kami
-      </a>
-    </li>
+            <li>
+              <a href="/tentang#tim-kami" className="hover:text-yellow-400">
+                Tim Kami
+              </a>
+            </li>
 
-    <li>
-      <a href="/tentang#kemitraan" className="hover:text-yellow-400">
-        Kemitraan
-      </a>
-    </li>
+            <li>
+              <a href="/tentang#kemitraan" className="hover:text-yellow-400">
+                Kemitraan
+              </a>
+            </li>
 
-    <li>
-      <a href="/tentang#dokumen" className="hover:text-yellow-400">
-        Dokumen
-      </a>
-    </li>
-  </ul>
-</div>
+            <li>
+              <a href="/tentang#dokumen" className="hover:text-yellow-400">
+                Dokumen
+              </a>
+            </li>
+          </ul>
+        </div>
 
         {/* KONTAK */}
         <div>
@@ -498,20 +446,20 @@ export default async function Home() {
           </h3>
 
           <ul className="space-y-3 text-gray-400 text-sm">
-            {/* <li className="flex items-center gap-2">
-                <Mail size={16} className="text-yellow-400" />
+            <li className="flex items-center gap-2">
+                <FaMailBulk size={16} className="text-yellow-400" />
                 freshwaterfishofindonesia@gmail.com
-              </li> */}
+              </li>
 
-              {/* <li className="flex items-center gap-2">
-                <Globe size={16} className="text-yellow-400" />
+              <li className="flex items-center gap-2">
+                <FaGlobe size={16} className="text-yellow-400" />
                 ffoi.or.id
               </li>
 
               <li className="flex items-center gap-2">
-                <MapPin size={16} className="text-yellow-400" />
+                <FaMapMarker size={16} className="text-yellow-400" />
                 Indonesia
-              </li> */}
+              </li>
             </ul>
         </div>
 
@@ -523,38 +471,24 @@ export default async function Home() {
 
           {/* SOCIAL ICON */}
           <div className="flex gap-4 mb-6">
-  <a
-    href="https://www.instagram.com/freshwaterfishofindonesia?igsh=MXR4N25oeHEyN3pwcg=="
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Instagram FFOI"
-  >
-    {/* <Instagram className="w-6 h-6 text-white hover:text-yellow-400 transition cursor-pointer" /> */}
-  </a>
+            <a
+              href="https://www.instagram.com/freshwaterfishofindonesia?igsh=MXR4N25oeHEyN3pwcg=="
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram FFOI"
+            >
+              <FaInstagram className="w-6 h-6 text-white hover:text-yellow-400 transition cursor-pointer" />
+            </a>
 
-  <a
-    href="https://www.facebook.com/share/1FMzGXXemk/"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Facebook FFOI"
-  >
-    {/* <Facebook className="w-6 h-6 text-white hover:text-yellow-400 transition cursor-pointer" /> */}
-  </a>
+            <a
+              href="https://www.facebook.com/share/1FMzGXXemk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook FFOI"
+            >
+              <FaFacebook className="w-6 h-6 text-white  hover:text-yellow-400 transition cursor-pointer" />
+            </a>
 
-</div>
-
-          {/* EMAIL INPUT */}
-          <div className="flex items-center border border-yellow-400 rounded-full overflow-hidden max-w-sm">
-
-            {/* <div className="bg-yellow-400 px-4 py-3 text-black">
-              <Mail size={18} />
-            </div> */}
-
-            <input
-              type="text"
-              placeholder="Masukkan email Anda"
-              className="flex-1 bg-transparent px-4 py-3 text-sm outline-none"
-            />
           </div>
         </div>
 

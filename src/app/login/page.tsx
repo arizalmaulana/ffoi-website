@@ -5,6 +5,9 @@ import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
+import { getProfile }
+from "@/services/profile.service";
+
 export default function LoginPage() {
     const router = useRouter();
 
@@ -43,24 +46,44 @@ export default function LoginPage() {
 
         if (error) {
             if (
-            error.message
+                error.message
                 .toLowerCase()
                 .includes("email not confirmed")
             ) {
-            alert(
+                alert(
                 "Silakan verifikasi email terlebih dahulu."
-            );
-            return;
+                );
+                return;
             }
 
             alert(error.message);
             return;
-        }
+            }
 
-        router.push("/dashboard");
+            const profile =
+            await getProfile();
+            
+
+            if (!profile) {
+            alert(
+                "Profil tidak ditemukan"
+            );
+
+            return;
+            }
+
+            if (
+            profile.role === "admin"
+            ) {
+            router.push("/admin");
+            } else {
+            router.push(
+                "/dashboard"
+            );
+            }
         } catch (error) {
-        console.error(error);
-        alert("Terjadi kesalahan saat login");
+        console.error("Login error:", error);
+        alert("Terjadi kesalahan saat login.");
         } finally {
         setLoading(false);
         }
@@ -112,6 +135,7 @@ export default function LoginPage() {
             </p>
             </div>
         </div>
+        
         </main>
     );
 }

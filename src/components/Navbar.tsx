@@ -2,43 +2,43 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+
 import { supabase } from "@/lib/supabase";
 import UserMenu from "./navbar/UserMenu";
-import { usePathname } from "next/navigation";
 
 type Profile = {
   id: string;
   username: string | null;
   nama_lengkap: string | null;
+  foto_profil: string | null;
 };
 
 export default function Navbar() {
-  const [mounted, setMounted] =
-    useState(false);
-
   const [loading, setLoading] =
     useState(true);
 
   const [profile, setProfile] =
     useState<Profile | null>(null);
 
-  const pathname = usePathname();
+  const pathname =
+    usePathname();
 
-  const baseClass = "transition-all duration-200 font-medium";
+  const baseClass =
+    "transition-all duration-200 font-medium";
 
-  const inactiveClass = "text-white hover:text-yellow-400";
+  const inactiveClass =
+    "text-white hover:text-yellow-400";
 
-  const activeClass = "text-yellow-400 font-bold border-b-2 border-yellow-400 pb-1";
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const activeClass =
+    "text-yellow-400 font-bold border-b-2 border-yellow-400 pb-1";
 
   useEffect(() => {
     async function loadUser() {
       const {
         data: { session },
-      } = await supabase.auth.getSession();
+      } =
+        await supabase.auth.getSession();
 
       if (!session?.user) {
         setProfile(null);
@@ -50,9 +50,12 @@ export default function Navbar() {
         await supabase
           .from("profil")
           .select(
-            "id, username, nama_lengkap"
+            "id, username, nama_lengkap, foto_profil"
           )
-          .eq("id", session.user.id)
+          .eq(
+            "id",
+            session.user.id
+          )
           .single();
 
       if (!error && data) {
@@ -66,34 +69,52 @@ export default function Navbar() {
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(
-      async (_event, session) => {
-        if (!session?.user) {
-          setProfile(null);
-          return;
-        }
+    } =
+      supabase.auth.onAuthStateChange(
+        async (
+          _event,
+          session
+        ) => {
+          if (!session?.user) {
+            setProfile(null);
+            return;
+          }
 
-        const { data, error } =
-          await supabase
-            .from("profil")
-            .select(
-              "id, username, nama_lengkap"
-            )
-            .eq("id", session.user.id)
-            .single();
+          const {
+            data,
+            error,
+          } =
+            await supabase
+              .from("profil")
+              .select(
+                "id, username, nama_lengkap, foto_profil"
+              )
+              .eq(
+                "id",
+                session.user.id
+              )
+              .single();
 
-        if (!error && data) {
-          setProfile(data);
+          if (!error && data) {
+            setProfile(data);
+          }
         }
-      }
-    );
+      );
 
     return () => {
       subscription.unsubscribe();
     };
   }, []);
 
-  if (!mounted) {
+  // HARUS setelah semua hook
+  if (
+    pathname.startsWith(
+      "/admin"
+    )
+  ) {
+    return null;
+  }
+  if (loading) {
     return null;
   }
 
@@ -104,7 +125,6 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 w-full bg-black border-b border-yellow-500/20">
       <div className="max-w-[1600px] mx-auto px-8 py-4 flex items-center justify-between">
 
-        {/* Logo */}
         <Link
           href="/"
           className="flex items-center gap-3"
@@ -127,56 +147,84 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Menu Landing */}
         <div className="flex items-center gap-8">
+
           <Link
             href="/"
-            className={`${baseClass} ${pathname === '/' ? activeClass : inactiveClass}`}
+            className={`${baseClass} ${
+              pathname === "/"
+                ? activeClass
+                : inactiveClass
+            }`}
           >
             Beranda
           </Link>
 
           <Link
             href="/tentang"
-            className={`${baseClass} ${pathname === '/tentang' ? activeClass : inactiveClass}`}
+            className={`${baseClass} ${
+              pathname ===
+              "/tentang"
+                ? activeClass
+                : inactiveClass
+            }`}
           >
             Tentang
           </Link>
 
           <Link
             href="/program"
-            className={`${baseClass} ${pathname === '/program' ? activeClass : inactiveClass}`}
+            className={`${baseClass} ${
+              pathname ===
+              "/program"
+                ? activeClass
+                : inactiveClass
+            }`}
           >
             Program
           </Link>
 
           <Link
             href="/database"
-            className={`${baseClass} ${pathname === '/database' ? activeClass : inactiveClass}`}
+            className={`${baseClass} ${
+              pathname ===
+              "/database"
+                ? activeClass
+                : inactiveClass
+            }`}
           >
             Database
           </Link>
 
           <Link
             href="/kontak"
-            className={`${baseClass} ${pathname === '/kontak' ? activeClass : inactiveClass}`}
+            className={`${baseClass} ${
+              pathname ===
+              "/kontak"
+                ? activeClass
+                : inactiveClass
+            }`}
           >
             Kontak
           </Link>
+
         </div>
 
-        {/* User Area */}
         <div className="flex items-center gap-8">
-          {isLoggedIn && (
-            <>
-              <Link
-                href="/dashboard"
-                className={`${baseClass} ${pathname === '/dashboard' ? activeClass : inactiveClass}`}
-              >
-                Dashboard
-              </Link>
 
-            </>
+          {isLoggedIn && (
+            <Link
+              href="/dashboard"
+              className={`${baseClass} ${
+                pathname.startsWith(
+                  "/dashboard"
+                )
+                  ? activeClass
+                  : inactiveClass
+              }`}
+            >
+              Dashboard
+            </Link>
           )}
 
           {!loading &&
@@ -198,9 +246,14 @@ export default function Navbar() {
                   profile.nama_lengkap ??
                   "User"
                 }
+                fotoProfil={
+                profile.foto_profil
+              }
               />
             )}
+
         </div>
+
       </div>
     </nav>
   );

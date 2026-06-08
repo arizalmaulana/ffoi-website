@@ -12,6 +12,9 @@ export default function RegisterSuccessPage() {
             tautan verifikasi sebelum login.
             </p>
         </div>
+        
+        
         </main>
+        
     );
 }

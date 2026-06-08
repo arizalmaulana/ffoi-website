@@ -1,6 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaYoutube,
+  FaMailBulk,
+  FaGlobe,
+  FaMapMarker,
+} from "react-icons/fa";
 
 import { Species } from "@/types/species";
 import { getSpecies, getSpeciesCount } from "@/services/species.service";
@@ -139,6 +147,118 @@ export default function DatabasePage() {
         />
 
       </div>
+
+      {/* ================= FOOTER ================= */}
+          <footer className="bg-black text-white pt-20 px-6 md:px-16">
+      
+            {/* TOP CTA */}
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-6xl font-bold tracking-wide mb-6">
+                MAKE A <br /> DIFFERENCE
+              </h2>
+      
+              <button className="bg-yellow-400 text-black px-6 py-3 rounded-md font-semibold hover:bg-yellow-300 transition">
+                SUPPORT US
+              </button>
+            </div>
+      
+            {/* FOOTER GRID */}
+            <div className="grid md:grid-cols-3 gap-10 pb-10 border-b border-white/10">
+      
+              {/* TENTANG */}
+              <div>
+                <h3 className="font-semibold mb-4 text-sm tracking-wide">
+                  TENTANG KAMI
+                </h3>
+      
+                <ul className="space-y-2 text-gray-400 text-sm">
+                  <li>
+                    <a href="/tentang#visi-misi" className="hover:text-yellow-400">
+                      Visi dan Misi
+                    </a>
+                  </li>
+      
+                  <li>
+                    <a href="/tentang#tim-kami" className="hover:text-yellow-400">
+                      Tim Kami
+                    </a>
+                  </li>
+      
+                  <li>
+                    <a href="/tentang#kemitraan" className="hover:text-yellow-400">
+                      Kemitraan
+                    </a>
+                  </li>
+      
+                  <li>
+                    <a href="/tentang#dokumen" className="hover:text-yellow-400">
+                      Dokumen
+                    </a>
+                  </li>
+                </ul>
+              </div>
+      
+              {/* KONTAK */}
+              <div>
+                <h3 className="font-semibold mb-4 text-sm tracking-wide">
+                  KONTAK
+                </h3>
+      
+                <ul className="space-y-3 text-gray-400 text-sm">
+                  <li className="flex items-center gap-2">
+                      <FaMailBulk size={16} className="text-yellow-400" />
+                      freshwaterfishofindonesia@gmail.com
+                    </li>
+      
+                    <li className="flex items-center gap-2">
+                      <FaGlobe size={16} className="text-yellow-400" />
+                      ffoi.or.id
+                    </li>
+      
+                    <li className="flex items-center gap-2">
+                      <FaMapMarker size={16} className="text-yellow-400" />
+                      Indonesia
+                    </li>
+                  </ul>
+              </div>
+      
+              {/* SOCIAL + EMAIL */}
+              <div>
+                <h3 className="font-semibold mb-4 text-sm tracking-wide">
+                  IKUTI KAMI
+                </h3>
+      
+                {/* SOCIAL ICON */}
+                <div className="flex gap-4 mb-6">
+                  <a
+                    href="https://www.instagram.com/freshwaterfishofindonesia?igsh=MXR4N25oeHEyN3pwcg=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram FFOI"
+                  >
+                    <FaInstagram className="w-6 h-6 text-white hover:text-yellow-400 transition cursor-pointer" />
+                  </a>
+      
+                  <a
+                    href="https://www.facebook.com/share/1FMzGXXemk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook FFOI"
+                  >
+                    <FaFacebook className="w-6 h-6 text-white  hover:text-yellow-400 transition cursor-pointer" />
+                  </a>
+      
+                </div>
+              </div>
+      
+            </div>
+      
+            {/* COPYRIGHT */}
+            <div className="text-center text-gray-500 text-xs py-6">
+              2026 Yayasan Freshwater Fish of Indonesia (FFOI). All rights reserved.
+            </div>
+      
+          </footer>
     </main>
   );
 }

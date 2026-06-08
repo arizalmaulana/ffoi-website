@@ -1,4 +1,5 @@
 import { Profile } from "@/types/profile";
+import Link from "next/link";
 
 interface HeroSectionProps {
   profile: Profile;
@@ -51,7 +52,7 @@ export default function HeroSection({
           )}
         </p>
 
-        <a href="/dashboard/sighting/create"
+        <Link href="/dashboard/sighting/create"
           className="
           bg-yellow-400
           hover:bg-yellow-300
@@ -64,7 +65,7 @@ export default function HeroSection({
           "
         >
           + Tambah Sighting
-        </a>
+        </Link>
       </div>
     </section>
   );

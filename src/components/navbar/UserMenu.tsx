@@ -7,10 +7,12 @@ import { supabase } from "@/lib/supabase";
 
 type Props = {
   username: string;
+  fotoProfil?: string | null;
 };
 
 export default function UserMenu({
   username,
+  fotoProfil,
 }: Props) {
   const router = useRouter();
 
@@ -23,6 +25,7 @@ export default function UserMenu({
     router.push("/");
     router.refresh();
   }
+  
 
   return (
     <div className="relative">
@@ -33,11 +36,26 @@ export default function UserMenu({
         className="flex items-center gap-3"
       >
         <img
-          src="/images/avatar-default.png"
-          alt="Avatar"
-          className="w-10 h-10 rounded-full object-cover border border-yellow-500/30"
+          src={
+            fotoProfil ||
+            "/images/avatar-default.png"
+          }
+          
+          alt={username}
+          
+          onError={(e) => {
+            e.currentTarget.src =
+              "/images/avatar-default.png";
+          }}
+          className="
+          w-10
+          h-10
+          rounded-full
+          object-cover
+          border
+          border-yellow-500/30
+          "
         />
-
         <span className="text-white">
           Halo, {username}
         </span>
@@ -50,7 +68,7 @@ export default function UserMenu({
       {open && (
         <div className="absolute right-0 top-14 w-56 bg-neutral-950 border border-yellow-500/20 rounded-xl overflow-hidden shadow-xl">
           <Link
-            href="/dashboard/profile"
+            href="/profile"
             className="block px-4 py-3 hover:bg-yellow-500/10"
           >
             Profil Saya

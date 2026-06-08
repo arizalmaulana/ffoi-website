@@ -55,6 +55,8 @@ export async function createSighting(
     tanggal_temuan: string;
 
     diunggah_oleh: string;
+
+    status?: string;
   }
 ) {
   const { data, error } = await supabase
@@ -88,7 +90,9 @@ export async function createSighting(
 
       diunggah_oleh: payload.diunggah_oleh,
 
-      status: "menunggu",
+      status:
+        payload.status ??
+        "menunggu",
 
       spesies_baru: payload.spesies_baru ?? false,
     })
@@ -180,4 +184,89 @@ export async function getMySightingById(
   }
 
   return data;
+}
+
+// admin
+
+export async function getAllSightings() {
+  const { data, error } =
+    await supabase
+      .from("sighting")
+      .select("*")
+      .order(
+        "dibuat_pada",
+        {
+          ascending: false,
+        }
+      );
+
+  if (error) {
+    console.error(error);
+    return [];
+  }
+
+  return data;
+}
+
+export async function getPendingSightingsForReview() {
+  const { data, error } =
+    await supabase
+      .from("sighting")
+      .select("*")
+      .eq("spesies_baru", false)
+      .order("dibuat_pada", {
+        ascending: false,
+      });
+
+  if (error) {
+    console.error(error);
+    return [];
+  }
+
+  return data as Sighting[];
+}
+
+export async function reviewSighting(
+  id: string,
+  status:
+    | "disetujui"
+    | "ditolak",
+  catatanAdmin: string
+) {
+  const response = await fetch(
+    `/api/admin/sighting/${id}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        status,
+        catatanAdmin,
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => null);
+    throw new Error(
+      errorData?.error ||
+        "Gagal menyimpan review sighting"
+    );
+  }
+}
+
+export async function deleteSightingAdmin(
+  id: string
+) {
+
+  const { error } =
+    await supabase
+      .from("sighting")
+      .delete()
+      .eq("id", id);
+
+  if (error) {
+    throw error;
+  }
 }

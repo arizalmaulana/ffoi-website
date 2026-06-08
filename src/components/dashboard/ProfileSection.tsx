@@ -1,4 +1,5 @@
 import { Profile } from "@/types/profile";
+import Link from "next/link";
 
 interface ProfileSectionProps {
   profile: Profile;
@@ -35,7 +36,7 @@ export default function ProfileSection({
           <img
             src={
               profile.foto_profil ||
-              "/images/foto-profil.jpg"
+              "/images/avatar-default.png"
             }
             alt={profile.nama_lengkap}
             className="
@@ -94,7 +95,9 @@ export default function ProfileSection({
         </div>
       </div>
 
-      <button
+      <Link
+
+        href="/profile/edit"
         className="
         mt-8
         px-5
@@ -109,7 +112,7 @@ export default function ProfileSection({
         "
       >
         Edit Profil
-      </button>
+      </Link>
     </section>
   );
 }

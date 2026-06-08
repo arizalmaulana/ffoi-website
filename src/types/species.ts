@@ -11,11 +11,13 @@ export interface Species {
 
   family: string;
 
-  occurrence: string;
+  occurrence:
+    | "native"
+    | "endemic"
+    | "introduced"
+    | "invasive";
 
   status_konservasi: string | null;
-
-  endemik: boolean;
 
   deskripsi: string | null;
 }

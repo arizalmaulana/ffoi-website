@@ -8,15 +8,33 @@ import { uploadSightingImage } from "@/services/storage.service";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { createSighting } from "@/services/sighting.service";
+import { Sighting }
+from "@/types/sighting";
+import {
+  updateSighting,
+} from "@/services/sighting.service";
 
 
 
-export default function SightingForm() {
+
+interface Props {
+  isAdmin?: boolean;
+
+  initialData?: Sighting;
+}
+
+export default function SightingForm({
+    isAdmin = false,
+    initialData,
+  }: Props) {
+    
   const [image, setImage] =
   useState<File | null>(null);
 
   const [preview, setPreview] =
-  useState<string | null>(null);
+  useState<string | null>(
+    initialData?.foto_url ?? null
+  );
 
 
   const [uploading, setUploading] =
@@ -24,18 +42,41 @@ export default function SightingForm() {
 
   const router = useRouter();
 
-  const [form, setForm] = useState({
-    tipe_organisme: "",
-    spesies_id: "",
-    nama_lokasi: "",
-    provinsi: "",
-    latitude: "",
-    longitude: "",
-    habitat: "",
-    substrat: "",
-    tanggal_temuan: "",
-    deskripsi: "",
-  });
+  const [form, setForm] =
+    useState({
+
+      tipe_organisme:
+        initialData?.tipe_organisme ?? "",
+
+      spesies_id:
+        initialData?.spesies_id ?? "",
+
+      nama_lokasi:
+        initialData?.nama_lokasi ?? "",
+
+      provinsi:
+        initialData?.provinsi ?? "",
+
+      latitude:
+        initialData?.latitude
+          ?.toString() ?? "",
+
+      longitude:
+        initialData?.longitude
+          ?.toString() ?? "",
+
+      habitat:
+        initialData?.habitat ?? "",
+
+      substrat:
+        initialData?.substrat ?? "",
+
+      tanggal_temuan:
+        initialData?.tanggal_temuan ?? "",
+
+      deskripsi:
+        initialData?.deskripsi ?? "",
+    });
 
   const [isNewSpecies,
   setIsNewSpecies] =
@@ -219,12 +260,15 @@ export default function SightingForm() {
       return false;
     }
 
-    if (!image) {
-      alert(
-        "Foto wajib diupload"
-      );
-      return false;
-    }
+    if (
+  !image &&
+    !initialData?.foto_url
+  ) {
+    alert(
+      "Foto wajib diupload"
+    );
+    return false;
+  }
 
     return true;
   }
@@ -247,16 +291,27 @@ export default function SightingForm() {
         return;
       }
 
-      const imageUrl =
-        await uploadSightingImage(
-          image!
-        );
+      let imageUrl =
+        initialData?.foto_url ?? "";
 
-      if (!imageUrl) {
-        alert(
-          "Upload foto gagal. Periksa console browser untuk detail."
-        );
-        return;
+      if (image) {
+
+        const uploadedUrl =
+          await uploadSightingImage(
+            image
+          );
+
+        if (!uploadedUrl) {
+
+          alert(
+            "Upload foto gagal"
+          );
+
+          return;
+        }
+
+        imageUrl =
+          uploadedUrl;
       }
 
       const nama_lokal = isNewSpecies
@@ -286,19 +341,49 @@ export default function SightingForm() {
         substrat: form.substrat,
         tanggal_temuan: form.tanggal_temuan,
         diunggah_oleh: user.id,
+
+        status: isAdmin
+        ? "disetujui"
+        : "menunggu",
       };
 
       console.debug("createSighting payload:", sightingPayload);
 
-      await createSighting(sightingPayload);
+      
+      if (initialData) {
 
-      alert("Sighting berhasil dikirim");
+        await updateSighting(
+          initialData.id,
+          sightingPayload
+        );
 
-      router.push(
-        "/dashboard/sighting"
-      );
+                alert(
+          "Sighting berhasil diperbarui"
+        );
 
-      router.refresh();
+        router.push(
+          "/admin/sighting"
+        );
+
+        router.refresh();
+
+      } else {
+
+        await createSighting(
+          sightingPayload
+        );
+
+        alert("Sighting berhasil dikirim");
+  
+        router.push(
+          isAdmin
+            ? "/admin/sighting"
+            : "/dashboard/sighting"
+        );
+  
+        router.refresh();
+      } 
+
 
     } catch (error: unknown) {
       console.error("createSighting error:", error);
