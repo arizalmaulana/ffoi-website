@@ -288,7 +288,7 @@ export default async function Home() {
               desc: "Melindungi ekosistem perairan dan habitat unik yang menjadi rumah bagi spesies endemik dan native.",
             },
             {
-              image: "/images/series buku.png",
+              image: "/images/series.png",
               title: "Series Buku dan Jurnal Indonesia",
               desc: "Publikasi jurnal dan buku untuk mendokumentasikan ikan Indonesia secara komprehensif.",
             },
@@ -305,12 +305,12 @@ export default async function Home() {
           ].map((item, i) => (
             <div
               key={i}
-              className="relative w-[280px] h-[380px] rounded-xl overflow-hidden flex-none"
+              className="relative w-[280px] h-[3OOpx] rounded-xl flex-none"
             >
               {/* IMAGE (AUTO CROP) */}
               <img
                 src={item.image}
-                className="w-full h-[200px] object-cover"
+                className="w-full h-[180px] object-cover"
               />
 
               {/* OVERLAY */}
