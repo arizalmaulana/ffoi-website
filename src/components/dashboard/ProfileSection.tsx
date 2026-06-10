@@ -70,7 +70,7 @@ export default function ProfileSection({
 
           <ProfileRow
             label="Role"
-            value={profile.role}
+            value={profile.role === "pengguna" ? "Citizen Ichthyologist" : profile.role}
           />
 
           <ProfileRow

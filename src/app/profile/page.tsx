@@ -306,7 +306,7 @@ export default function ProfilePage() {
                     text-sm
                     "
                     >
-                    {profile.role}
+                    {profile.role === "pengguna" ? "Citizen Ichthyologist" : profile.role}
                     </span>
 
                     <span

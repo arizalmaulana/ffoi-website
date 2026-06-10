@@ -125,7 +125,18 @@ const strukturTim = {
 };
 
 export default function TentangPage() {
-  const mitra = Array.from({ length: 10 });
+  const mitra = [
+    { nama: "Arunika", logo: "/logo-mitra/LOGO ARUNIKA.png" },
+    { nama: "Universitas Tanjungpura", logo: "/logo-mitra/IMG_4794.PNG" },
+    { nama: "Jagat Satwa", logo: "/logo-mitra/IMG_6071.PNG" },
+    { nama: "IKABIO", logo: "/logo-mitra/IMG_7721.PNG" },
+    { nama: "BORNEO", logo: "/logo-mitra/IMG_7936.JPG" },
+    { nama: "HIMABIO", logo: "/logo-mitra/PHOTO-2024-10-09-10-59-38.jpg" },
+    { nama: "ELSAFA", logo: "/logo-mitra/PHOTO-2026-06-06-21-06-04.jpg" },
+    { nama: "BRIN", logo: "/logo-mitra/brin.png" },
+    { nama: "Aquamarindo", logo: "/logo-mitra/aqua.png" },
+    { nama: "Adorama", logo: "/logo-mitra/ado.png" },
+  ];
 
   const dokumen = [
     "Laporan Tahunan",
@@ -444,18 +455,53 @@ export default function TentangPage() {
       </section>
 
       {/* KEMITRAAN */}
-      <section id="kemitraan" className="max-w-7xl mx-auto px-6 md:px-10 pb-20 scroll-mt-32">
-        <h2 className="text-4xl font-bold mb-10">
-          Kemitraan
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {mitra.map((_, index) => (
-            <div key={index} className="h-28 rounded-2xl border border-white/10 bg-zinc-900 flex items-center justify-center text-gray-500">
-              Logo Mitra
-            </div>
-          ))}
-        </div>
-      </section>
+     
+<section
+  id="kemitraan"
+  className="max-w-7xl mx-auto px-6 md:px-10 py-24"
+>
+  <div className="mb-12">
+    <h2 className="text-4xl md:text-5xl font-bold mb-4 uppercase">
+      Kemitraan
+    </h2>
+
+    <p className="text-gray-400 max-w-2xl">
+      Bersama mitra lokal, akademisi, komunitas, dan organisasi
+      konservasi dalam mendukung perlindungan biodiversitas
+      perairan Indonesia.
+    </p>
+  </div>
+
+  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    {mitra.map((item) => (
+      <div
+        key={item.nama}
+        className="
+          bg-zinc-900
+          border border-white/10
+          rounded-2xl
+          h-40
+          p-6
+          flex items-center justify-center
+          hover:border-yellow-400/40
+          transition-all duration-300
+        "
+      >
+        <img
+          src={item.logo}
+          alt={item.nama}
+          className="
+            max-h-24
+            max-w-full
+            object-contain
+            transition-all duration-300
+            hover:scale-105
+          "
+        />
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* DOKUMEN */}
       <section id="dokumen" className="max-w-7xl mx-auto px-6 md:px-10 pb-20">

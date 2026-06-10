@@ -124,7 +124,7 @@ return (
           {/* STATS */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-4xl">
             {[
-              { title: "1.700+", label: "Spesies Terdokumentasi" },
+              { title: "1.200+", label: "Spesies Terdokumentasi" },
               { title: "37", label: "Provinsi Indonesia" },
               { title: "1.000+", label: "Referensi Ilmiah" },
               { title: "Terus", label: "Diperbarui" },

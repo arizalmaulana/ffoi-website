@@ -1,3 +1,5 @@
+"use client";
+
 import Link from 'next/link';
 import {
   FaFacebook,
@@ -7,6 +9,10 @@ import {
   FaGlobe,
   FaMapMarker,
 } from "react-icons/fa";
+
+import ContactForm from "@/components/ContactForm";
+
+
 
 export default function KontakPage() {
   return (
@@ -128,58 +134,7 @@ export default function KontakPage() {
               Kirim Pesan
             </h2>
             
-            <form className="space-y-6 relative z-10">
-              {/* Nama & Email Grid (di layar besar sejajar) */}
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="sr-only">Nama Lengkap</label>
-                  <input 
-                    type="text" 
-                    placeholder="Nama Lengkap" 
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="sr-only">Email</label>
-                  <input 
-                    type="email" 
-                    placeholder="Email" 
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all"
-                  />
-                </div>
-              </div>
-
-              {/* Subjek */}
-              <div>
-                <label className="sr-only">Subjek</label>
-                <input 
-                  type="text" 
-                  placeholder="Subjek" 
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all"
-                />
-              </div>
-
-              {/* Pesan */}
-              <div>
-                <label className="sr-only">Pesan</label>
-                <textarea 
-                  placeholder="Pesan Anda..." 
-                  rows={5}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all resize-none"
-                ></textarea>
-              </div>
-
-              {/* Tombol Kirim */}
-              <button 
-                type="submit"
-                className="group w-full md:w-auto flex items-center justify-center gap-3 bg-yellow-400 text-black font-bold px-8 py-4 rounded-full transition-all duration-300 hover:bg-yellow-300 hover:shadow-[0_0_20px_rgba(250,204,21,0.4)] active:scale-95"
-              >
-                <svg className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                </svg>
-                Send Message
-              </button>
-            </form>
+            <ContactForm />
             
             {/* Dekorasi halus di background form */}
             <div className="absolute -top-24 -right-24 w-64 h-64 bg-yellow-400/5 rounded-full blur-3xl pointer-events-none" />
