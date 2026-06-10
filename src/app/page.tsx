@@ -310,7 +310,7 @@ export default async function Home() {
               {/* IMAGE (AUTO CROP) */}
               <img
                 src={item.image}
-                className="w-full h-full object-cover"
+                className="w-full h-[200px] object-cover"
               />
 
               {/* OVERLAY */}

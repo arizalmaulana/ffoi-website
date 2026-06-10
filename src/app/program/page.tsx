@@ -21,7 +21,7 @@ export default function ProgramPage() {
         "Pemetaan distribusi",
         "Database biodiversitas"
       ],
-      image: "/images/Konservasi.JPG",
+      image: "/program unggulan/1.jpg",
     },
     {
       title: "Konservasi Habitat Perairan",
@@ -34,7 +34,7 @@ export default function ProgramPage() {
         "Perlindungan blackwater",
         "Shelter spesies terancam"
       ],
-      image: "/images/Konservasi.JPG",
+      image: "/program unggulan/2.jpg",
     },
     {
       title: "Edukasi Masyarakat dan Pihak Terkait",
@@ -47,7 +47,7 @@ export default function ProgramPage() {
         "Program campaign ke sekolah dan universitas",
         "Penyadartahuan konservasi perairan"
       ],
-      image: "/images/Konservasi.JPG",
+      image: "/program unggulan/3.jpg",
     },
     {
       title: "Database Ikan Asli Indonesia",
@@ -60,7 +60,7 @@ export default function ProgramPage() {
         "Fakta spesies",
         "Referensi ilmiah terbuka"
       ],
-      image: "/images/Konservasi.JPG",
+      image: "/program unggulan/4.png",
     },
     {
       title: "Pengembangan Perikanan Berkelanjutan",
@@ -73,7 +73,40 @@ export default function ProgramPage() {
         "Pendampingan dan kemitraan",
         "Ekonomi biru perairan air tawar"
       ],
-      image: "/images/Konservasi.JPG",
+      image: "/program unggulan/5.jpg",
+    },
+  ];
+
+  const impacts = [
+    {
+      title: "Perlindungan Habitat",
+      image: "/dampak/1.jpg",
+      description:
+        "Melindungi ekosistem sungai, rawa, dan danau sebagai habitat alami ikan air tawar Indonesia agar tetap lestari dan berkelanjutan.",
+    },
+    {
+      title: "Pelestarian Ikan Asli",
+      image: "/dampak/3.jpg",
+      description:
+        "Mendukung konservasi spesies ikan asli Indonesia melalui penelitian, dokumentasi, dan upaya perlindungan dari ancaman kepunahan.",
+    },
+    {
+      title: "Edukasi dan Kesadaran",
+      image: "/dampak/4.jpg",
+      description:
+        "Meningkatkan pemahaman masyarakat tentang pentingnya keanekaragaman hayati perairan melalui kampanye, pelatihan, dan kegiatan edukatif.",
+    },
+    {
+      title: "Pemberdayaan Masyarakat",
+      image: "/dampak/6.png",
+      description:
+        "Melibatkan masyarakat lokal sebagai mitra konservasi untuk menciptakan manfaat ekonomi sekaligus menjaga kelestarian lingkungan.",
+    },
+    {
+      title: "Data Untuk Masa Depan",
+      image: "/dampak/5.jpg",
+      description:
+        "Menghasilkan basis data ilmiah yang dapat digunakan sebagai dasar pengambilan kebijakan dan strategi konservasi jangka panjang.",
     },
   ];
 
@@ -200,30 +233,48 @@ export default function ProgramPage() {
 
       {/* ================= PROGRAMS ================= */}
       <section id="program" className="max-w-[1440px] mx-auto px-6 md:px-10 py-24">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {programs.map((program, index) => (
             <div
               key={index}
-              className="flex flex-col overflow-hidden rounded-[2rem] border border-yellow-400/80 bg-[#0a0a0a] transition-transform hover:-translate-y-1"
+              className="
+                flex flex-col
+                h-[590px]
+                overflow-hidden
+                rounded-[2rem]
+                border border-yellow-400/70
+                bg-[#0a0a0a]
+                transition-all duration-300
+                hover:-translate-y-1
+                hover:border-yellow-400
+              "
             >
-              <div className="h-[200px] w-full bg-zinc-900">
-                <img 
-                  src={program.image} 
+              {/* IMAGE */}
+              <div className="h-[140px] min-h-[140px] overflow-hidden">
+                <img
+                  src={program.image}
                   alt={program.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
               </div>
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-white font-bold text-sm leading-snug mb-3 uppercase">
+
+              {/* CONTENT */}
+              <div className="flex flex-col flex-1 p-6">
+                {/* TITLE */}
+                <h3 className="text-white font-bold text-lg leading-tight min-h-[72px] mb-3 uppercase">
                   {program.title}
                 </h3>
-                <p className="text-gray-300 text-xs leading-relaxed mb-5">
+
+                {/* DESCRIPTION */}
+                <p className="text-gray-300 text-sm leading-relaxed min-h-[72px]">
                   {program.description}
                 </p>
-                <ul className="space-y-1.5 text-xs text-gray-300 mt-auto">
+
+                {/* POINTS */}
+                <ul className="space-y-3 text-sm text-gray-300 mt-auto">
                   {program.points.map((point, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <span className="text-gray-500 mt-[2px]">•</span>
+                    <li key={idx} className="flex items-start gap-3">
+                      <span className="text-yellow-400 ">•</span>
                       <span>{point}</span>
                     </li>
                   ))}
@@ -375,22 +426,26 @@ export default function ProgramPage() {
           <h3 className="text-3xl font-bold mb-10">Dampak Nyata di Lapangan</h3>
 
           <div className="grid md:grid-cols-2 xl:grid-cols-5 gap-6 mb-20">
-            {[
-              "Perlindungan Habitat",
-              "Pelestarian Ikan Asli",
-              "Edukasi dan Kesadaran",
-              "Pemberdayaan Masyarakat",
-              "Data Untuk Masa Depan",
-            ].map((item) => (
-              <div key={item} className="border border-yellow-400/30 rounded-2xl overflow-hidden bg-zinc-950">
-                <div className="h-48 bg-zinc-900 flex items-center justify-center">
-                  <span className="text-gray-500">Foto</span>
+            {impacts.map((item) => (
+              <div
+                key={item.title}
+                className="border border-yellow-400/30 rounded-2xl overflow-hidden bg-zinc-950 hover:border-yellow-400 transition-colors"
+              >
+                <div className="h-35 overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
+
                 <div className="p-5">
-                  <h4 className="font-bold mb-3">{item}</h4>
-                  <p className="text-sm text-gray-400">
-                    Deskripsi singkat mengenai dampak program terhadap konservasi
-                    dan masyarakat.
+                  <h4 className="font-bold mb-3 text-white">
+                    {item.title}
+                  </h4>
+
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    {item.description}
                   </p>
                 </div>
               </div>
