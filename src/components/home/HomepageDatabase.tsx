@@ -94,7 +94,7 @@ export default function HomepageDatabase(
 
 return (
 
-<section className="relative text-white min-h-[950px]">
+<section className="relative text-white min-h-[600px] md:min-h-[950px]">
 
         {/* BACKGROUND IMAGE */}
         <div className="absolute inset-0">
@@ -363,9 +363,9 @@ return (
 
           {/* BUTTON */}
           <div className="mt-10">
-            <a href="\database" className="border border-yellow-400 text-yellow-400 px-6 py-3 rounded-full font-semibold">
+            <Link href="/database" className="inline-block border border-yellow-400 text-yellow-400 px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-black transition">
               JELAJAHI SEMUA 1.700+ SPESIES →
-            </a>
+            </Link>
           </div>
 
         </div>

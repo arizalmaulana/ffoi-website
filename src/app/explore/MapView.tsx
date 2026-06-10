@@ -1,33 +1,36 @@
 "use client";
 
 import {
-    MapContainer,
-    TileLayer,
-    Marker,
-    Popup,
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
 } from "react-leaflet";
 
-export default function MapView({ data }: any) {
-    return (
-    <MapContainer
-        center={[-2, 118]}
-        zoom={5}
-        style={{ height: "400px" }}
-    >
-        <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+import { Sighting } from "@/types/sighting";
 
-        {data.map((item: any) => (
+type MapViewProps = {
+  data: Sighting[];
+};
+
+export default function MapView({ data }: MapViewProps) {
+  return (
+    <MapContainer
+      center={[-2, 118]}
+      zoom={5}
+      style={{ height: "400px", width: "100%" }}
+      className="rounded-xl overflow-hidden z-0"
+    >
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+
+      {data.map((item) => (
         <Marker
-            key={item.id}
-            position={[item.latitude, item.longitude]}
+          key={item.id}
+          position={[item.latitude, item.longitude]}
         >
-            <Popup>
-            {item.nama_lokal}
-            </Popup>
+          <Popup>{item.nama_lokal}</Popup>
         </Marker>
-        ))}
+      ))}
     </MapContainer>
-    );
+  );
 }

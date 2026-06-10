@@ -40,33 +40,34 @@ export default function DatabasePage() {
     const [totalPages, setTotalPages] = useState(1);
 
     useEffect(() => {
-    
-    
+    let active = true;
+
     async function loadData() {
         setLoading(true);
 
-        const data = await getSpecies(page);
+        try {
+          const data = await getSpecies(page);
+          const count = await getSpeciesCount();
+          const ordoData = await getOrdoOptions();
+          const familyData = await getFamilyOptions();
 
-        const count = await getSpeciesCount();
+          if (!active) return;
 
-        const ordoData = await getOrdoOptions();
-        const familyData = await getFamilyOptions();
-
-        setOrdoOptions(ordoData);
-        setFamilyOptions(familyData);
-
-        setSpecies(data);
-
-        setTotalPages(
-        Math.ceil(count / 100)
-        );
-
-        setLoading(false);
+          setOrdoOptions(ordoData);
+          setFamilyOptions(familyData);
+          setSpecies(data);
+          setTotalPages(Math.ceil(count / 100));
+        } catch (error) {
+          console.error(error);
+        } finally {
+          if (active) setLoading(false);
+        }
     }
 
-    
-
     loadData();
+    return () => {
+      active = false;
+    };
     }, [page]);
 
     const filteredSpecies =
@@ -110,7 +111,7 @@ export default function DatabasePage() {
     <main className="min-h-screen bg-black text-white px-6 md:px-10 py-20">
       <div className="max-w-7xl mx-auto">
 
-        <h1 className="text-5xl font-bold mb-4">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
           Database Ikan Indonesia
         </h1>
 

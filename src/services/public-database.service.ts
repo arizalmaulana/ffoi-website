@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/server";
 
 export interface HomepageSpecies {
   id: string;
@@ -11,6 +11,7 @@ export interface HomepageSpecies {
 }
 
 export async function getHomepageSpecies(): Promise<HomepageSpecies[]> {
+  const supabase = await createClient();
 
   const { data, error } =
     await supabase
@@ -88,6 +89,7 @@ export async function getHomepageSpecies(): Promise<HomepageSpecies[]> {
 export async function getBiodiversityDetail(
   sightingId: string
 ) {
+  const supabase = await createClient();
 
   const {
     data: sighting,
@@ -143,6 +145,7 @@ export async function getRelatedSightings(
   speciesId: string,
   currentSightingId: string
 ) {
+  const supabase = await createClient();
 
   const { data, error } =
     await supabase
@@ -213,6 +216,7 @@ export async function getRelatedSightings(
 export async function getSpeciesDetail(
   speciesId: string
 ) {
+  const supabase = await createClient();
 
   const {
     data: species,

@@ -7,7 +7,7 @@ import {
   useRouter,
 } from "next/navigation";
 
-import { supabase } from "@/lib/supabase";
+import { supabase, waitForAuth } from "@/lib/supabase";
 
 import {
   getMySightingById,
@@ -29,56 +29,58 @@ export default function EditSightingPage() {
     useState<Sighting | null>(null);
 
   useEffect(() => {
+    let active = true;
+
     async function loadData() {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+      try {
+        await waitForAuth();
 
-      if (!user) {
-        router.push("/login");
-        return;
-      }
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
 
-      const data =
-        await getMySightingById(
+        const user = session?.user;
+
+        if (!user) {
+          router.push("/login");
+          return;
+        }
+
+        const data = await getMySightingById(
           params.id as string,
           user.id
         );
 
-      if (!data) {
-        router.push(
-          "/dashboard/sighting"
-        );
+        if (!active) return;
 
-        return;
+        if (!data) {
+          router.push("/dashboard/sighting");
+          return;
+        }
+
+        if (data.status === "disetujui") {
+          alert("Sighting yang sudah disetujui tidak dapat diedit");
+          router.push(`/dashboard/sighting/${data.id}`);
+          return;
+        }
+
+        setSighting(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        if (active) setLoading(false);
       }
-
-      if (
-        data.status ===
-        "disetujui"
-      ) {
-        alert(
-          "Sighting yang sudah disetujui tidak dapat diedit"
-        );
-
-        router.push(
-          `/dashboard/sighting/${data.id}`
-        );
-
-        return;
-      }
-
-      setSighting(data);
-
-      setLoading(false);
     }
 
     loadData();
+    return () => {
+      active = false;
+    };
   }, [params.id, router]);
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-black text-white p-10">
+      <main className="min-h-screen bg-black text-white p-4 sm:p-6 lg:p-10">
         Memuat data...
       </main>
     );
@@ -86,7 +88,7 @@ export default function EditSightingPage() {
 
   if (!sighting) {
     return (
-      <main className="min-h-screen bg-black text-white p-10">
+      <main className="min-h-screen bg-black text-white p-4 sm:p-6 lg:p-10">
         Data tidak ditemukan
       </main>
     );

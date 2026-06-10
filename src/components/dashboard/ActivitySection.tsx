@@ -20,7 +20,7 @@ export default function ActivitySection({
       border
       border-yellow-500/20
       rounded-2xl
-      p-8
+      p-6 sm:p-8
       h-full
       "
     >
@@ -60,17 +60,12 @@ export default function ActivitySection({
                 {activity.status}
               </p>
 
-              <p className="text-xs text-gray-500">
-                {new Date(
-                  activity.dibuat_pada
-                ).toLocaleDateString(
-                  "id-ID",
-                  {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  }
-                )}
+              <p className="text-xs text-gray-500" suppressHydrationWarning>
+                {new Date(activity.dibuat_pada).toLocaleDateString("id-ID", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
               </p>
             </div>
           ))}

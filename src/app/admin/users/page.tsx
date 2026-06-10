@@ -24,19 +24,23 @@ export default function AdminUsersPage() {
     useState<Profile[]>([]);
 
   useEffect(() => {
+    let active = true;
 
     async function loadData() {
-
-      const result =
-        await getAllUsers();
-
-      setUsers(result);
-
-      setLoading(false);
+      try {
+        const result = await getAllUsers();
+        if (active) setUsers(result);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        if (active) setLoading(false);
+      }
     }
 
     loadData();
-
+    return () => {
+      active = false;
+    };
   }, []);
 
   async function handleSearch(
@@ -109,11 +113,11 @@ export default function AdminUsersPage() {
         border
         border-yellow-500/20
         rounded-xl
-        overflow-hidden
+        overflow-x-auto
         "
       >
 
-        <table className="w-full">
+        <table className="w-full min-w-[640px]">
 
           <thead>
 

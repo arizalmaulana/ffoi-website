@@ -75,34 +75,42 @@ export default function AdminDashboardPage() {
   >([]);
 
   useEffect(() => {
+    let active = true;
 
     async function loadData() {
+      try {
+        const [
+          statsData,
+          provincesData,
+          recentData,
+          contributorData,
+          pendingData,
+        ] = await Promise.all([
+          getAdminStats(),
+          getTopProvinces(),
+          getRecentSightings(),
+          getTopContributors(),
+          getPendingActions(),
+        ]);
 
-      const [
-        statsData,
-        provincesData,
-        recentData,
-        contributorData,
-        pendingData,
-      ] = await Promise.all([
-        getAdminStats(),
-        getTopProvinces(),
-        getRecentSightings(),
-        getTopContributors(),
-        getPendingActions(),
-      ]);
+        if (!active) return;
 
-      setStats(statsData);
-      setProvinces(provincesData);
-      setRecentSightings(recentData);
-      setContributors(contributorData);
-      setPendingAction(pendingData);
-
-      setLoading(false);
+        setStats(statsData);
+        setProvinces(provincesData);
+        setRecentSightings(recentData);
+        setContributors(contributorData);
+        setPendingAction(pendingData);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        if (active) setLoading(false);
+      }
     }
 
     loadData();
-
+    return () => {
+      active = false;
+    };
   }, []);
 
   if (loading) {

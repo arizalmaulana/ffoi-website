@@ -33,35 +33,32 @@ export default function AdminSpeciesPage() {
     useState<Species[]>([]);
 
   useEffect(() => {
+    let active = true;
 
     async function loadData() {
-
       setLoading(true);
 
-      const [
-        speciesData,
-        totalCount,
-      ] = await Promise.all([
-        getSpecies(page),
-        getSpeciesCount(),
-      ]);
+      try {
+        const [speciesData, totalCount] = await Promise.all([
+          getSpecies(page),
+          getSpeciesCount(),
+        ]);
 
-      setSpecies(
-        speciesData
-      );
+        if (!active) return;
 
-      setTotalPages(
-        Math.ceil(
-          totalCount /
-          PAGE_SIZE
-        )
-      );
-
-      setLoading(false);
+        setSpecies(speciesData);
+        setTotalPages(Math.ceil(totalCount / PAGE_SIZE));
+      } catch (error) {
+        console.error(error);
+      } finally {
+        if (active) setLoading(false);
+      }
     }
 
     loadData();
-
+    return () => {
+      active = false;
+    };
   }, [page]);
 
   async function handleSearch(
@@ -276,11 +273,11 @@ export default function AdminSpeciesPage() {
         border
         border-yellow-500/20
         rounded-xl
-        overflow-hidden
+        overflow-x-auto
         "
       >
 
-        <table className="w-full">
+        <table className="w-full min-w-[900px]">
 
           <thead>
 

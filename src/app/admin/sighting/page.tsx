@@ -32,17 +32,23 @@ export default function AdminSightingPage() {
     useState("semua");
 
   useEffect(() => {
+    let active = true;
+
     async function loadData() {
-
-      const data =
-        await getPendingSightingsForReview();
-
-      setSightings(data);
-
-      setLoading(false);
+      try {
+        const data = await getPendingSightingsForReview();
+        if (active) setSightings(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        if (active) setLoading(false);
+      }
     }
 
     loadData();
+    return () => {
+      active = false;
+    };
   }, []);
 
   const filteredSightings =
@@ -247,11 +253,11 @@ export default function AdminSightingPage() {
         border
         border-yellow-500/20
         rounded-xl
-        overflow-hidden
+        overflow-x-auto
         "
       >
 
-        <table className="w-full">
+        <table className="w-full min-w-[720px]">
 
           <thead>
 
@@ -293,14 +299,16 @@ export default function AdminSightingPage() {
                 key={item.id}
                 className="border-b border-yellow-500/20 text-center"
               >
-                <td className="p-4 flex items-center justify-center">
-                  <Image
+                <td className="p-4">
+                  <div className="flex items-center justify-center">
+                    <Image
                     src={item.foto_url ?? ""}
                     alt={item.nama_lokal ?? item.nama_ilmiah ?? "Foto sighting"}
                     width={80}
                     height={80}
                     className="w-20 h-20 rounded-lg object-cover"
                   />
+                  </div>
                 </td>
 
                 <td className="p-4">

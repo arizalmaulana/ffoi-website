@@ -1,5 +1,4 @@
-import Navbar from "@/components/Navbar";
-import { supabase } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/server";
 
 import {
   FaFacebook,
@@ -20,9 +19,9 @@ import {
 } from "@/services/public-database.service";
 
 async function getSightings() {
+  const supabase = await createClient();
 
-  const { data } =
-    await supabase
+  const { data } = await supabase
       .from("sighting")
       .select("*")
       .order(
@@ -50,18 +49,18 @@ export default async function Home() {
     <main>
 
       {/* HERO */}
-      <section className="relative h-screen bg-black text-white overflow-hidden">
+      <section className="relative min-h-screen bg-black text-white overflow-hidden">
 
-        <div className="grid md:grid-cols-2 h-full">
+        <div className="grid md:grid-cols-2 min-h-screen">
 
           {/* LEFT CONTENT */}
-          <div className="flex flex-col justify-center px-10 md:px-20 z-10">
+          <div className="flex flex-col justify-center px-6 sm:px-10 md:px-20 py-16 md:py-0 z-10 order-2 md:order-1">
 
             <p className="text-yellow-400 font-semibold mb-3">
               YAYASAN FFOI
             </p>
 
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight">
               KENALI DAN <br />
               LINDUNGI <br />
               <span className="text-yellow-400">
@@ -76,46 +75,43 @@ export default async function Home() {
               lokal berkelanjutan demi keberlanjutan biodiversitas perairan Indonesia
             </p>
 
-            {/* BUTTON */}
             <div className="flex flex-wrap gap-4 mt-8">
-  {/* Tombol 1: Jelajahi Program (Primary Glow) */}
-  <Link href="/program" passHref>
-    <button className="group relative bg-yellow-400 text-black px-8 py-3.5 rounded-full font-bold flex items-center gap-2 overflow-hidden transition-all duration-300 ease-out hover:bg-yellow-300 hover:shadow-[0_0_20px_rgba(250,204,21,0.5)] hover:-translate-y-1 active:translate-y-0 active:scale-95">
-      <span>JELAJAHI PROGRAM</span>
-      {/* Panah akan bergeser ke kanan saat di-hover */}
-      <span className="transition-transform duration-300 group-hover:translate-x-1.5">
-        →
-      </span>
-    </button>
-  </Link>
+              <Link
+                href="/program"
+                className="group relative bg-yellow-400 text-black px-6 sm:px-8 py-3.5 rounded-full font-bold inline-flex items-center gap-2 overflow-hidden transition-all duration-300 ease-out hover:bg-yellow-300 hover:shadow-[0_0_20px_rgba(250,204,21,0.5)] hover:-translate-y-1 active:translate-y-0 active:scale-95"
+              >
+                <span>JELAJAHI PROGRAM</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1.5">
+                  →
+                </span>
+              </Link>
 
-  {/* Tombol 2: Tonton Video (Glassmorphism & Outline) */}
-  <a 
-    href="https://youtube.com/@ffoi.ikanindonesia?si=6SpYuiAdPxIsGcJn" 
-    target="_blank" 
-    rel="noopener noreferrer"
-  >
-    <button className="group bg-white/5 backdrop-blur-sm border border-white/20 text-white px-8 py-3.5 rounded-full font-bold flex items-center gap-3 transition-all duration-300 hover:bg-white/10 hover:border-white/50 hover:-translate-y-1 active:translate-y-0 active:scale-95">
-      {/* Icon Play SVG dengan efek scale saat di-hover */}
-      <svg 
-        className="w-5 h-5 text-yellow-400 transition-transform duration-300 group-hover:scale-110" 
-        fill="currentColor" 
-        viewBox="0 0 24 24"
-      >
-        <path d="M8 5v14l11-7z" />
-      </svg>
-      <span>TONTON VIDEO</span>
-    </button>
-  </a>
-</div>
+              <a
+                href="https://youtube.com/@ffoi.ikanindonesia?si=6SpYuiAdPxIsGcJn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-white/5 backdrop-blur-sm border border-white/20 text-white px-6 sm:px-8 py-3.5 rounded-full font-bold inline-flex items-center gap-3 transition-all duration-300 hover:bg-white/10 hover:border-white/50 hover:-translate-y-1 active:translate-y-0 active:scale-95"
+              >
+                <svg
+                  className="w-5 h-5 text-yellow-400 transition-transform duration-300 group-hover:scale-110"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+                <span>TONTON VIDEO</span>
+              </a>
+            </div>
 
           </div>
 
           {/* RIGHT IMAGE */}
-          <div className="relative h-full">
+          <div className="relative h-56 sm:h-72 md:h-full order-1 md:order-2">
 
             <img
               src="/images/Cover-pertama.PNG"
+              alt="Cover FFOI"
               className="w-full h-full object-cover"
             />
 
@@ -129,12 +125,12 @@ export default async function Home() {
       </section>
 
       {/* ================= SECTION 2 ================= */}
-      <section className="relative w-full h-[95vh] flex items-center overflow-hidden bg-[#f3f3f3]">
+      <section className="relative w-full min-h-[70vh] md:min-h-[95vh] flex items-center overflow-hidden bg-[#f3f3f3] py-16 md:py-0">
 
         {/* LEFT CONTENT */}
-        <div className="relative z-10 w-full md:w-3/2 px-10 md:px-20">
+        <div className="relative z-10 w-full md:w-1/2 px-6 sm:px-10 md:px-20">
 
-          <h2 className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-black">
+          <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold leading-tight mb-6 text-black">
             BERKONTRIBUSI UNTUK <br />
             MASA DEPAN PERAIRAN <br />
             INDONESIA
@@ -151,16 +147,17 @@ export default async function Home() {
             untuk generasi mendatang.
           </p>
 
-          <a href="/tentang">
-            <button className="border border-yellow-500 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-500 hover:text-white transition">
-              SELENGKAPNYA →
-            </button>
-          </a>
+          <Link
+            href="/tentang"
+            className="inline-block border border-yellow-500 text-black px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-yellow-500 hover:text-white transition"
+          >
+            SELENGKAPNYA →
+          </Link>
 
         </div>
 
         {/* RIGHT IMAGE */}
-        <div className="absolute right-0 top-0 w-full md:w-2/3 h-full">
+        <div className="absolute right-0 top-0 w-full md:w-2/3 h-full pointer-events-none">
 
           <img
             src="/images/Foto berkontribusi untuk masa depan perairan Indonesia.JPG"
@@ -175,14 +172,14 @@ export default async function Home() {
       </section>
 
       {/* ================= FOKUS KAMI ================= */}
-      <section className="bg-black text-white py-24 px-10">
+      <section className="bg-black text-white py-16 md:py-24 px-6 sm:px-10">
   {/* TITLE */}
-  <div className="flex items-center justify-center mb-20">
-    <div className="h-[2px] w-24 bg-yellow-500 mr-6"></div>
-    <h2 className="text-3xl font-bold text-yellow-500 tracking-[0.2em]">
+  <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-0 mb-12 sm:mb-20 px-2">
+    <div className="hidden sm:block h-[2px] w-16 sm:w-24 bg-yellow-500 sm:mr-6"></div>
+    <h2 className="text-2xl sm:text-3xl font-bold text-yellow-500 tracking-[0.15em] sm:tracking-[0.2em] text-center">
       FOKUS KAMI
     </h2>
-    <div className="h-[2px] w-24 bg-yellow-500 ml-6"></div>
+    <div className="hidden sm:block h-[2px] w-16 sm:w-24 bg-yellow-500 sm:ml-6"></div>
   </div>
 
   {/* GRID */}
@@ -263,14 +260,14 @@ export default async function Home() {
       <section className="bg-yellow-400 py-16 px-6 md:px-10">
 
         {/* HEADER */}
-        <div className="flex justify-between items-center mb-10">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-black">
             PROGRAM UNGGULAN
           </h2>
 
           <a
   href="/program"
-  className="text-black font-semibold hover:opacity-70 transition"
+  className="text-black font-semibold hover:opacity-70 transition text-sm sm:text-base whitespace-nowrap"
 >
   LIHAT SEMUA PROGRAM →
 </a>
@@ -353,7 +350,7 @@ export default async function Home() {
         </div>
 
         {/* RIGHT CONTENT */}
-        <div className="bg-yellow-400 flex items-center px-10 md:px-16">
+        <div className="bg-yellow-400 flex items-center px-6 sm:px-10 md:px-16 py-12 md:py-0">
 
           <div className="max-w-lg">
 
@@ -376,12 +373,12 @@ export default async function Home() {
               perikanan yang produktif, adil, dan ramah lingkungan.
             </p>
 
-            {/* BUTTON */}
-            <a href="/program#cara-kerja">
-            <button className="bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+            <Link
+              href="/program#cara-kerja"
+              className="inline-block bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
+            >
               PELAJARI CARA KAMI BEKERJA
-            </button>
-            </a>
+            </Link>
 
           </div>
 

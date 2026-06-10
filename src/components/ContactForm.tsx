@@ -74,7 +74,7 @@ ${message}
         type="submit"
         className="group w-full md:w-auto flex items-center justify-center gap-3 bg-yellow-400 text-black font-bold px-8 py-4 rounded-full transition-all duration-300 hover:bg-yellow-300 hover:shadow-[0_0_20px_rgba(250,204,21,0.4)] active:scale-95"
         >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z"></path>
         </svg>
         Send Message

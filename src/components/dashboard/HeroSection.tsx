@@ -24,12 +24,12 @@ export default function HeroSection({
     >
       <div className="absolute inset-0 bg-black/70" />
 
-      <div className="relative z-10 p-10 max-w-xl">
-        <h1 className="text-5xl font-bold text-white mb-4">
+      <div className="relative z-10 p-6 sm:p-10 max-w-xl">
+        <h1 className="text-3xl sm:text-5xl font-bold text-white mb-4">
           Halo, {profile.nama_lengkap}! 👋
         </h1>
 
-        <p className="text-yellow-400 text-2xl font-semibold mb-6">
+        <p className="text-yellow-400 text-xl sm:text-2xl font-semibold mb-6">
           Kontributor Freshwater Fish of Indonesia
         </p>
 
@@ -40,16 +40,13 @@ export default function HeroSection({
           perairan kita.
         </p>
 
-        <p className="text-gray-400 mb-8">
+        <p className="text-gray-400 mb-8" suppressHydrationWarning>
           Bergabung sejak{" "}
-          {new Date(profile.dibuat_pada).toLocaleDateString(
-            "id-ID",
-            {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            }
-          )}
+          {new Date(profile.dibuat_pada).toLocaleDateString("id-ID", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })}
         </p>
 
         <Link href="/dashboard/sighting/create"

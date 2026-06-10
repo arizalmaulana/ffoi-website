@@ -15,13 +15,13 @@ export default function ProfileSection({
       border
       border-yellow-500/20
       rounded-2xl
-      p-8
+      p-6 sm:p-8
       "
     >
       <h2
         className="
         text-yellow-400
-        text-2xl
+        text-xl sm:text-2xl
         font-bold
         mb-8
         "
@@ -29,7 +29,7 @@ export default function ProfileSection({
         Profil Saya
       </h2>
 
-      <div className="flex flex-col lg:flex-row gap-8">
+      <div className="flex flex-col lg:flex-row gap-8 mb-4">
 
         {/* FOTO */}
         <div>
@@ -75,13 +75,12 @@ export default function ProfileSection({
 
           <ProfileRow
             label="Bergabung Sejak"
-            value={new Date(
-              profile.dibuat_pada
-            ).toLocaleDateString("id-ID", {
+            value={new Date(profile.dibuat_pada).toLocaleDateString("id-ID", {
               day: "numeric",
               month: "long",
               year: "numeric",
             })}
+            suppressHydrationWarning
           />
 
           <ProfileRow
@@ -120,17 +119,22 @@ export default function ProfileSection({
 function ProfileRow({
   label,
   value,
+  suppressHydrationWarning,
 }: {
   label: string;
   value: string;
+  suppressHydrationWarning?: boolean;
 }) {
   return (
-    <div className="grid grid-cols-[180px_1fr]">
-      <span className="text-gray-400">
+    <div className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-1 sm:gap-4">
+      <span className="text-gray-400 text-sm sm:text-base">
         {label}
       </span>
 
-      <span className="text-white">
+      <span
+        className="text-white text-sm sm:text-base break-words"
+        suppressHydrationWarning={suppressHydrationWarning}
+      >
         {value}
       </span>
     </div>

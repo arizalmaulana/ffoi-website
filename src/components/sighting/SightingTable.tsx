@@ -126,12 +126,8 @@ export default function SightingTable({
                   {sighting.nama_lokasi}
                 </td>
 
-                <td className="p-4">
-                  {new Date(
-                    sighting.tanggal_temuan
-                  ).toLocaleDateString(
-                    "id-ID"
-                  )}
+                <td className="p-4" suppressHydrationWarning>
+                  {new Date(sighting.tanggal_temuan).toLocaleDateString("id-ID")}
                 </td>
 
                 <td className="p-4">

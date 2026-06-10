@@ -21,6 +21,7 @@ export default function UserMenu({
 
   async function handleLogout() {
     await supabase.auth.signOut();
+    await fetch("/api/auth/signout", { method: "POST" });
 
     router.push("/");
     router.refresh();

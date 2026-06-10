@@ -1,10 +1,14 @@
-import { supabase } from "@/lib/supabase";
+import { supabase, waitForAuth } from "@/lib/supabase";
 import { Profile } from "@/types/profile";
 
 export async function getProfile(): Promise<Profile | null> {
+  await waitForAuth();
+
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  const user = session?.user;
 
   if (!user) return null;
 

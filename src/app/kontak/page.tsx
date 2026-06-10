@@ -42,7 +42,7 @@ export default function KontakPage() {
             <span className="text-yellow-400">Kontak</span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-extrabold mt-2 mb-6 tracking-wide uppercase">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold mt-2 mb-6 tracking-wide uppercase">
             HUBUNGI KAMI
           </h1>
           

@@ -36,47 +36,33 @@ export default function ProfilePage() {
     useState<Sighting[]>([]);
 
   useEffect(() => {
+    let active = true;
 
     async function loadData() {
-
       try {
-
-        const profileData =
-          await getProfile();
+        const profileData = await getProfile();
 
         if (!profileData) {
-
-          setLoading(false);
-
           return;
         }
 
-        const sightingData =
-          await getMySightings(
-            profileData.id
-          );
+        const sightingData = await getMySightings(profileData.id);
 
-        setProfile(
-          profileData
-        );
+        if (!active) return;
 
-        setSightings(
-          sightingData
-        );
-
+        setProfile(profileData);
+        setSightings(sightingData);
       } catch (error) {
-
         console.error(error);
-
       } finally {
-
-        setLoading(false);
-
+        if (active) setLoading(false);
       }
     }
 
     loadData();
-
+    return () => {
+      active = false;
+    };
   }, []);
 
   if (loading) {

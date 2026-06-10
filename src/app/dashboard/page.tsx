@@ -15,29 +15,52 @@ import { DashboardData } from "@/types/dashboard";
 export default function DashboardPage() {
   const [data, setData] =
   useState<DashboardData | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function load() {
-      const dashboardData =
-        await getDashboardData();
+    let active = true;
 
-      setData(dashboardData);
+    async function load() {
+      try {
+        const dashboardData = await getDashboardData();
+
+        if (active) {
+          setData(dashboardData);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        if (active) setLoading(false);
+      }
     }
 
     load();
+    return () => {
+      active = false;
+    };
   }, []);
+
+  if (loading) {
+    return (
+      <main className="min-h-screen bg-black text-white p-4 sm:p-6 lg:p-10">
+        Loading...
+      </main>
+    );
+  }
 
   if (!data) {
     return (
-      <main className="min-h-screen bg-black text-white p-10">
-        Loading...
+      <main className="min-h-screen bg-black text-white p-4 sm:p-6 lg:p-10 flex items-center justify-center">
+        <p className="text-gray-400">
+          Silakan login untuk mengakses dashboard.
+        </p>
       </main>
     );
   }
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <div className="max-w-7xl mx-auto px-6 py-10 space-y-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-6 sm:space-y-8">
 
         <HeroSection
           profile={data.profile}

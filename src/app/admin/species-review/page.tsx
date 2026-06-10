@@ -24,19 +24,23 @@ export default function SpeciesReviewPage() {
     useState("semua");
 
   useEffect(() => {
+    let active = true;
 
     async function loadData() {
-
-      const result =
-        await getSpeciesReviewList();
-
-      setData(result);
-
-      setLoading(false);
+      try {
+        const result = await getSpeciesReviewList();
+        if (active) setData(result);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        if (active) setLoading(false);
+      }
     }
 
     loadData();
-
+    return () => {
+      active = false;
+    };
   }, []);
 
   const filteredData =
@@ -163,11 +167,11 @@ export default function SpeciesReviewPage() {
         border
         border-yellow-500/20
         rounded-xl
-        overflow-hidden
+        overflow-x-auto
         "
       >
 
-        <table className="w-full">
+        <table className="w-full min-w-[720px]">
 
           <thead>
 
@@ -215,16 +219,16 @@ export default function SpeciesReviewPage() {
                 "
               >
 
-                <td className="p-4 flex items-center justify-center">
-
-                  <Image
+                <td className="p-4">
+                  <div className="flex items-center justify-center">
+                    <Image
                     src={item.foto_url ?? ""}
                     alt={item.nama_lokal ?? item.nama_ilmiah ?? "Foto sighting"}
                     width={96}
                     height={64}
                     className="w-24 h-16 rounded object-cover"
                   />
-
+                  </div>
                 </td>
 
                 <td className="p-4">

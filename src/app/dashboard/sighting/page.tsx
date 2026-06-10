@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { supabase } from "@/lib/supabase";
+import { supabase, waitForAuth } from "@/lib/supabase";
 
 import { Sighting } from "@/types/sighting";
 
@@ -22,27 +22,34 @@ export default function SightingPage() {
     useState("semua");
 
   useEffect(() => {
+    let active = true;
+
     async function loadData() {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+      try {
+        await waitForAuth();
 
-      if (!user) {
-        setLoading(false);
-        return;
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+
+        const user = session?.user;
+
+        if (!user) return;
+
+        const data = await getMySightings(user.id);
+
+        if (active) setSightings(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        if (active) setLoading(false);
       }
-
-      const data =
-        await getMySightings(
-          user.id
-        );
-
-      setSightings(data);
-
-      setLoading(false);
     }
 
     loadData();
+    return () => {
+      active = false;
+    };
   }, []);
 
   const filteredSightings =
@@ -78,7 +85,7 @@ export default function SightingPage() {
     ).length;
 
   return (
-    <main className="min-h-screen bg-black text-white p-10">
+    <main className="min-h-screen bg-black text-white p-4 sm:p-6 lg:p-10">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}

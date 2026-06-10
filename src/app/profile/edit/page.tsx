@@ -54,42 +54,34 @@ export default function EditProfilePage() {
   );
 
   useEffect(() => {
+    let active = true;
 
     async function loadData() {
+      try {
+        const profile = await getProfile();
 
-      const profile =
-        await getProfile();
+        if (!active) return;
 
-      if (!profile) {
+        if (!profile) {
+          router.push("/login");
+          return;
+        }
 
-        router.push(
-          "/login"
-        );
-
-        return;
+        setUsername(profile.username ?? "");
+        setNamaLengkap(profile.nama_lengkap ?? "");
+        setBio(profile.bio ?? "");
+        setFotoProfil(profile.foto_profil);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        if (active) setLoading(false);
       }
-
-      setUsername(
-        profile.username ?? ""
-      );
-
-      setNamaLengkap(
-        profile.nama_lengkap ?? ""
-      );
-
-      setBio(
-        profile.bio ?? ""
-      );
-
-      setFotoProfil(
-        profile.foto_profil
-      );
-
-      setLoading(false);
     }
 
     loadData();
-
+    return () => {
+      active = false;
+    };
   }, [router]);
 
   async function handleSubmit(

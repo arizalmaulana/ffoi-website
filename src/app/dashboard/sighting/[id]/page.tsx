@@ -11,7 +11,7 @@ import {
   useState,
 } from "react";
 
-import { supabase } from "@/lib/supabase";
+import { supabase, waitForAuth } from "@/lib/supabase";
 
 import { Sighting } from "@/types/sighting";
 
@@ -34,28 +34,37 @@ export default function SightingDetailPage() {
     useState<Sighting | null>(null);
 
   useEffect(() => {
+    let active = true;
+
     async function loadData() {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+      try {
+        await waitForAuth();
 
-      if (!user) {
-        setLoading(false);
-        return;
-      }
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
 
-      const data =
-        await getMySightingById(
+        const user = session?.user;
+
+        if (!user) return;
+
+        const data = await getMySightingById(
           params.id as string,
           user.id
         );
 
-      setSighting(data);
-
-      setLoading(false);
+        if (active) setSighting(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        if (active) setLoading(false);
+      }
     }
 
     loadData();
+    return () => {
+      active = false;
+    };
   }, [params.id]);
 
   async function handleDelete() {
@@ -103,7 +112,7 @@ export default function SightingDetailPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-black text-white p-10">
+      <main className="min-h-screen bg-black text-white p-4 sm:p-6 lg:p-10">
         <div className="max-w-6xl mx-auto">
           Memuat data...
         </div>
@@ -113,7 +122,7 @@ export default function SightingDetailPage() {
 
   if (!sighting) {
     return (
-      <main className="min-h-screen bg-black text-white p-10">
+      <main className="min-h-screen bg-black text-white p-4 sm:p-6 lg:p-10">
         <div className="max-w-4xl mx-auto">
 
           <h1 className="text-3xl font-bold mb-4">
