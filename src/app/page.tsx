@@ -278,12 +278,12 @@ export default async function Home() {
 
           {[
             {
-              image: "/images/Ekspedisi.jpg",
+              image: "/image/Ekspedisi.jpg",
               title: "Ekspedisi Perairan Indonesia",
               desc: "Eksplorasi ilmiah untuk mendokumentasikan keanekaragaman ikan air tawar di berbagai wilayah Indonesia.",
             },
             {
-              image: "/images/Konservasi.jpg",
+              image: "/image/Konservasi.jpg",
               title: "Konservasi Habitat Perairan",
               desc: "Melindungi ekosistem perairan dan habitat unik yang menjadi rumah bagi spesies endemik dan native.",
             },
@@ -293,7 +293,7 @@ export default async function Home() {
               desc: "Publikasi jurnal dan buku untuk mendokumentasikan ikan Indonesia secara komprehensif.",
             },
             {
-              image: "/images/edukasi.jpg",
+              image: "/image/Edukasi.jpg",
               title: "Inisiasi Edukasi Perairan Tawar",
               desc: "Program edukasi dan pelatihan untuk meningkatkan kesadaran tentang biodiversitas perairan.",
             },
