@@ -293,7 +293,7 @@ export default async function Home() {
               desc: "Publikasi jurnal dan buku untuk mendokumentasikan ikan Indonesia secara komprehensif.",
             },
             {
-              image: "/images/edukasi perairan tawar.jpg",
+              image: "/images/edukasi.jpg",
               title: "Inisiasi Edukasi Perairan Tawar",
               desc: "Program edukasi dan pelatihan untuk meningkatkan kesadaran tentang biodiversitas perairan.",
             },

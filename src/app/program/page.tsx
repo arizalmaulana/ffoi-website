@@ -120,7 +120,7 @@ export default function ProgramPage() {
     {
       title: "Penelitian Dan Analisis",
       desc: "Data yang diperoleh dianalisis melalui pendekatan taksonomi, ekologi, genetik, dan biogeografi untuk memahami status serta kebutuhan konservasi spesies.",
-      image: "/kontak/Kt3.jpeg",
+      image: "/kontak/kt3.jpeg",
     },
     {
       title: "Dokumentasi Dan Publikasi",
