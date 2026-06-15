@@ -137,10 +137,7 @@ export default function SightingDetailPage() {
 
           <Link
             href="/dashboard/sighting"
-            className="
-            text-yellow-400
-            hover:underline
-            "
+            className="text-yellow-400 hover:underline"
           >
             Kembali ke Sighting Saya
           </Link>
@@ -171,15 +168,7 @@ export default function SightingDetailPage() {
 
           <Link
             href="/dashboard/sighting"
-            className="
-            border
-            border-yellow-500/20
-            px-5
-            py-3
-            rounded-lg
-            hover:border-yellow-400
-            transition
-            "
+            className="border border-yellow-500/20 px-5 py-3 rounded-lg hover:border-yellow-400 transition"
           >
             ← Kembali
           </Link>
@@ -187,13 +176,7 @@ export default function SightingDetailPage() {
         </div>
 
         <div
-          className="
-          bg-neutral-950
-          border
-          border-yellow-500/20
-          rounded-xl
-          overflow-hidden
-          "
+          className="bg-neutral-950 border border-yellow-500/20 rounded-xl overflow-hidden"
         >
 
           {/* Foto */}
@@ -206,11 +189,7 @@ export default function SightingDetailPage() {
               sighting.nama_lokal ??
               "Sighting"
             }
-            className="
-            w-full
-            h-[500px]
-            object-cover
-            "
+            className="w-full h-[500px] object-cover"
           />
 
           <div className="p-8">
@@ -224,12 +203,7 @@ export default function SightingDetailPage() {
               </h2>
 
               <p
-                className="
-                text-xl
-                italic
-                text-gray-400
-                mt-2
-                "
+                className="text-xl italic text-gray-400 mt-2"
               >
                 {sighting.nama_ilmiah}
               </p>
@@ -249,11 +223,7 @@ export default function SightingDetailPage() {
 
             {/* Data */}
             <div
-              className="
-              grid
-              grid-cols-2
-              gap-6
-              "
+              className="grid grid-cols-2 gap-6"
             >
 
               <div>
@@ -364,13 +334,7 @@ export default function SightingDetailPage() {
               </h3>
 
               <div
-                className="
-                bg-black
-                border
-                border-yellow-500/10
-                rounded-lg
-                p-5
-                "
+                className="bg-black border border-yellow-500/10 rounded-lg p-5"
               >
                 {sighting.deskripsi ? (
                   <p className="leading-relaxed">
@@ -389,12 +353,7 @@ export default function SightingDetailPage() {
 
             {/* Metadata */}
             <div
-              className="
-              mt-8
-              pt-6
-              border-t
-              border-yellow-500/10
-              "
+              className="mt-8 pt-6 border-t border-yellow-500/10"
             >
 
               <p className="text-sm text-gray-500">
@@ -426,16 +385,7 @@ export default function SightingDetailPage() {
 
                 <Link
                   href={`/dashboard/sighting/${sighting.id}/edit`}
-                  className="
-                  bg-yellow-400
-                  text-black
-                  px-5
-                  py-3
-                  rounded-lg
-                  font-semibold
-                  hover:opacity-90
-                  transition
-                  "
+                  className="bg-yellow-400 text-black px-5 py-3 rounded-lg font-semibold hover:opacity-90 transition"
                 >
                   Edit Sighting
                 </Link>
@@ -444,16 +394,7 @@ export default function SightingDetailPage() {
                   onClick={
                     handleDelete
                   }
-                  className="
-                  bg-red-500
-                  text-white
-                  px-5
-                  py-3
-                  rounded-lg
-                  font-semibold
-                  hover:bg-red-600
-                  transition
-                  "
+                  className="bg-red-500 text-white px-5 py-3 rounded-lg font-semibold hover:bg-red-600 transition"
                 >
                   Hapus Sighting
                 </button>

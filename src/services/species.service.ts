@@ -2,19 +2,49 @@ import { supabase } from "@/lib/supabase";
 import { Species } from "@/types/species";
 
 
-const PAGE_SIZE = 100;
+const PAGE_SIZE = 50;
+interface SpeciesFilter {
+  page?: number;
+  search?: string;
+  ordo?: string;
+  family?: string;
+  occurrence?: string;
+}
 
-export async function getSpecies(
-  page: number = 1
-): Promise<Species[]> {
+export async function getSpecies({
+  page = 1,
+  search = "",
+  ordo = "",
+  family = "",
+  occurrence = "",
+}: SpeciesFilter): Promise<Species[]> {
   const from = (page - 1) * PAGE_SIZE;
   const to = from + PAGE_SIZE - 1;
 
-  const { data, error } = await supabase
+  let query = supabase
     .from("spesies")
     .select("*")
-    .order("species")
-    .range(from, to);
+    .order("species");
+
+  if (search.trim()) {
+    query = query.or(
+      `species.ilike.%${search}%,nama_lokal.ilike.%${search}%`
+    );
+  }
+
+  if (ordo) {
+    query = query.eq("ordo", ordo);
+  }
+
+  if (family) {
+    query = query.eq("family", family);
+  }
+
+  if (occurrence) {
+    query = query.eq("occurrence", occurrence);
+  }
+
+  const { data, error } = await query.range(from, to);
 
   if (error) {
     console.error(error);
@@ -24,13 +54,39 @@ export async function getSpecies(
   return data as Species[];
 }
 
-export async function getSpeciesCount() {
-  const { count } = await supabase
+export async function getSpeciesCount({
+  search = "",
+  ordo = "",
+  family = "",
+  occurrence = "",
+}: Omit<SpeciesFilter, "page">) {
+
+  let query = supabase
     .from("spesies")
     .select("*", {
       count: "exact",
       head: true,
     });
+
+  if (search.trim()) {
+    query = query.or(
+      `species.ilike.%${search}%,nama_lokal.ilike.%${search}%`
+    );
+  }
+
+  if (ordo) {
+    query = query.eq("ordo", ordo);
+  }
+
+  if (family) {
+    query = query.eq("family", family);
+  }
+
+  if (occurrence) {
+    query = query.eq("occurrence", occurrence);
+  }
+
+  const { count } = await query;
 
   return count ?? 0;
 }
@@ -97,27 +153,6 @@ export async function getAllSpecies(): Promise<Species[]> {
 
   if (error) {
     console.error(error);
-    return [];
-  }
-
-  return data as Species[];
-}
-
-export async function searchSpeciesAdmin(
-  keyword: string
-): Promise<Species[]> {
-  const searchPattern = `%${keyword.trim()}%`;
-
-  const { data, error } =
-    await supabase
-      .from("spesies")
-      .select("*")
-      .or(`species.ilike.${searchPattern},nama_lokal.ilike.${searchPattern}`)
-      .order("species")
-      .limit(50);
-
-  if (error) {
-    console.error("searchSpeciesAdmin:", error);
     return [];
   }
 

@@ -152,7 +152,7 @@ export default function TentangPage() {
       {/* HERO SECTION */}
       <section className="relative h-[650px] overflow-hidden text-white">
         <img
-          src="/tim/Foto atas.jpg.jpeg"
+          src="/tim/Foto atas.jpeg"
           alt="Tentang Kami FFOI"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -476,27 +476,12 @@ export default function TentangPage() {
     {mitra.map((item) => (
       <div
         key={item.nama}
-        className="
-          bg-zinc-900
-          border border-white/10
-          rounded-2xl
-          h-40
-          p-6
-          flex items-center justify-center
-          hover:border-yellow-400/40
-          transition-all duration-300
-        "
+        className="bg-zinc-900 border border-white/10 rounded-2xl h-40 p-6 flex items-center justify-center hover:border-yellow-400/40 transition-all duration-300"
       >
         <img
           src={item.logo}
           alt={item.nama}
-          className="
-            max-h-24
-            max-w-full
-            object-contain
-            transition-all duration-300
-            hover:scale-105
-          "
+          className="max-h-24 max-w-full object-contain transition-all duration-300 hover:scale-105"
         />
       </div>
     ))}
@@ -570,9 +555,9 @@ export default function TentangPage() {
                 MAKE A <br /> DIFFERENCE
               </h2>
       
-              <button className="bg-yellow-400 text-black px-6 py-3 rounded-md font-semibold hover:bg-yellow-300 transition">
+              <a href='https://wa.me/6282148579794' className="bg-yellow-400 text-black px-6 py-3 rounded-md font-semibold hover:bg-yellow-300 transition">
                 SUPPORT US
-              </button>
+              </a>
             </div>
       
             {/* FOOTER GRID */}

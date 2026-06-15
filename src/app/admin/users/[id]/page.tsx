@@ -192,34 +192,17 @@ export default function UserDetailPage() {
 
       <Link
         href="/admin/users"
-        className="
-        inline-flex
-        items-center
-        gap-2
-        text-yellow-400
-        hover:text-yellow-300
-        mb-6
-        "
+        className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 mb-6"
       >
         ← Kembali ke Users
       </Link>
 
       <div
-        className="
-        bg-neutral-950
-        border
-        border-yellow-500/20
-        rounded-xl
-        p-8
-        "
+        className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-8"
       >
 
         <h1
-          className="
-          text-4xl
-          font-bold
-          mb-8
-          "
+          className="text-4xl font-bold mb-8"
         >
           Detail Pengguna
         </h1>
@@ -277,14 +260,7 @@ export default function UserDetailPage() {
                     | "pengguna"
                 )
               }
-              className="
-              bg-black
-              border
-              border-yellow-500/20
-              rounded-lg
-              px-4
-              py-3
-              "
+              className="bg-black border border-yellow-500/20 rounded-lg px-4 py-3"
             >
 
               <option value="pengguna">
@@ -304,15 +280,7 @@ export default function UserDetailPage() {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="
-            bg-yellow-400
-            text-black
-            px-6
-            py-3
-            rounded-lg
-            font-semibold
-            disabled:opacity-50
-            "
+            className="bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold disabled:opacity-50"
           >
             {saving
               ? "Menyimpan..."
@@ -326,17 +294,7 @@ export default function UserDetailPage() {
             currentUserId ===
             user.id
             }
-            className="
-            bg-red-600
-            hover:bg-red-700
-            text-white
-            px-6
-            py-3
-            rounded-lg
-            font-semibold
-            ml-3
-            disabled:opacity-50 
-            "
+            className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold ml-3 disabled:opacity-50"
             >
             {
             currentUserId ===

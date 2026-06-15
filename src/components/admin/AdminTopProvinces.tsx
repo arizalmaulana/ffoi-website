@@ -21,21 +21,11 @@ export default function AdminTopProvinces({
 
   return (
     <div
-      className="
-      bg-neutral-950
-      border
-      border-yellow-500/20
-      rounded-2xl
-      p-6
-      "
+      className="bg-neutral-950 border border-yellow-500/20 rounded-2xl p-6"
     >
 
       <h2
-        className="
-        text-xl
-        font-bold
-        mb-6
-        "
+        className="text-xl font-bold mb-6"
       >
         Top Provinsi
       </h2>
@@ -47,11 +37,7 @@ export default function AdminTopProvinces({
           <div key={item.name}>
 
             <div
-              className="
-              flex
-              justify-between
-              mb-2
-              "
+              className="flex justify-between mb-2"
             >
 
               <span>
@@ -65,20 +51,11 @@ export default function AdminTopProvinces({
             </div>
 
             <div
-              className="
-              h-2
-              bg-neutral-800
-              rounded-full
-              overflow-hidden
-              "
+              className="h-2 bg-neutral-800 rounded-full overflow-hidden"
             >
 
               <div
-                className="
-                h-2
-                bg-yellow-400
-                rounded-full
-                "
+                className="h-2 bg-yellow-400 rounded-full"
                 style={{
                   width:
                     `${

@@ -143,14 +143,7 @@ export default function AdminSightingPage() {
 
         <Link
           href="/admin/sighting/create"
-          className="
-          bg-yellow-400
-          text-black
-          px-5
-          py-3
-          rounded-xl
-          font-semibold
-          "
+          className="bg-yellow-400 text-black px-5 py-3 rounded-xl font-semibold"
         >
           + Tambah Sighting
         </Link>
@@ -160,11 +153,7 @@ export default function AdminSightingPage() {
         <button
           type="button"
           onClick={() => setFilter("semua")}
-          className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-            filter === "semua"
-              ? "bg-yellow-400 text-black"
-              : "bg-neutral-900 text-white hover:bg-neutral-800"
-          }`}
+          className={`rounded-full px-4 py-2 text-sm font-semibold transition ${ filter === "semua" ? "bg-yellow-400 text-black" : "bg-neutral-900 text-white hover:bg-neutral-800" }`}
         >
           Semua
         </button>
@@ -172,11 +161,7 @@ export default function AdminSightingPage() {
         <button
           type="button"
           onClick={() => setFilter("menunggu")}
-          className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-            filter === "menunggu"
-              ? "bg-yellow-400 text-black"
-              : "bg-neutral-900 text-white hover:bg-neutral-800"
-          }`}
+          className={`rounded-full px-4 py-2 text-sm font-semibold transition ${ filter === "menunggu" ? "bg-yellow-400 text-black" : "bg-neutral-900 text-white hover:bg-neutral-800" }`}
         >
           Menunggu
         </button>
@@ -184,11 +169,7 @@ export default function AdminSightingPage() {
         <button
           type="button"
           onClick={() => setFilter("disetujui")}
-          className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-            filter === "disetujui"
-              ? "bg-yellow-400 text-black"
-              : "bg-neutral-900 text-white hover:bg-neutral-800"
-          }`}
+          className={`rounded-full px-4 py-2 text-sm font-semibold transition ${ filter === "disetujui" ? "bg-yellow-400 text-black" : "bg-neutral-900 text-white hover:bg-neutral-800" }`}
         >
           Disetujui
         </button>
@@ -196,11 +177,7 @@ export default function AdminSightingPage() {
         <button
           type="button"
           onClick={() => setFilter("ditolak")}
-          className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-            filter === "ditolak"
-              ? "bg-yellow-400 text-black"
-              : "bg-neutral-900 text-white hover:bg-neutral-800"
-          }`}
+          className={`rounded-full px-4 py-2 text-sm font-semibold transition ${ filter === "ditolak" ? "bg-yellow-400 text-black" : "bg-neutral-900 text-white hover:bg-neutral-800" }`}
         >
           Ditolak
         </button>
@@ -236,25 +213,11 @@ export default function AdminSightingPage() {
           )
         }
         placeholder="Cari sighting..."
-        className="
-        w-full
-        bg-neutral-950
-        border
-        border-yellow-500/20
-        rounded-xl
-        p-4
-        mb-6
-        "
+        className="w-full bg-neutral-950 border border-yellow-500/20 rounded-xl p-4 mb-6"
       />
 
       <div
-        className="
-        bg-neutral-950
-        border
-        border-yellow-500/20
-        rounded-xl
-        overflow-x-auto
-        "
+        className="bg-neutral-950 border border-yellow-500/20 rounded-xl overflow-x-auto"
       >
 
         <table className="w-full min-w-[720px]">
@@ -262,10 +225,7 @@ export default function AdminSightingPage() {
           <thead>
 
             <tr
-              className="
-              border-b
-              border-yellow-500/20
-              "
+              className="border-b border-yellow-500/20"
             >
 
               <th className="p-4">

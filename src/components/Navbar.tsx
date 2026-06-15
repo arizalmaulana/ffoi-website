@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-import { supabase, waitForAuth } from "@/lib/supabase";
+import { supabase } from "@/lib/supabase";
 import UserMenu from "./navbar/UserMenu";
 
 type Profile = {
@@ -29,6 +29,17 @@ export default function Navbar() {
 
   const pathname = usePathname();
 
+  const isHiddenRoute = [
+    "/login",
+    "/register",
+    "/forgot-password",
+    "/update-password",
+  ].some(
+    (route) =>
+      pathname === route ||
+      pathname.startsWith(`${route}/`)
+  );
+
   const baseClass = "transition-all duration-200 font-medium";
   const inactiveClass = "text-white hover:text-yellow-400";
   const activeClass =
@@ -38,11 +49,11 @@ export default function Navbar() {
     let active = true;
 
     async function loadUser() {
-      await waitForAuth();
-
       const {
         data: { session },
       } = await supabase.auth.getSession();
+
+      console.log("SESSION:", session);
 
       if (!active) return;
 
@@ -71,7 +82,19 @@ export default function Navbar() {
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (_event, session) => {
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
+      console.log("AUTH EVENT:", event);
+      console.log("SESSION:", session);
+
+      // Abaikan event yang tidak perlu
+      if (
+        event !== "INITIAL_SESSION" &&
+        event !== "SIGNED_IN" &&
+        event !== "SIGNED_OUT"
+      ) {
+        return;
+      }
+
       if (!session?.user) {
         setProfile(null);
         setLoading(false);
@@ -97,7 +120,7 @@ export default function Navbar() {
     };
   }, []);
 
-  if (pathname.startsWith("/admin")) {
+  if (isHiddenRoute || pathname.startsWith("/admin")) {
     return null;
   }
 
@@ -146,11 +169,7 @@ export default function Navbar() {
           {isLoggedIn && (
             <Link
               href="/dashboard"
-              className={`${baseClass} ${
-                pathname.startsWith("/dashboard")
-                  ? activeClass
-                  : inactiveClass
-              }`}
+              className={`${baseClass} ${ pathname.startsWith("/dashboard") ? activeClass : inactiveClass }`}
             >
               Dashboard
             </Link>

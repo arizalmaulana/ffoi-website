@@ -4,6 +4,7 @@ import { handleAuthMiddleware } from "@/lib/supabase/middleware";
 
 export async function proxy(request: NextRequest) {
   return handleAuthMiddleware(request);
+  console.log("[MIDDLEWARE]", request.nextUrl.pathname);
 }
 
 export const config = {

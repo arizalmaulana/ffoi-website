@@ -14,14 +14,7 @@ export default function SightingTable({
   if (sightings.length === 0) {
     return (
       <div
-        className="
-        bg-neutral-950
-        border
-        border-yellow-500/20
-        rounded-xl
-        p-10
-        text-center
-        "
+        className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-10 text-center"
       >
         <p className="text-gray-400">
           Belum ada sighting.
@@ -32,20 +25,11 @@ export default function SightingTable({
 
   return (
     <div
-      className="
-      overflow-hidden
-      rounded-xl
-      border
-      border-yellow-500/20
-      "
+      className="overflow-hidden rounded-xl border border-yellow-500/20"
     >
       <table className="w-full">
         <thead
-          className="
-          bg-neutral-950
-          border-b
-          border-yellow-500/20
-          "
+          className="bg-neutral-950 border-b border-yellow-500/20"
         >
           <tr>
             <th className="p-4 text-left">
@@ -79,10 +63,7 @@ export default function SightingTable({
             (sighting) => (
               <tr
                 key={sighting.id}
-                className="
-                border-b
-                border-yellow-500/10
-                "
+                className="border-b border-yellow-500/10"
               >
                 <td className="p-4">
                   <img
@@ -94,12 +75,7 @@ export default function SightingTable({
                       sighting.nama_lokal ??
                       "Sighting"
                     }
-                    className="
-                    w-16
-                    h-16
-                    rounded-lg
-                    object-cover
-                    "
+                    className="w-16 h-16 rounded-lg object-cover"
                   />
                 </td>
 
@@ -111,11 +87,7 @@ export default function SightingTable({
                     </p>
 
                     <p
-                      className="
-                      text-sm
-                      italic
-                      text-gray-400
-                      "
+                      className="text-sm italic text-gray-400"
                     >
                       {sighting.nama_ilmiah}
                     </p>
@@ -141,10 +113,7 @@ export default function SightingTable({
                 <td className="p-4">
                   <Link
                     href={`/dashboard/sighting/${sighting.id}`}
-                    className="
-                    text-yellow-400
-                    hover:underline
-                    "
+                    className="text-yellow-400 hover:underline"
                   >
                     Detail
                   </Link>

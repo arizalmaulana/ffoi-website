@@ -10,10 +10,9 @@ from "@/types/species";
 import {
   getSpecies,
   getSpeciesCount,
-  searchSpeciesAdmin,
 } from "@/services/species.service";
 
-const PAGE_SIZE = 100;
+const PAGE_SIZE = 50;
 
 export default function AdminSpeciesPage() {
 
@@ -39,52 +38,49 @@ export default function AdminSpeciesPage() {
       setLoading(true);
 
       try {
-        const [speciesData, totalCount] = await Promise.all([
-          getSpecies(page),
-          getSpeciesCount(),
-        ]);
+        const [speciesData, totalCount] =
+          await Promise.all([
+            getSpecies({
+              page,
+              search: keyword,
+            }),
+
+            getSpeciesCount({
+              search: keyword,
+            }),
+          ]);
 
         if (!active) return;
 
         setSpecies(speciesData);
-        setTotalPages(Math.ceil(totalCount / PAGE_SIZE));
+
+        setTotalPages(
+          Math.ceil(totalCount / PAGE_SIZE)
+        );
       } catch (error) {
         console.error(error);
       } finally {
-        if (active) setLoading(false);
+        if (active) {
+          setLoading(false);
+        }
       }
     }
 
     loadData();
+
     return () => {
       active = false;
     };
-  }, [page]);
+  }, [
+    page,
+    keyword,
+  ]);
 
-  async function handleSearch(
+  function handleSearch(
     value: string
   ) {
-
     setKeyword(value);
-
-    if (!value.trim()) {
-
-      const result =
-        await getSpecies(
-          page
-        );
-
-      setSpecies(result);
-
-      return;
-    }
-
-    const result =
-      await searchSpeciesAdmin(
-        value
-      );
-
-    setSpecies(result);
+    setPage(1);
   }
 
   function getConservationInfo(
@@ -153,140 +149,111 @@ export default function AdminSpeciesPage() {
   }
 
   return (
-    <div>
+  <div className="space-y-8">
 
-      <div
-        className="
-        flex
-        justify-between
-        items-center
-        mb-8
-        "
-      >
+    {/* HEADER */}
+    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
 
-        <div>
+      <div>
 
-          <h1
-            className="
-            text-4xl
-            font-bold
-            "
-          >
-            Database Species
-          </h1>
+        <p className="text-yellow-400 uppercase tracking-[0.25em] text-xs font-semibold mb-2">
+          Admin Panel
+        </p>
 
-          <div
-            className="
-            flex
-            flex-wrap
-            gap-2
-            mt-4
-            text-xs
-            text-gray-400
-            "
-          >
+        <h1 className="text-4xl font-bold">
+          Database Species
+        </h1>
 
-            <span className="text-green-400 font-semibold">
-              LC
-            </span>
+        <p className="text-gray-400 mt-2">
+          Kelola seluruh data spesies ikan Indonesia.
+        </p>
 
-            <span>- Least Concern</span>
+        <div className="flex flex-wrap gap-2 mt-5 text-xs">
 
-            <span className="text-yellow-400 font-semibold">
-              NT
-            </span>
+          <span className="text-green-400 font-semibold">
+            LC
+          </span>
+          <span className="text-gray-500">
+            Least Concern
+          </span>
 
-            <span>- Near Threatened</span>
+          <span className="text-yellow-400 font-semibold">
+            NT
+          </span>
+          <span className="text-gray-500">
+            Near Threatened
+          </span>
 
-            <span className="text-orange-400 font-semibold">
-              VU
-            </span>
+          <span className="text-orange-400 font-semibold">
+            VU
+          </span>
+          <span className="text-gray-500">
+            Vulnerable
+          </span>
 
-            <span>- Vulnerable</span>
+          <span className="text-red-400 font-semibold">
+            EN
+          </span>
+          <span className="text-gray-500">
+            Endangered
+          </span>
 
-            <span className="text-red-400 font-semibold">
-              EN
-            </span>
+          <span className="text-red-300 font-semibold">
+            CR
+          </span>
+          <span className="text-gray-500">
+            Critically Endangered
+          </span>
 
-            <span>- Endangered</span>
+          <span className="text-blue-400 font-semibold">
+            DD
+          </span>
+          <span className="text-gray-500">
+            Data Deficient
+          </span>
 
-            <span className="text-red-300 font-semibold">
-              CR
-            </span>
-
-            <span>- Critically Endangered</span>
-
-            <span className="text-blue-400 font-semibold">
-              DD
-            </span>
-
-            <span>- Data Deficient</span>
-
-            <span className="text-gray-300 font-semibold">
-              NE
-            </span>
-
-            <span>- Not Evaluated</span>
-
-          </div>
+          <span className="text-gray-300 font-semibold">
+            NE
+          </span>
+          <span className="text-gray-500">
+            Not Evaluated
+          </span>
 
         </div>
 
-        <Link
-          href="/admin/species/create"
-          className="
-          bg-yellow-400
-          text-black
-          px-5
-          py-3
-          rounded-xl
-          font-semibold
-          "
-        >
-          + Tambah Species
-        </Link>
-
       </div>
 
-      <input
-        value={keyword}
-        onChange={(e) =>
-          handleSearch(
-            e.target.value
-          )
-        }
-        placeholder="Cari species..."
-        className="
-        w-full
-        bg-neutral-950
-        border
-        border-yellow-500/20
-        rounded-xl
-        p-4
-        mb-6
-        "
-      />
-
-      <div
-        className="
-        bg-neutral-950
-        border
-        border-yellow-500/20
-        rounded-xl
-        overflow-x-auto
-        "
+      <Link
+        href="/admin/species/create"
+        className="inline-flex items-center gap-2 bg-yellow-400 text-black px-6 py-3 rounded-xl font-semibold transition hover:bg-yellow-300 hover:-translate-y-1"
       >
+        + Tambah Species
+      </Link>
 
-        <table className="w-full min-w-[900px]">
+    </div>
 
-          <thead>
+    {/* SEARCH */}
+    <input
+      value={keyword}
+      onChange={(e) =>
+        handleSearch(e.target.value)
+      }
+      placeholder="Cari species atau nama lokal..."
+      className="w-full bg-neutral-950 border border-yellow-500/20 rounded-2xl px-5 py-4 text-white placeholder:text-gray-500 focus:outline-none focus:border-yellow-400 transition"
+    />
 
-            <tr
-              className="
-              border-b
-              border-yellow-500/20
-              "
-            >
+    {/* TABLE */}
+    <div
+      className="overflow-hidden rounded-2xl border border-yellow-500/20 bg-neutral-950 shadow-[0_0_40px_rgba(250,204,21,0.05)]"
+    >
+
+      <div className="overflow-x-auto">
+
+        <table className="w-full min-w-[1000px]">
+
+          <thead className="bg-yellow-400 text-black">
+
+            <tr>
 
               <th className="p-4 text-left">
                 Species
@@ -304,13 +271,7 @@ export default function AdminSpeciesPage() {
                 Occurrence
               </th>
 
-              <th
-                className="
-                p-4
-                text-left
-                min-w-[160px]
-                "
-              >
+              <th className="p-4 text-left">
                 Konservasi
               </th>
 
@@ -324,149 +285,117 @@ export default function AdminSpeciesPage() {
 
           <tbody>
 
-            {species.map(
-              (item) => (
+            {species.map((item) => {
 
-              <tr
-                key={item.id}
-                className="
-                border-b
-                border-yellow-500/10
-                "
-              >
+              const conservation =
+                getConservationInfo(
+                  item.status_konservasi
+                );
 
-                <td className="p-4 italic">
-                  {item.species}
-                </td>
+              return (
 
-                <td className="p-4">
-                  {item.nama_lokal}
-                </td>
+                <tr
+                  key={item.id}
+                  className="border-b border-yellow-500/10 hover:bg-white/5 transition"
+                >
 
-                <td className="p-4">
-                  {item.family}
-                </td>
+                  <td className="p-4">
 
-                <td className="p-4">
-                  {item.occurrence}
-                </td>
+                    <div>
 
-                <td className="p-4">
+                      <p className="italic text-yellow-400 font-medium">
+                        {item.species}
+                      </p>
 
-                {(() => {
+                      <p className="text-xs text-gray-500 mt-1">
+                        {item.ordo}
+                      </p>
 
-                  const conservation =
-                    getConservationInfo(
-                      item.status_konservasi
-                    );
+                    </div>
 
-                  return (
+                  </td>
+
+                  <td className="p-4">
+                    {item.nama_lokal ?? "-"}
+                  </td>
+
+                  <td className="p-4">
+                    {item.family}
+                  </td>
+
+                  <td className="p-4">
 
                     <span
-                      className={`
-                        px-3
-                        py-1
-                        rounded-full
-                        text-xs
-                        font-semibold
-                        ${conservation.className}
-                      `}
+                      className="px-3 py-1 rounded-full text-xs bg-blue-500/10 text-blue-400"
+                    >
+                      {item.occurrence}
+                    </span>
+
+                  </td>
+
+                  <td className="p-4">
+
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-semibold ${conservation.className}`}
                     >
                       {conservation.label}
                     </span>
 
-                  );
+                  </td>
 
-                })()}
+                  <td className="p-4">
 
-              </td>
+                    <Link
+                      href={`/admin/species/${item.id}`}
+                      className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-yellow-400 text-black font-semibold transition hover:bg-yellow-300"
+                    >
+                      Detail
+                    </Link>
 
-                <td className="p-4">
+                  </td>
 
-                  <Link
-                    href={`/admin/species/${item.id}`}
-                    className="
-                    bg-yellow-400
-                    text-black
-                    px-4
-                    py-2
-                    rounded-lg
-                    font-semibold
-                    "
-                  >
-                    Detail
-                  </Link>
+                </tr>
 
-                </td>
+              );
 
-              </tr>
-
-            ))}
+            })}
 
           </tbody>
 
         </table>
 
-        <div
-          className="
-          flex
-          justify-between
-          items-center
-          p-4
-          border-t
-          border-yellow-500/20
-          "
-        >
+      </div>
+
+      {/* PAGINATION */}
+
+      <div
+        className="flex flex-col md:flex-row items-center justify-between gap-4 p-5 border-t border-yellow-500/20"
+      >
+
+        <p className="text-sm text-gray-400">
+          Halaman {page} dari {totalPages}
+        </p>
+
+        <div className="flex gap-3">
 
           <button
             onClick={() =>
-              setPage(
-                page - 1
-              )
+              setPage(page - 1)
             }
-            disabled={
-              page === 1
-            }
-            className="
-            px-4
-            py-2
-            rounded-lg
-            bg-neutral-900
-            border
-            border-yellow-500/20
-            disabled:opacity-50
-            "
+            disabled={page === 1}
+            className="px-4 py-2 rounded-lg border border-yellow-500/20 disabled:opacity-40 hover:bg-white/5 transition"
           >
-            Sebelumnya
+            ← Sebelumnya
           </button>
 
-          <span>
-            Halaman {page}
-            {" / "}
-            {totalPages}
-          </span>
-
           <button
             onClick={() =>
-              setPage(
-                page + 1
-              )
+              setPage(page + 1)
             }
-            disabled={
-              page ===
-              totalPages
-            }
-            className="
-            px-4
-            py-2
-            rounded-lg
-            bg-neutral-900
-            border
-            border-yellow-500/20
-            disabled:opacity-50
-            "
+            disabled={page === totalPages}
+            className="px-4 py-2 rounded-lg bg-yellow-400 text-black font-semibold disabled:opacity-40"
           >
-            Berikutnya
+            Berikutnya →
           </button>
 
         </div>
@@ -474,5 +403,7 @@ export default function AdminSpeciesPage() {
       </div>
 
     </div>
-  );
+
+  </div>
+);
 }

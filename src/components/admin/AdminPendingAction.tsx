@@ -12,32 +12,17 @@ export default function AdminPendingAction({
 
   return (
     <div
-      className="
-      bg-neutral-950
-      border
-      border-yellow-500/20
-      rounded-2xl
-      p-6
-      "
+      className="bg-neutral-950 border border-yellow-500/20 rounded-2xl p-6"
     >
 
       <h2
-        className="
-        text-xl
-        font-bold
-        mb-6
-        "
+        className="text-xl font-bold mb-6"
       >
         Pending Action
       </h2>
 
       <p
-        className="
-        text-sm
-        text-gray-400
-        mb-6
-        leading-relaxed
-        "
+        className="text-sm text-gray-400 mb-6 leading-relaxed"
         >
         Saat ini terdapat beberapa
         laporan yang memerlukan
@@ -49,11 +34,7 @@ export default function AdminPendingAction({
       <div className="space-y-5">
 
         <div
-          className="
-          flex
-          justify-between
-          items-center
-          "
+          className="flex justify-between items-center"
         >
           <div>
 
@@ -62,10 +43,7 @@ export default function AdminPendingAction({
             </p>
 
             <p
-              className="
-              text-sm
-              text-gray-400
-              "
+              className="text-sm text-gray-400"
             >
               Menunggu validasi
             </p>
@@ -73,14 +51,7 @@ export default function AdminPendingAction({
           </div>
 
           <span
-            className="
-            bg-yellow-400
-            text-black
-            px-3
-            py-1
-            rounded-full
-            font-semibold
-            "
+            className="bg-yellow-400 text-black px-3 py-1 rounded-full font-semibold"
           >
             {pendingSighting}
           </span>
@@ -88,11 +59,7 @@ export default function AdminPendingAction({
         </div>
 
         <div
-          className="
-          flex
-          justify-between
-          items-center
-          "
+          className="flex justify-between items-center"
         >
           <div>
 
@@ -101,10 +68,7 @@ export default function AdminPendingAction({
             </p>
 
             <p
-              className="
-              text-sm
-              text-gray-400
-              "
+              className="text-sm text-gray-400"
             >
               Menunggu persetujuan
             </p>
@@ -112,14 +76,7 @@ export default function AdminPendingAction({
           </div>
 
           <span
-            className="
-            bg-yellow-400
-            text-black
-            px-3
-            py-1
-            rounded-full
-            font-semibold
-            "
+            className="bg-yellow-400 text-black px-3 py-1 rounded-full font-semibold"
           >
             {pendingSpecies}
           </span>
@@ -127,40 +84,23 @@ export default function AdminPendingAction({
         </div>
 
         <div
-          className="
-          border-t
-          border-neutral-800
-          pt-4
-          flex
-          justify-between
-          items-center
-          "
+          className="border-t border-neutral-800 pt-4 flex justify-between items-center"
         >
 
           <span
-            className="
-            font-semibold
-            "
+            className="font-semibold"
           >
             Total Pending
           </span>
 
           <span
-            className="
-            text-2xl
-            font-bold
-            text-yellow-400
-            "
+            className="text-2xl font-bold text-yellow-400"
           >
             {totalPending}
           </span>
 
             <p
-            className="
-            text-xs
-            text-gray-500
-            mt-1
-            "
+            className="text-xs text-gray-500 mt-1"
             >
             Prioritaskan review species baru
             terlebih dahulu.

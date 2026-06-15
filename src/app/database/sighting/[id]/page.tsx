@@ -186,22 +186,13 @@ export default async function SightingDetailPage(
 
       <Link
         href="/"
-        className="
-        text-yellow-400
-        hover:text-yellow-300
-        "
+        className="text-yellow-400 hover:text-yellow-300"
       >
         ← Kembali
       </Link>
 
       <div
-        className="
-        mt-6
-        rounded-3xl
-        overflow-hidden
-        border
-        border-yellow-500/20
-        "
+        className="mt-6 rounded-3xl overflow-hidden border border-yellow-500/20"
       >
 
         <Image
@@ -215,11 +206,7 @@ export default async function SightingDetailPage(
           }
           width={1600}
           height={900}
-          className="
-          w-full
-          h-[500px]
-          object-cover
-          "
+          className="w-full h-[500px] object-cover"
           priority
         />
 
@@ -228,26 +215,11 @@ export default async function SightingDetailPage(
       <div className="mt-8">
 
         <div
-          className="
-          flex
-          flex-wrap
-          gap-3
-          mb-4
-          "
+          className="flex flex-wrap gap-3 mb-4"
         >
 
           <span
-            className={`
-              px-3
-              py-1
-              rounded-full
-              text-xs
-              font-semibold
-              ${getConservationBadge(
-                species?.status_konservasi ??
-                "NE"
-              )}
-            `}
+            className={`px-3 py-1 rounded-full text-xs font-semibold ${getConservationBadge( species?.status_konservasi ?? "NE" )}`}
           >
             {species?.status_konservasi ?? "NE"}
             {" • "}
@@ -258,17 +230,7 @@ export default async function SightingDetailPage(
           </span>
 
           <span
-            className={`
-              px-3
-              py-1
-              rounded-full
-              text-xs
-              font-semibold
-              ${getOccurrenceBadge(
-                species?.occurrence ??
-                null
-              )}
-            `}
+            className={`px-3 py-1 rounded-full text-xs font-semibold ${getOccurrenceBadge( species?.occurrence ?? null )}`}
           >
             {getOccurrenceLabel(
               species?.occurrence ??
@@ -279,42 +241,23 @@ export default async function SightingDetailPage(
         </div>
 
         <h1
-          className="
-          text-5xl
-          font-bold
-          "
+          className="text-5xl font-bold"
         >
           {species?.species}
         </h1>
 
         <p
-          className="
-          text-xl
-          text-yellow-400
-          mt-2
-          "
+          className="text-xl text-yellow-400 mt-2"
         >
           {species?.nama_lokal}
         </p>
 
         <div
-          className="
-          grid
-          grid-cols-2
-          md:grid-cols-4
-          gap-4
-          mt-8
-          "
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8"
         >
 
           <div
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-xl
-            p-4
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-4"
           >
             <p className="text-gray-400 text-sm">
               Family
@@ -326,13 +269,7 @@ export default async function SightingDetailPage(
           </div>
 
           <div
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-xl
-            p-4
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-4"
           >
             <p className="text-gray-400 text-sm">
               Ordo
@@ -344,13 +281,7 @@ export default async function SightingDetailPage(
           </div>
 
           <div
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-xl
-            p-4
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-4"
           >
             <p className="text-gray-400 text-sm">
               Lokasi
@@ -362,13 +293,7 @@ export default async function SightingDetailPage(
           </div>
 
           <div
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-xl
-            p-4
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-4"
           >
             <p className="text-gray-400 text-sm">
               Tanggal Temuan
@@ -384,32 +309,17 @@ export default async function SightingDetailPage(
       </div>
 
             <div
-        className="
-        grid
-        lg:grid-cols-2
-        gap-6
-        mt-10
-        "
+        className="grid lg:grid-cols-2 gap-6 mt-10"
       >
 
         {/* TAKSONOMI */}
 
         <div
-          className="
-          bg-neutral-950
-          border
-          border-yellow-500/20
-          rounded-2xl
-          p-6
-          "
+          className="bg-neutral-950 border border-yellow-500/20 rounded-2xl p-6"
         >
 
           <h2
-            className="
-            text-2xl
-            font-bold
-            mb-6
-            "
+            className="text-2xl font-bold mb-6"
           >
             Informasi Taksonomi
           </h2>
@@ -466,21 +376,11 @@ export default async function SightingDetailPage(
         {/* PENGAMATAN */}
 
         <div
-          className="
-          bg-neutral-950
-          border
-          border-yellow-500/20
-          rounded-2xl
-          p-6
-          "
+          className="bg-neutral-950 border border-yellow-500/20 rounded-2xl p-6"
         >
 
           <h2
-            className="
-            text-2xl
-            font-bold
-            mb-6
-            "
+            className="text-2xl font-bold mb-6"
           >
             Informasi Pengamatan
           </h2>
@@ -543,32 +443,17 @@ export default async function SightingDetailPage(
       </div>
 
       <div
-        className="
-        mt-6
-        bg-neutral-950
-        border
-        border-yellow-500/20
-        rounded-2xl
-        p-6
-        "
+        className="mt-6 bg-neutral-950 border border-yellow-500/20 rounded-2xl p-6"
         >
 
         <h2
-            className="
-            text-2xl
-            font-bold
-            mb-6
-            "
+            className="text-2xl font-bold mb-6"
         >
             Lokasi Pengamatan
         </h2>
 
         <div
-            className="
-            grid
-            md:grid-cols-2
-            gap-6
-            "
+            className="grid md:grid-cols-2 gap-6"
         >
 
             <div>
@@ -594,30 +479,14 @@ export default async function SightingDetailPage(
             </div>
 
             <div
-            className="
-            flex
-            items-center
-            justify-start
-            "
+            className="flex items-center justify-start"
             >
 
             <a
                 href={`https://www.google.com/maps?q=${sighting.latitude},${sighting.longitude}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="
-                inline-flex
-                items-center
-                justify-center
-                bg-yellow-400
-                text-black
-                px-6
-                py-3
-                rounded-xl
-                font-semibold
-                hover:bg-yellow-300
-                transition
-                "
+                className="inline-flex items-center justify-center bg-yellow-400 text-black px-6 py-3 rounded-xl font-semibold hover:bg-yellow-300 transition"
             >
                 📍 Buka di Google Maps
             </a>
@@ -629,40 +498,23 @@ export default async function SightingDetailPage(
         </div>
 
         <div
-            className="
-            mt-6
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-2xl
-            p-6
-            "
+            className="mt-6 bg-neutral-950 border border-yellow-500/20 rounded-2xl p-6"
             >
 
             <h2
-                className="
-                text-2xl
-                font-bold
-                mb-6
-                "
+                className="text-2xl font-bold mb-6"
             >
                 Kontributor
             </h2>
 
             <div
-                className="
-                flex
-                flex-col
-                md:flex-row
-                gap-6
-                items-start
-                "
+                className="flex flex-col md:flex-row gap-6 items-start"
             >
 
                 <Image
                 src={
                     contributor?.foto_profil ??
-                    "/images/default-avatar.png"
+                    "/avatar-kosong.png"
                 }
                 unoptimized
                 alt={
@@ -671,23 +523,13 @@ export default async function SightingDetailPage(
                 }
                 width={120}
                 height={120}
-                className="
-                w-28
-                h-28
-                rounded-full
-                object-cover
-                border
-                border-yellow-500/20
-                "
+                className="w-28 h-28 rounded-full object-cover border border-yellow-500/20"
                 />
 
                 <div className="flex-1">
 
                 <h3
-                    className="
-                    text-2xl
-                    font-bold
-                    "
+                    className="text-2xl font-bold"
                 >
                     {
                     contributor?.nama_lengkap ??
@@ -696,11 +538,7 @@ export default async function SightingDetailPage(
                 </h3>
 
                 <p
-                    className="
-                    text-yellow-400
-                    mt-1
-                    mb-3
-                    "
+                    className="text-yellow-400 mt-1 mb-3"
                 >
                     @
                     {
@@ -710,11 +548,7 @@ export default async function SightingDetailPage(
                 </p>
 
                 <span
-                    className="
-                    mt-3
-                    py-1
-                    text-sm
-                    "
+                    className="mt-3 py-1 text-sm"
                     >
                     {contributor?.email}
                     </span>
@@ -722,11 +556,7 @@ export default async function SightingDetailPage(
                 {contributor?.bio && (
 
                     <p
-                    className="
-                    mt-4
-                    text-gray-300
-                    leading-relaxed
-                    "
+                    className="mt-4 text-gray-300 leading-relaxed"
                     >
                     {contributor.bio}
                     </p>
@@ -740,17 +570,11 @@ export default async function SightingDetailPage(
         </div>
 
         <div
-        className="
-        mt-6
-        "
+        className="mt-6"
         >
 
         <h2
-            className="
-            text-2xl
-            font-bold
-            mb-6
-            "
+            className="text-2xl font-bold mb-6"
         >
             Pengamatan Serupa
         </h2>
@@ -758,14 +582,7 @@ export default async function SightingDetailPage(
         {relatedSightings.length === 0 ? (
 
             <div
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-2xl
-            p-6
-            text-gray-400
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-2xl p-6 text-gray-400"
             >
             Belum ada pengamatan lain untuk spesies ini.
             </div>
@@ -773,12 +590,7 @@ export default async function SightingDetailPage(
         ) : (
 
             <div
-            className="
-            grid
-            md:grid-cols-2
-            lg:grid-cols-4
-            gap-4
-            "
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-4"
             >
 
             {relatedSightings.map(
@@ -787,15 +599,7 @@ export default async function SightingDetailPage(
                 <Link
                 key={item.id}
                 href={`/database/sighting/${item.id}`}
-                className="
-                bg-neutral-950
-                border
-                border-yellow-500/20
-                rounded-2xl
-                overflow-hidden
-                hover:border-yellow-400
-                transition
-                "
+                className="bg-neutral-950 border border-yellow-500/20 rounded-2xl overflow-hidden hover:border-yellow-400 transition"
                 >
 
                 <Image
@@ -808,40 +612,25 @@ export default async function SightingDetailPage(
                     }
                     width={400}
                     height={250}
-                    className="
-                    w-full
-                    h-44
-                    object-cover
-                    "
+                    className="w-full h-44 object-cover"
                 />
 
                 <div className="p-4">
 
                     <h3
-                    className="
-                    font-bold
-                    line-clamp-2
-                    "
+                    className="font-bold line-clamp-2"
                     >
                     {item.species}
                     </h3>
 
                     <p
-                    className="
-                    text-sm
-                    text-yellow-400
-                    mt-1
-                    "
+                    className="text-sm text-yellow-400 mt-1"
                     >
                     {item.family}
                     </p>
 
                     <p
-                    className="
-                    text-xs
-                    text-gray-400
-                    mt-3
-                    "
+                    className="text-xs text-gray-400 mt-3"
                     >
                     📍 {item.nama_lokasi}
                     </p>

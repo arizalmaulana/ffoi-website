@@ -112,43 +112,25 @@ export default function SpeciesDetailPage() {
 
     <Link
       href="/admin/species"
-      className="
-      inline-flex
-      items-center
-      gap-2
-      text-yellow-400
-      hover:text-yellow-300
-      mb-6
-      "
+      className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 mb-6"
     >
       ← Kembali ke Database Species
     </Link>
 
     <div
-      className="
-      flex
-      justify-between
-      items-center
-      mb-8
-      "
+      className="flex justify-between items-center mb-8"
     >
 
       <div>
 
         <h1
-          className="
-          text-4xl
-          font-bold
-          "
+          className="text-4xl font-bold"
         >
           {species.species}
         </h1>
 
         <p
-          className="
-          text-gray-400
-          mt-2
-          "
+          className="text-gray-400 mt-2"
         >
           Detail species
         </p>
@@ -156,35 +138,19 @@ export default function SpeciesDetailPage() {
       </div>
 
       <div
-        className="
-        flex
-        gap-3
-        "
+        className="flex gap-3"
       >
 
         <Link
           href={`/admin/species/${species.id}/edit`}
-          className="
-          bg-yellow-400
-          text-black
-          px-5
-          py-3
-          rounded-lg
-          font-semibold
-          "
+          className="bg-yellow-400 text-black px-5 py-3 rounded-lg font-semibold"
         >
           Edit
         </Link>
 
         <button
           onClick={handleDelete}
-          className="
-          bg-red-600
-          px-5
-          py-3
-          rounded-lg
-          font-semibold
-          "
+          className="bg-red-600 px-5 py-3 rounded-lg font-semibold"
         >
           Hapus
         </button>
@@ -194,13 +160,7 @@ export default function SpeciesDetailPage() {
     </div>
 
       <div
-        className="
-        bg-neutral-950
-        border
-        border-yellow-500/20
-        rounded-xl
-        p-8
-        "
+        className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-8"
       >
 
         <div className="space-y-5">

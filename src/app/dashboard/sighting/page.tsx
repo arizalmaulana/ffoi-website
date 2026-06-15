@@ -104,14 +104,7 @@ export default function SightingPage() {
 
           <Link
             href="/dashboard/sighting/create"
-            className="
-            bg-yellow-400
-            text-black
-            px-5
-            py-3
-            rounded-lg
-            font-semibold
-            "
+            className="bg-yellow-400 text-black px-5 py-3 rounded-lg font-semibold"
           >
             + Tambah Sighting
           </Link>
@@ -122,13 +115,7 @@ export default function SightingPage() {
         <div className="grid grid-cols-4 gap-4 mb-8">
 
           <div
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-xl
-            p-5
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-5"
           >
             <p className="text-gray-400 text-sm">
               Total
@@ -140,13 +127,7 @@ export default function SightingPage() {
           </div>
 
           <div
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-xl
-            p-5
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-5"
           >
             <p className="text-gray-400 text-sm">
               Menunggu
@@ -158,13 +139,7 @@ export default function SightingPage() {
           </div>
 
           <div
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-xl
-            p-5
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-5"
           >
             <p className="text-gray-400 text-sm">
               Disetujui
@@ -176,13 +151,7 @@ export default function SightingPage() {
           </div>
 
           <div
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-xl
-            p-5
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-5"
           >
             <p className="text-gray-400 text-sm">
               Ditolak
@@ -204,18 +173,7 @@ export default function SightingPage() {
                 "semua"
               )
             }
-            className={`
-              px-4
-              py-2
-              rounded-lg
-              transition
-              ${
-                filter ===
-                "semua"
-                  ? "bg-yellow-400 text-black"
-                  : "bg-neutral-900 text-white"
-              }
-            `}
+            className={`px-4 py-2 rounded-lg transition ${ filter === "semua" ? "bg-yellow-400 text-black" : "bg-neutral-900 text-white" }`}
           >
             Semua
           </button>
@@ -226,18 +184,7 @@ export default function SightingPage() {
                 "menunggu"
               )
             }
-            className={`
-              px-4
-              py-2
-              rounded-lg
-              transition
-              ${
-                filter ===
-                "menunggu"
-                  ? "bg-yellow-400 text-black"
-                  : "bg-neutral-900 text-white"
-              }
-            `}
+            className={`px-4 py-2 rounded-lg transition ${ filter === "menunggu" ? "bg-yellow-400 text-black" : "bg-neutral-900 text-white" }`}
           >
             Menunggu
           </button>
@@ -248,18 +195,7 @@ export default function SightingPage() {
                 "disetujui"
               )
             }
-            className={`
-              px-4
-              py-2
-              rounded-lg
-              transition
-              ${
-                filter ===
-                "disetujui"
-                  ? "bg-yellow-400 text-black"
-                  : "bg-neutral-900 text-white"
-              }
-            `}
+            className={`px-4 py-2 rounded-lg transition ${ filter === "disetujui" ? "bg-yellow-400 text-black" : "bg-neutral-900 text-white" }`}
           >
             Disetujui
           </button>
@@ -270,18 +206,7 @@ export default function SightingPage() {
                 "ditolak"
               )
             }
-            className={`
-              px-4
-              py-2
-              rounded-lg
-              transition
-              ${
-                filter ===
-                "ditolak"
-                  ? "bg-yellow-400 text-black"
-                  : "bg-neutral-900 text-white"
-              }
-            `}
+            className={`px-4 py-2 rounded-lg transition ${ filter === "ditolak" ? "bg-yellow-400 text-black" : "bg-neutral-900 text-white" }`}
           >
             Ditolak
           </button>
@@ -291,14 +216,7 @@ export default function SightingPage() {
         {/* Table */}
         {loading ? (
           <div
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-xl
-            p-10
-            text-center
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-10 text-center"
           >
             <p className="text-gray-400">
               Memuat data...

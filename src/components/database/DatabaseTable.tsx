@@ -8,6 +8,16 @@ interface Props {
 export default function DatabaseTable({
   data,
 }: Props) {
+  if (!data.length) {
+    return (
+      <div className="border border-yellow-500/20 rounded-xl p-10 text-center">
+        <p className="text-gray-400">
+          Tidak ada spesies yang sesuai dengan pencarian.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="overflow-x-auto rounded-xl border border-yellow-500/20">
       <table className="w-full text-sm">

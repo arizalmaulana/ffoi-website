@@ -9,30 +9,17 @@ export default function SpeciesCard({
 }: Props) {
   return (
     <div
-      className="
-      bg-neutral-950
-      border
-      border-yellow-500/20
-      rounded-xl
-      p-5
-      "
+      className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-5"
     >
       <h3
-        className="
-        text-lg
-        font-semibold
-        text-white
-        "
+        className="text-lg font-semibold text-white"
       >
         {species.nama_lokal ??
           "Belum ada nama lokal"}
       </h3>
 
       <p
-        className="
-        italic
-        text-gray-400
-        "
+        className="italic text-gray-400"
       >
         {species.species}
       </p>

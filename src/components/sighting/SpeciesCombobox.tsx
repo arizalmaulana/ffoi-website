@@ -104,21 +104,7 @@ export default function SpeciesCombobox({
 
       {open && !(selectedId !== null && keyword === selectedKeyword) && (
         <div
-          className="
-            absolute
-            top-full
-            left-0
-            right-0
-            mt-1
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-lg
-            overflow-hidden
-            z-50
-            max-h-80
-            overflow-y-auto
-          "
+          className="absolute top-full left-0 right-0 mt-1 bg-neutral-950 border border-yellow-500/20 rounded-lg overflow-hidden z-50 max-h-80 overflow-y-auto"
         >
 
           {loading && (
@@ -150,16 +136,7 @@ export default function SpeciesCombobox({
                     setResults([]);
                     setOpen(false);
                   }}
-                  className="
-                    w-full
-                    text-left
-                    px-4
-                    py-3
-                    border-t
-                    border-yellow-500/20
-                    text-yellow-400
-                    hover:bg-yellow-500/10
-                  "
+                  className="w-full text-left px-4 py-3 border-t border-yellow-500/20 text-yellow-400 hover:bg-yellow-500/10"
                 >
                   {`+ Ajukan spesies baru "${keyword}"`}
                 </button>
@@ -186,14 +163,7 @@ export default function SpeciesCombobox({
 
                   setOpen(false);
                 }}
-                className="
-                  w-full
-                  text-left
-                  px-4
-                  py-3
-                  hover:bg-yellow-500/10
-                  transition
-                "
+                className="w-full text-left px-4 py-3 hover:bg-yellow-500/10 transition"
               >
                 <div className="text-white">
                   {item.nama_lokal ??
@@ -201,11 +171,7 @@ export default function SpeciesCombobox({
                 </div>
 
                 <div
-                  className="
-                    text-sm
-                    italic
-                    text-gray-400
-                  "
+                  className="text-sm italic text-gray-400"
                 >
                   {item.species}
                 </div>

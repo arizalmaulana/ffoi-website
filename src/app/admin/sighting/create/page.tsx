@@ -12,14 +12,7 @@ AdminCreateSightingPage() {
       <div className="mb-8">
         <Link
             href="/admin/sighting"
-            className="
-            inline-flex
-            items-center
-            gap-2
-            text-yellow-400
-            hover:text-yellow-300
-            mb-6
-            "
+            className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 mb-6"
         >
             ← Kembali ke Review Sighting
         </Link>
@@ -36,13 +29,7 @@ AdminCreateSightingPage() {
       </div>
 
       <div
-        className="
-        bg-neutral-950
-        border
-        border-yellow-500/20
-        rounded-xl
-        p-8
-        "
+        className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-8"
       >
 
         <SightingForm

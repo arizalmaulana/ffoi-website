@@ -15,22 +15,10 @@ export default function ActivitySection({
 }: ActivitySectionProps) {
   return (
     <section
-      className="
-      bg-neutral-950
-      border
-      border-yellow-500/20
-      rounded-2xl
-      p-6 sm:p-8
-      h-full
-      "
+      className="bg-neutral-950 border border-yellow-500/20 rounded-2xl p-6 sm:p-8 h-full"
     >
       <h2
-        className="
-        text-yellow-400
-        text-2xl
-        font-bold
-        mb-8
-        "
+        className="text-yellow-400 text-2xl font-bold mb-8"
       >
         Aktivitas Terbaru
       </h2>
@@ -44,11 +32,7 @@ export default function ActivitySection({
           {activities.map((activity) => (
             <div
               key={activity.id}
-              className="
-              border-l
-              border-yellow-500/30
-              pl-4
-              "
+              className="border-l border-yellow-500/30 pl-4"
             >
               <p className="text-white">
                 Sighting 

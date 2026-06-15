@@ -79,33 +79,19 @@ AdminEditSightingPage() {
 
       <Link
         href={`/admin/sighting/${sighting.id}`}
-        className="
-        text-yellow-400
-        mb-6
-        inline-block
-        "
+        className="text-yellow-400 mb-6 inline-block"
       >
         ← Kembali
       </Link>
 
       <h1
-        className="
-        text-4xl
-        font-bold
-        mb-8
-        "
+        className="text-4xl font-bold mb-8"
       >
         Edit Sighting
       </h1>
 
       <div
-        className="
-        bg-neutral-950
-        border
-        border-yellow-500/20
-        rounded-xl
-        p-8
-        "
+        className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-8"
       >
 
         <SightingForm

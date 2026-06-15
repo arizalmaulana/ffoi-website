@@ -87,21 +87,13 @@ export default function CreateSpeciesPage() {
 
       <Link
         href="/admin/species"
-        className="
-        text-yellow-400
-        mb-6
-        inline-block
-        "
+        className="text-yellow-400 mb-6 inline-block"
       >
         ← Kembali
       </Link>
 
       <h1
-        className="
-        text-4xl
-        font-bold
-        mb-8
-        "
+        className="text-4xl font-bold mb-8"
       >
         Tambah Species
       </h1>
@@ -110,14 +102,7 @@ export default function CreateSpeciesPage() {
         onSubmit={
           handleSubmit
         }
-        className="
-        bg-neutral-950
-        border
-        border-yellow-500/20
-        rounded-xl
-        p-8
-        space-y-5
-        "
+        className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-8 space-y-5"
       >
 
         <input
@@ -239,14 +224,7 @@ export default function CreateSpeciesPage() {
                 e.target.value,
             })
         }
-        className="
-        w-full
-        bg-black
-        border
-        border-yellow-500/20
-        rounded-lg
-        p-3
-        "
+        className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
         >
 
         <option value="">
@@ -302,14 +280,7 @@ export default function CreateSpeciesPage() {
         <button
           type="submit"
           disabled={saving}
-          className="
-          bg-yellow-400
-          text-black
-          px-6
-          py-3
-          rounded-lg
-          font-semibold
-          "
+          className="bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold"
         >
           {saving
             ? "Menyimpan..."

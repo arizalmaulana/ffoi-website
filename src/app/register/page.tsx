@@ -4,6 +4,7 @@ import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import AuthLayout from "@/components/auth/AuthLayout";
 
 export default function RegisterPage() {
     const router = useRouter();
@@ -73,81 +74,75 @@ export default function RegisterPage() {
     };
 
     return (
-        <main className="min-h-screen bg-black flex items-center justify-center px-6">
-        <div className="bg-neutral-900 p-8 rounded-xl w-full max-w-md">
-            <h1 className="text-white text-2xl font-bold mb-6">
-            Register
-            </h1>
-
+        <AuthLayout title="Register" subtitle="Buat akun baru FFOI">
             <div className="space-y-4">
-            <input
-                value={form.nama_lengkap}
-                placeholder="Nama Lengkap"
-                className="w-full p-3 rounded bg-black text-white outline-none"
-                onChange={(e) =>
-                setForm({
-                    ...form,
-                    nama_lengkap: e.target.value,
-                })
-                }
-            />
+                <input
+                    value={form.nama_lengkap}
+                    placeholder="Nama Lengkap"
+                    className="w-full p-3 rounded bg-black text-white outline-none"
+                    onChange={(e) =>
+                    setForm({
+                        ...form,
+                        nama_lengkap: e.target.value,
+                    })
+                    }
+                />
 
-            <input
-                value={form.username}
-                placeholder="Username"
-                className="w-full p-3 rounded bg-black text-white outline-none"
-                onChange={(e) =>
-                setForm({
-                    ...form,
-                    username: e.target.value,
-                })
-                }
-            />
+                <input
+                    value={form.username}
+                    placeholder="Username"
+                    className="w-full p-3 rounded bg-black text-white outline-none"
+                    onChange={(e) =>
+                    setForm({
+                        ...form,
+                        username: e.target.value,
+                    })
+                    }
+                />
 
-            <input
-                value={form.email}
-                placeholder="Email"
-                className="w-full p-3 rounded bg-black text-white outline-none"
-                onChange={(e) =>
-                setForm({
-                    ...form,
-                    email: e.target.value,
-                })
-                }
-            />
+                <input
+                    value={form.email}
+                    placeholder="Email"
+                    className="w-full p-3 rounded bg-black text-white outline-none"
+                    onChange={(e) =>
+                    setForm({
+                        ...form,
+                        email: e.target.value,
+                    })
+                    }
+                />
 
-            <input
-                value={form.password}
-                type="password"
-                placeholder="Password"
-                className="w-full p-3 rounded bg-black text-white outline-none"
-                onChange={(e) =>
-                setForm({
-                    ...form,
-                    password: e.target.value,
-                })
-                }
-            />
+                <input
+                    value={form.password}
+                    type="password"
+                    placeholder="Password"
+                    className="w-full p-3 rounded bg-black text-white outline-none"
+                    onChange={(e) =>
+                    setForm({
+                        ...form,
+                        password: e.target.value,
+                    })
+                    }
+                />
 
-            <button
-                disabled={loading}
-                onClick={handleRegister}
-                className="w-full bg-yellow-400 text-black py-3 rounded font-semibold disabled:opacity-50"
-            >
-                {loading ? "Memproses..." : "Register"}
-            </button>
-
-            <p className="text-gray-400 text-sm text-center">
-                Sudah punya akun?{" "}
-                <Link
-                href="/login"
-                className="text-yellow-400 font-semibold"
+                <button
+                    disabled={loading}
+                    onClick={handleRegister}
+                    className="w-full bg-yellow-400 text-black py-3 rounded font-semibold disabled:opacity-50"
                 >
-                Login
-                </Link>
-            </p>
+                    {loading ? "Memproses..." : "Register"}
+                </button>
+
+                <p className="text-gray-400 text-sm text-center">
+                    Sudah punya akun?{" "}
+                    <Link
+                    href="/login"
+                    className="text-yellow-400 font-semibold"
+                    >
+                    Login
+                    </Link>
+                </p>
             </div>
-        </div>
-        </main>
+        </AuthLayout>
     );
 }

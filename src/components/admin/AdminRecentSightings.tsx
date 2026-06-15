@@ -50,21 +50,11 @@ export default function AdminRecentSightings({
 
   return (
     <div
-      className="
-      bg-neutral-950
-      border
-      border-yellow-500/20
-      rounded-2xl
-      p-6
-      "
+      className="bg-neutral-950 border border-yellow-500/20 rounded-2xl p-6"
     >
 
       <h2
-        className="
-        text-xl
-        font-bold
-        mb-6
-        "
+        className="text-xl font-bold mb-6"
       >
         Aktivitas Terbaru
       </h2>
@@ -83,12 +73,7 @@ export default function AdminRecentSightings({
 
             <div
               key={item.id}
-              className="
-              border-b
-              border-neutral-800
-              pb-4
-              last:border-none
-              "
+              className="border-b border-neutral-800 pb-4 last:border-none"
             >
 
               <div className="flex gap-3">
@@ -109,23 +94,13 @@ export default function AdminRecentSightings({
                   </p>
 
                   <p
-                    className="
-                    text-sm
-                    text-gray-400
-                    "
+                    className="text-sm text-gray-400"
                   >
                     {item.nama_lokasi}
                   </p>
 
                   <p
-                    className={`
-                      text-sm
-                      mt-1
-                      font-medium
-                      ${getStatusColor(
-                        item.status
-                      )}
-                    `}
+                    className={`text-sm mt-1 font-medium ${getStatusColor( item.status )}`}
                   >
                     {item.status}
                   </p>

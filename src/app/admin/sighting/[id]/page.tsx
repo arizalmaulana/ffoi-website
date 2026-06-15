@@ -159,14 +159,7 @@ export default function AdminReviewPage() {
     <div className="max-w-6xl">
       <Link
         href="/admin/sighting"
-        className="
-        inline-flex
-        items-center
-        gap-2
-        text-yellow-400
-        hover:text-yellow-300
-        mb-6
-        "
+        className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 mb-6"
       >
         ← Kembali ke Review Sighting
       </Link>
@@ -176,13 +169,7 @@ export default function AdminReviewPage() {
       </h1>
 
       <div
-        className="
-        bg-neutral-950
-        border
-        border-yellow-500/20
-        rounded-xl
-        overflow-hidden
-        "
+        className="bg-neutral-950 border border-yellow-500/20 rounded-xl overflow-hidden"
       >
 
         {sighting.foto_url && (
@@ -195,11 +182,7 @@ export default function AdminReviewPage() {
             width={1200}
             height={500}
             priority
-            className="
-            w-full
-            h-125
-            object-cover
-            "
+            className="w-full h-125 object-cover"
           />
         )}
 
@@ -210,22 +193,13 @@ export default function AdminReviewPage() {
           </h2>
 
           <p
-            className="
-            italic
-            text-gray-400
-            mt-2
-            "
+            className="italic text-gray-400 mt-2"
           >
             {sighting.nama_ilmiah}
           </p>
 
           <div
-            className="
-            grid
-            md:grid-cols-2
-            gap-6
-            mt-8
-            "
+            className="grid md:grid-cols-2 gap-6 mt-8"
           >
 
             <div>
@@ -317,10 +291,7 @@ export default function AdminReviewPage() {
           <div className="mt-8">
 
             <h3
-              className="
-              font-semibold
-              mb-2
-              "
+              className="font-semibold mb-2"
             >
               Deskripsi
             </h3>
@@ -347,14 +318,7 @@ export default function AdminReviewPage() {
                   e.target.value
                 )
               }
-              className="
-              w-full
-              bg-black
-              border
-              border-yellow-500/20
-              rounded-lg
-              p-4
-              "
+              className="w-full bg-black border border-yellow-500/20 rounded-lg p-4"
               placeholder="Alasan penolakan atau catatan tambahan..."
             />
 
@@ -366,16 +330,7 @@ export default function AdminReviewPage() {
 
               <Link
                 href={`/admin/sighting/${sighting.id}/edit`}
-                className="
-                bg-yellow-400
-                text-black
-                px-6
-                py-3
-                rounded-xl
-                font-semibold
-                hover:bg-yellow-300
-                transition
-                "
+                className="bg-yellow-400 text-black px-6 py-3 rounded-xl font-semibold hover:bg-yellow-300 transition"
               >
                 Edit Data
               </Link>
@@ -385,16 +340,7 @@ export default function AdminReviewPage() {
                 onClick={() =>
                   handleReview("disetujui")
                 }
-                className="
-                bg-green-600
-                hover:bg-green-300
-                text-white
-                px-6
-                py-3
-                rounded-xl
-                font-semibold
-                transition
-                "
+                className="bg-green-600 hover:bg-green-300 text-white px-6 py-3 rounded-xl font-semibold transition"
               >
                 Setujui
               </button>
@@ -404,16 +350,7 @@ export default function AdminReviewPage() {
                 onClick={() =>
                   handleReview("ditolak")
                 }
-                className="
-                bg-red-600
-                hover:bg-red-500
-                text-white
-                px-6
-                py-3
-                rounded-xl
-                font-semibold
-                transition
-                "
+                className="bg-red-600 hover:bg-red-500 text-white px-6 py-3 rounded-xl font-semibold transition"
               >
                 Tolak
               </button>
@@ -424,16 +361,7 @@ export default function AdminReviewPage() {
 
               <button
                 onClick={handleDelete}
-                className="
-                text-red-400
-                border
-                border-red-500/30
-                px-6
-                py-3
-                rounded-xl
-                hover:bg-red-500/10
-                transition
-                "
+                className="text-red-400 border border-red-500/30 px-6 py-3 rounded-xl hover:bg-red-500/10 transition"
               >
                 Hapus Sighting
               </button>

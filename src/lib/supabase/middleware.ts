@@ -42,8 +42,17 @@ export async function updateSession(request: NextRequest) {
   });
 
   const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  const user =
+    session?.user ?? null;
+  
+    console.log(
+    "[MIDDLEWARE]",
+    request.nextUrl.pathname,
+    !!user
+  );
 
   return {
     supabase,
@@ -94,18 +103,31 @@ export async function handleAuthMiddleware(request: NextRequest) {
     }
   }
 
-  if (user && isAuthRoute(pathname)) {
-    const { data: profile } = await supabase
-      .from("profil")
-      .select("role")
-      .eq("id", user.id)
-      .single();
+  if (
+    user &&
+    isAuthRoute(pathname) &&
+    pathname !== "/update-password"
+  ) {
+    const { data: profile } =
+      await supabase
+        .from("profil")
+        .select("role")
+        .eq("id", user.id)
+        .single();
 
     const url = request.nextUrl.clone();
-    url.pathname = getPostLoginPath(profile?.role);
 
-    const redirectResponse = NextResponse.redirect(url);
-    copyCookies(supabaseResponse, redirectResponse);
+    url.pathname =
+      getPostLoginPath(profile?.role);
+
+    const redirectResponse =
+      NextResponse.redirect(url);
+
+    copyCookies(
+      supabaseResponse,
+      redirectResponse
+    );
+
     return redirectResponse;
   }
 

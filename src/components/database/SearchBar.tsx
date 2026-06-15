@@ -15,17 +15,7 @@ export default function SearchBar({
       onChange={(e) =>
         onChange(e.target.value)
       }
-      className="
-        w-full
-        bg-neutral-900
-        border
-        border-yellow-500/20
-        rounded-xl
-        px-4
-        py-3
-        text-white
-        mb-6
-      "
+      className="w-full bg-neutral-900 border border-yellow-500/20 rounded-xl px-4 py-3 text-white mb-6"
     />
   );
 }

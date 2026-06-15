@@ -199,36 +199,19 @@ export default function EditSpeciesPage() {
 
         <Link
         href={`/admin/species/${params.id}`}
-        className="
-        inline-flex
-        items-center
-        gap-2
-        text-yellow-400
-        hover:text-yellow-300
-        mb-6
-        "
+        className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 mb-6"
         >
         ← Kembali ke Detail Species
         </Link>
 
         <h1
-        className="
-        text-4xl
-        font-bold
-        mb-8
-        "
+        className="text-4xl font-bold mb-8"
         >
         Edit Species
         </h1>
 
       <div
-        className="
-        bg-neutral-950
-        border
-        border-yellow-500/20
-        rounded-xl
-        p-8
-        "
+        className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-8"
       >
 
         <div className="space-y-4">
@@ -367,15 +350,7 @@ export default function EditSpeciesPage() {
               handleSubmit
             }
             disabled={saving}
-            className="
-            bg-yellow-400
-            text-black
-            px-6
-            py-3
-            rounded-lg
-            font-semibold
-            disabled:opacity-50
-            "
+            className="bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold disabled:opacity-50"
           >
             {saving
               ? "Menyimpan..."

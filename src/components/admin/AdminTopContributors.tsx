@@ -34,21 +34,11 @@ export default function AdminTopContributors({
 
   return (
     <div
-      className="
-      bg-neutral-950
-      border
-      border-yellow-500/20
-      rounded-2xl
-      p-6
-      "
+      className="bg-neutral-950 border border-yellow-500/20 rounded-2xl p-6"
     >
 
       <h2
-        className="
-        text-xl
-        font-bold
-        mb-6
-        "
+        className="text-xl font-bold mb-6"
       >
         Top Kontributor
       </h2>
@@ -71,30 +61,15 @@ export default function AdminTopContributors({
 
               <div
                 key={item.id}
-                className="
-                flex
-                justify-between
-                items-center
-                border-b
-                border-neutral-800
-                pb-4
-                last:border-none
-                "
+                className="flex justify-between items-center border-b border-neutral-800 pb-4 last:border-none"
               >
 
                 <div
-                  className="
-                  flex
-                  items-center
-                  gap-3
-                  "
+                  className="flex items-center gap-3"
                 >
 
                   <span
-                    className="
-                    text-xl
-                    min-w-[40px]
-                    "
+                    className="text-xl min-w-[40px]"
                   >
                     {getRank(
                       index
@@ -104,18 +79,13 @@ export default function AdminTopContributors({
                   <div>
 
                     <p
-                      className="
-                      font-semibold
-                      "
+                      className="font-semibold"
                     >
                       {item.username}
                     </p>
 
                     <p
-                      className="
-                      text-xs
-                      text-gray-400
-                      "
+                      className="text-xs text-gray-400"
                     >
                       Kontributor
                     </p>
@@ -125,15 +95,7 @@ export default function AdminTopContributors({
                 </div>
 
                 <span
-                  className="
-                  bg-yellow-400
-                  text-black
-                  px-3
-                  py-1
-                  rounded-full
-                  text-sm
-                  font-bold
-                  "
+                  className="bg-yellow-400 text-black px-3 py-1 rounded-full text-sm font-bold"
                 >
                   {item.total}
                 </span>

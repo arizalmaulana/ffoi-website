@@ -236,14 +236,7 @@ export default function EditSightingForm({
         name="tipe_organisme"
         value={form.tipe_organisme}
         onChange={handleChange}
-        className="
-        w-full
-        bg-black
-        border
-        border-yellow-500/20
-        rounded-lg
-        p-3
-        "
+        className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
     >
         <option value="">
         Pilih Organisme
@@ -282,11 +275,7 @@ export default function EditSightingForm({
         />
 
         <div
-            className="
-            mt-3
-            text-sm
-            text-gray-400
-            "
+            className="mt-3 text-sm text-gray-400"
         >
             Spesies saat ini:
             {" "}
@@ -308,14 +297,7 @@ export default function EditSightingForm({
           name="nama_lokasi"
           value={form.nama_lokasi}
           onChange={handleChange}
-          className="
-          w-full
-          bg-black
-          border
-          border-yellow-500/20
-          rounded-lg
-          p-3
-          "
+          className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
         />
       </div>
 
@@ -329,14 +311,7 @@ export default function EditSightingForm({
           name="provinsi"
           value={form.provinsi}
           onChange={handleChange}
-          className="
-          w-full
-          bg-black
-          border
-          border-yellow-500/20
-          rounded-lg
-          p-3
-          "
+          className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
         >
           <option value="">
             Pilih Provinsi
@@ -367,14 +342,7 @@ export default function EditSightingForm({
             name="latitude"
             value={form.latitude}
             onChange={handleChange}
-            className="
-            w-full
-            bg-black
-            border
-            border-yellow-500/20
-            rounded-lg
-            p-3
-            "
+            className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
           />
         </div>
 
@@ -389,14 +357,7 @@ export default function EditSightingForm({
             name="longitude"
             value={form.longitude}
             onChange={handleChange}
-            className="
-            w-full
-            bg-black
-            border
-            border-yellow-500/20
-            rounded-lg
-            p-3
-            "
+            className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
           />
         </div>
 
@@ -412,14 +373,7 @@ export default function EditSightingForm({
           name="habitat"
           value={form.habitat}
           onChange={handleChange}
-          className="
-          w-full
-          bg-black
-          border
-          border-yellow-500/20
-          rounded-lg
-          p-3
-          "
+          className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
         >
           <option value="">
             Pilih Habitat
@@ -450,14 +404,7 @@ export default function EditSightingForm({
           name="substrat"
           value={form.substrat}
           onChange={handleChange}
-          className="
-          w-full
-          bg-black
-          border
-          border-yellow-500/20
-          rounded-lg
-          p-3
-          "
+          className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
         >
           <option value="">
             Pilih Substrat
@@ -492,14 +439,7 @@ export default function EditSightingForm({
           name="tanggal_temuan"
           value={form.tanggal_temuan}
           onChange={handleChange}
-          className="
-          w-full
-          bg-black
-          border
-          border-yellow-500/20
-          rounded-lg
-          p-3
-          "
+          className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
         />
       </div>
 
@@ -514,14 +454,7 @@ export default function EditSightingForm({
           name="deskripsi"
           value={form.deskripsi}
           onChange={handleChange}
-          className="
-          w-full
-          bg-black
-          border
-          border-yellow-500/20
-          rounded-lg
-          p-3
-          "
+          className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
         />
       </div>
 
@@ -590,15 +523,7 @@ export default function EditSightingForm({
         type="button"
         onClick={handleSubmit}
         disabled={saving}
-        className="
-        bg-yellow-400
-        text-black
-        px-6
-        py-3
-        rounded-lg
-        font-semibold
-        disabled:opacity-50
-        "
+        className="bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold disabled:opacity-50"
         >
         {saving
             ? "Menyimpan..."

@@ -143,14 +143,7 @@ export default function EditProfilePage() {
 
     return (
       <div
-        className="
-        min-h-screen
-        bg-black
-        text-white
-        flex
-        items-center
-        justify-center
-        "
+        className="min-h-screen bg-black text-white flex items-center justify-center"
       >
         Memuat...
       </div>
@@ -160,52 +153,30 @@ export default function EditProfilePage() {
   return (
 
     <main
-      className="
-      min-h-screen
-      bg-black
-      text-white
-      "
+      className="min-h-screen bg-black text-white"
     >
 
       <div
-        className="
-        max-w-3xl
-        mx-auto
-        px-6
-        py-10
-        "
+        className="max-w-3xl mx-auto px-6 py-10"
       >
 
         {/* FORM */}
 
         <form
             onSubmit={handleSubmit}
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-2xl
-            p-8
-            space-y-6
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-2xl p-8 space-y-6"
             >
 
             <div>
 
                 <h1
-                className="
-                text-3xl
-                font-bold
-                "
+                className="text-3xl font-bold"
                 >
                 Edit Profil
                 </h1>
 
                 <p
-                className="
-                text-gray-400
-                mt-2
-                "
+                className="text-gray-400 mt-2"
                 >
                 Perbarui informasi akun Anda.
                 </p>
@@ -217,21 +188,13 @@ export default function EditProfilePage() {
             <div>
 
                 <label
-                className="
-                block
-                text-sm
-                mb-3
-                "
+                className="block text-sm mb-3"
                 >
                 Foto Profil
                 </label>
 
                 <div
-                className="
-                flex
-                items-center
-                gap-5
-                "
+                className="flex items-center gap-5"
                 >
 
                 <img
@@ -241,17 +204,10 @@ export default function EditProfilePage() {
                             imageFile
                         )
                         : fotoProfil ??
-                        "/images/avatar-default.png"
+                        "/avatar-kosong.png"
                     }
                     alt="Preview"
-                    className="
-                    w-28
-                    h-28
-                    rounded-full
-                    object-cover
-                    border
-                    border-yellow-500/20
-                    "
+                    className="w-28 h-28 rounded-full object-cover border border-yellow-500/20"
                 />
 
                 <input
@@ -263,10 +219,7 @@ export default function EditProfilePage() {
                         null
                     )
                     }
-                    className="
-                    text-sm
-                    text-gray-400
-                    "
+                    className="text-sm text-gray-400"
                 />
 
                 </div>
@@ -278,11 +231,7 @@ export default function EditProfilePage() {
             <div>
 
                 <label
-                className="
-                block
-                text-sm
-                mb-2
-                "
+                className="block text-sm mb-2"
                 >
                 Username
                 </label>
@@ -294,15 +243,7 @@ export default function EditProfilePage() {
                     e.target.value
                     )
                 }
-                className="
-                w-full
-                bg-black
-                border
-                border-yellow-500/20
-                rounded-xl
-                p-4
-                outline-none
-                "
+                className="w-full bg-black border border-yellow-500/20 rounded-xl p-4 outline-none"
                 required
                 />
 
@@ -313,11 +254,7 @@ export default function EditProfilePage() {
             <div>
 
                 <label
-                className="
-                block
-                text-sm
-                mb-2
-                "
+                className="block text-sm mb-2"
                 >
                 Nama Lengkap
                 </label>
@@ -329,15 +266,7 @@ export default function EditProfilePage() {
                     e.target.value
                     )
                 }
-                className="
-                w-full
-                bg-black
-                border
-                border-yellow-500/20
-                rounded-xl
-                p-4
-                outline-none
-                "
+                className="w-full bg-black border border-yellow-500/20 rounded-xl p-4 outline-none"
                 required
                 />
 
@@ -348,11 +277,7 @@ export default function EditProfilePage() {
             <div>
 
                 <label
-                className="
-                block
-                text-sm
-                mb-2
-                "
+                className="block text-sm mb-2"
                 >
                 Bio
                 </label>
@@ -365,16 +290,7 @@ export default function EditProfilePage() {
                     e.target.value
                     )
                 }
-                className="
-                w-full
-                bg-black
-                border
-                border-yellow-500/20
-                rounded-xl
-                p-4
-                outline-none
-                resize-none
-                "
+                className="w-full bg-black border border-yellow-500/20 rounded-xl p-4 outline-none resize-none"
                 placeholder="Ceritakan sedikit tentang diri Anda..."
                 />
 
@@ -383,25 +299,13 @@ export default function EditProfilePage() {
             {/* ACTION */}
 
             <div
-                className="
-                flex
-                gap-4
-                pt-4
-                "
+                className="flex gap-4 pt-4"
             >
 
                 <button
                 type="submit"
                 disabled={saving}
-                className="
-                bg-yellow-400
-                text-black
-                px-6
-                py-3
-                rounded-xl
-                font-semibold
-                disabled:opacity-50
-                "
+                className="bg-yellow-400 text-black px-6 py-3 rounded-xl font-semibold disabled:opacity-50"
                 >
                 {saving
                     ? "Menyimpan..."
@@ -413,13 +317,7 @@ export default function EditProfilePage() {
                 onClick={() =>
                     router.back()
                 }
-                className="
-                border
-                border-yellow-500/20
-                px-6
-                py-3
-                rounded-xl
-                "
+                className="border border-yellow-500/20 px-6 py-3 rounded-xl"
                 >
                 Batal
                 </button>

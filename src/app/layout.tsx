@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import AuthSessionGuard from "@/components/AuthSessionGuard";
 
 export const metadata: Metadata = {
   title: "FFOI - Freshwater Fish of Indonesia",
@@ -24,7 +23,6 @@ export default function RootLayout({
   return (
     <html lang="id" suppressHydrationWarning>
       <body className="overflow-x-hidden antialiased" suppressHydrationWarning>
-        <AuthSessionGuard />
         <Navbar />
         {children}
       </body>

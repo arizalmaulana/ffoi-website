@@ -48,14 +48,7 @@ export default function AdminSidebar() {
             key={item.href}
             href={item.href}
             onClick={() => setMobileOpen(false)}
-            className={`
-              block px-4 py-2.5 lg:py-3 rounded-lg transition text-sm lg:text-base
-              ${
-                isActive(item.href)
-                  ? "bg-yellow-400 text-black font-semibold"
-                  : "hover:bg-yellow-500/10"
-              }
-            `}
+            className={`block px-4 py-2.5 lg:py-3 rounded-lg transition text-sm lg:text-base ${ isActive(item.href) ? "bg-yellow-400 text-black font-semibold" : "hover:bg-yellow-500/10" }`}
           >
             {item.label}
           </Link>
@@ -106,13 +99,7 @@ export default function AdminSidebar() {
       )}
 
       <aside
-        className={`
-          fixed lg:sticky top-0 left-0 z-50 lg:z-auto
-          w-72 max-w-[85vw] bg-neutral-950 border-r border-yellow-500/20
-          h-screen p-6 overflow-y-auto
-          transition-transform duration-300 ease-in-out
-          ${mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
-        `}
+        className={`fixed lg:sticky top-0 left-0 z-50 lg:z-auto w-72 max-w-[85vw] bg-neutral-950 border-r border-yellow-500/20 h-screen p-6 overflow-y-auto transition-transform duration-300 ease-in-out ${mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
       >
         {sidebarContent}
       </aside>

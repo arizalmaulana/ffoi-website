@@ -46,8 +46,19 @@ export default function DatabasePage() {
         setLoading(true);
 
         try {
-          const data = await getSpecies(page);
-          const count = await getSpeciesCount();
+          const data = await getSpecies({
+            page,
+            search,
+            ordo,
+            family,
+            occurrence,
+          });
+          const count = await getSpeciesCount({
+            search,
+            ordo,
+            family,
+            occurrence,
+          });
           const ordoData = await getOrdoOptions();
           const familyData = await getFamilyOptions();
 
@@ -56,7 +67,7 @@ export default function DatabasePage() {
           setOrdoOptions(ordoData);
           setFamilyOptions(familyData);
           setSpecies(data);
-          setTotalPages(Math.ceil(count / 100));
+          setTotalPages(Math.ceil(count / 50));
         } catch (error) {
           console.error(error);
         } finally {
@@ -68,44 +79,8 @@ export default function DatabasePage() {
     return () => {
       active = false;
     };
-    }, [page]);
-
-    const filteredSpecies =
-        species.filter((item) => {
-
-            const keyword =
-            search.toLowerCase();
-
-            const matchSearch =
-            item.species
-                ?.toLowerCase()
-                .includes(keyword)
-
-            ||
-
-            item.nama_lokal
-                ?.toLowerCase()
-                .includes(keyword);
-
-            const matchOrdo =
-            !ordo ||
-            item.ordo === ordo;
-
-            const matchFamily =
-            !family ||
-            item.family === family;
-
-            const matchOccurrence =
-            !occurrence ||
-            item.occurrence === occurrence;
-
-            return (
-            matchSearch &&
-            matchOrdo &&
-            matchFamily &&
-            matchOccurrence
-            );
-        });
+    }, [page, search, ordo, family, occurrence,]);
+    
 
   return (
     <main className="min-h-screen bg-black text-white px-6 md:px-10 py-20">
@@ -120,25 +95,39 @@ export default function DatabasePage() {
         </p>
         <SearchBar
             value={search}
-            onChange={setSearch}
+            onChange={(value) => {
+              setSearch(value);
+              setPage(1);
+            }}
         />
         <FilterBar
-        ordo={ordo}
-        family={family}
-        occurrence={occurrence}
+          ordo={ordo}
+          family={family}
+          occurrence={occurrence}
 
-        setOrdo={setOrdo}
-        setFamily={setFamily}
-        setOccurrence={setOccurrence}
+          setOrdo={(value) => {
+            setOrdo(value);
+            setPage(1);
+          }}
 
-        ordoOptions={ordoOptions}
-        familyOptions={familyOptions}
+          setFamily={(value) => {
+            setFamily(value);
+            setPage(1);
+          }}
+
+          setOccurrence={(value) => {
+            setOccurrence(value);
+            setPage(1);
+          }}
+
+          ordoOptions={ordoOptions}
+          familyOptions={familyOptions}
         />
 
         {loading ? (
           <p>Memuat data...</p>
         ) : (
-            <DatabaseTable data={filteredSpecies} />
+            <DatabaseTable data={species} />
         )}
 
         <Pagination
@@ -158,9 +147,9 @@ export default function DatabasePage() {
                 MAKE A <br /> DIFFERENCE
               </h2>
       
-              <button className="bg-yellow-400 text-black px-6 py-3 rounded-md font-semibold hover:bg-yellow-300 transition">
+              <a href="https://wa.me/6282148579794" className="bg-yellow-400 text-black px-6 py-3 rounded-md font-semibold hover:bg-yellow-300 transition">
                 SUPPORT US
-              </button>
+              </a>
             </div>
       
             {/* FOOTER GRID */}

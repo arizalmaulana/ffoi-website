@@ -116,13 +116,7 @@ export default function AdminDashboardPage() {
   if (loading) {
     return (
       <div
-        className="
-        min-h-screen
-        flex
-        items-center
-        justify-center
-        text-white
-        "
+        className="min-h-screen flex items-center justify-center text-white"
       >
         Memuat dashboard...
       </div>
@@ -160,13 +154,7 @@ export default function AdminDashboardPage() {
 
   return (
     <div
-      className="
-      max-w-7xl
-      mx-auto
-      px-6
-      py-8
-      space-y-8
-      "
+      className="max-w-7xl mx-auto px-6 py-8 space-y-8"
     >
 
       {/* Header */}
@@ -174,20 +162,13 @@ export default function AdminDashboardPage() {
       <div>
 
         <h1
-          className="
-          text-4xl
-          font-bold
-          text-yellow-400
-          "
+          className="text-4xl font-bold text-yellow-400"
         >
           Dashboard Admin
         </h1>
 
         <p
-          className="
-          text-gray-400
-          mt-2
-          "
+          className="text-gray-400 mt-2"
         >
           Ringkasan aktivitas dan pengelolaan
           data Freshwater Fish of Indonesia.
@@ -198,13 +179,7 @@ export default function AdminDashboardPage() {
       {/* KPI */}
 
       <div
-        className="
-        grid
-        grid-cols-1
-        md:grid-cols-2
-        xl:grid-cols-3
-        gap-5
-        "
+        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"
       >
 
         <AdminStatCard
@@ -250,36 +225,18 @@ export default function AdminDashboardPage() {
       <div>
 
         <h2
-          className="
-          text-2xl
-          font-bold
-          mb-4
-          "
+          className="text-2xl font-bold mb-4"
         >
           Aksi Cepat
         </h2>
 
         <div
-          className="
-          grid
-          grid-cols-1
-          md:grid-cols-2
-          xl:grid-cols-4
-          gap-4
-          "
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4"
         >
 
           <Link
             href="/admin/sighting"
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-2xl
-            p-5
-            hover:border-yellow-400
-            transition
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-2xl p-5 hover:border-yellow-400 transition"
           >
 
             <div className="text-3xl">
@@ -287,20 +244,13 @@ export default function AdminDashboardPage() {
             </div>
 
             <h3
-              className="
-              mt-3
-              font-semibold
-              "
+              className="mt-3 font-semibold"
             >
               Review Sighting
             </h3>
 
             <p
-              className="
-              text-xs
-              text-gray-400
-              mt-1
-              "
+              className="text-xs text-gray-400 mt-1"
             >
               Tinjau laporan sighting baru.
             </p>
@@ -309,15 +259,7 @@ export default function AdminDashboardPage() {
 
           <Link
             href="/admin/species-review"
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-2xl
-            p-5
-            hover:border-yellow-400
-            transition
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-2xl p-5 hover:border-yellow-400 transition"
           >
 
             <div className="text-3xl">
@@ -325,20 +267,13 @@ export default function AdminDashboardPage() {
             </div>
 
             <h3
-              className="
-              mt-3
-              font-semibold
-              "
+              className="mt-3 font-semibold"
             >
               Review Species
             </h3>
 
             <p
-              className="
-              text-xs
-              text-gray-400
-              mt-1
-              "
+              className="text-xs text-gray-400 mt-1"
             >
               Validasi spesies baru.
             </p>
@@ -347,15 +282,7 @@ export default function AdminDashboardPage() {
 
           <Link
             href="/admin/species"
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-2xl
-            p-5
-            hover:border-yellow-400
-            transition
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-2xl p-5 hover:border-yellow-400 transition"
           >
 
             <div className="text-3xl">
@@ -363,20 +290,13 @@ export default function AdminDashboardPage() {
             </div>
 
             <h3
-              className="
-              mt-3
-              font-semibold
-              "
+              className="mt-3 font-semibold"
             >
               Database Species
             </h3>
 
             <p
-              className="
-              text-xs
-              text-gray-400
-              mt-1
-              "
+              className="text-xs text-gray-400 mt-1"
             >
               Kelola data spesies.
             </p>
@@ -385,15 +305,7 @@ export default function AdminDashboardPage() {
 
           <Link
             href="/admin/users"
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-2xl
-            p-5
-            hover:border-yellow-400
-            transition
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-2xl p-5 hover:border-yellow-400 transition"
           >
 
             <div className="text-3xl">
@@ -401,20 +313,13 @@ export default function AdminDashboardPage() {
             </div>
 
             <h3
-              className="
-              mt-3
-              font-semibold
-              "
+              className="mt-3 font-semibold"
             >
               Pengguna
             </h3>
 
             <p
-              className="
-              text-xs
-              text-gray-400
-              mt-1
-              "
+              className="text-xs text-gray-400 mt-1"
             >
               Kelola akun dan hak akses.
             </p>
@@ -444,11 +349,7 @@ export default function AdminDashboardPage() {
       {/* Bottom */}
 
       <div
-        className="
-        grid
-        lg:grid-cols-2
-        gap-6
-        "
+        className="grid lg:grid-cols-2 gap-6"
       >
 
         <AdminTopProvinces

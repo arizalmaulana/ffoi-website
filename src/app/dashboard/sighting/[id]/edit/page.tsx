@@ -113,13 +113,7 @@ export default function EditSightingPage() {
         </div>
 
         <div
-          className="
-          bg-neutral-950
-          border
-          border-yellow-500/20
-          rounded-xl
-          p-8
-          "
+          className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-8"
         >
           <EditSightingForm
             sighting={sighting}

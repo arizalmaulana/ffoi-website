@@ -145,7 +145,7 @@ export default function ProgramPage() {
       <section className="relative min-h-[700px] flex flex-col overflow-hidden text-white">
         {/* Background Image */}
         <img
-          src="/images/Konservasi.JPG"
+          src="/image/Konservasi.jpg"
           alt="FFOI Program Banner"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -237,17 +237,7 @@ export default function ProgramPage() {
           {programs.map((program, index) => (
             <div
               key={index}
-              className="
-                flex flex-col
-                h-[590px]
-                overflow-hidden
-                rounded-[2rem]
-                border border-yellow-400/70
-                bg-[#0a0a0a]
-                transition-all duration-300
-                hover:-translate-y-1
-                hover:border-yellow-400
-              "
+              className="flex flex-col h-[590px] overflow-hidden rounded-[2rem] border border-yellow-400/70 bg-[#0a0a0a] transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400"
             >
               {/* IMAGE */}
               <div className="h-[140px] min-h-[140px] overflow-hidden">
@@ -481,9 +471,9 @@ export default function ProgramPage() {
                 MAKE A <br /> DIFFERENCE
               </h2>
       
-              <button className="bg-yellow-400 text-black px-6 py-3 rounded-md font-semibold hover:bg-yellow-300 transition">
+              <a href='https://wa.me/6282148579794' className="bg-yellow-400 text-black px-6 py-3 rounded-md font-semibold hover:bg-yellow-300 transition">
                 SUPPORT US
-              </button>
+              </a>
             </div>
       
             {/* FOOTER GRID */}

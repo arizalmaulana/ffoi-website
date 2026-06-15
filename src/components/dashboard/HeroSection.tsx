@@ -10,59 +10,75 @@ export default function HeroSection({
 }: HeroSectionProps) {
   return (
     <section
-      className="
-      relative
-      overflow-hidden
-      rounded-2xl
-      border
-      border-yellow-500/20
-      min-h-[400px]
-      bg-[url('/images/dashboard-user.png')]
-      bg-cover
-      bg-center
-      "
+      className="relative overflow-hidden rounded-3xl border border-yellow-500/20 min-h-[420px] bg-[url('/images/dashboard-user.png')] bg-cover bg-center"
     >
-      <div className="absolute inset-0 bg-black/70" />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/40" />
 
-      <div className="relative z-10 p-6 sm:p-10 max-w-xl">
-        <h1 className="text-3xl sm:text-5xl font-bold text-white mb-4">
-          Halo, {profile.nama_lengkap}! 👋
+      {/* Glow */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-yellow-400/10 blur-3xl rounded-full" />
+
+      <div className="relative z-10 p-8 md:p-12 flex flex-col justify-center h-full max-w-3xl">
+
+        {/* Badge */}
+        <div
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-400/10 border border-yellow-400/20 text-yellow-400 text-sm font-medium w-fit mb-6"
+        >
+          🌿 Kontributor FFOI
+        </div>
+
+        {/* Heading */}
+        <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+          Halo,{" "}
+          <span className="text-yellow-400">
+            {profile.nama_lengkap}
+          </span>
+          👋
         </h1>
 
-        <p className="text-yellow-400 text-xl sm:text-2xl font-semibold mb-6">
-          Kontributor Freshwater Fish of Indonesia
-        </p>
-
-        <p className="text-gray-300 leading-8 mb-6">
+        <p className="mt-4 text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
           Terima kasih telah berkontribusi dalam penelitian,
           dokumentasi, dan konservasi ikan asli Indonesia.
-          Setiap laporan Anda sangat berarti untuk masa depan
-          perairan kita.
+          Setiap sighting yang Anda laporkan membantu
+          melindungi biodiversitas perairan Indonesia.
         </p>
 
-        <p className="text-gray-400 mb-8" suppressHydrationWarning>
-          Bergabung sejak{" "}
-          {new Date(profile.dibuat_pada).toLocaleDateString("id-ID", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          })}
-        </p>
-
-        <Link href="/dashboard/sighting/create"
-          className="
-          bg-yellow-400
-          hover:bg-yellow-300
-          text-black
-          font-bold
-          px-6
-          py-3
-          rounded-lg
-          transition
-          "
+        {/* Member Since */}
+        <div
+          className="mt-6 text-sm text-gray-400"
+          suppressHydrationWarning
         >
-          + Tambah Sighting
-        </Link>
+          Bergabung sejak{" "}
+          <span className="text-yellow-400 font-medium">
+            {new Date(
+              profile.dibuat_pada
+            ).toLocaleDateString("id-ID", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+          </span>
+        </div>
+
+        {/* CTA */}
+        <div className="flex flex-wrap gap-4 mt-8">
+
+          <Link
+            href="/dashboard/sighting/create"
+            className="inline-flex items-center gap-2 bg-yellow-400 text-black px-7 py-3.5 rounded-xl font-bold transition-all duration-300 hover:bg-yellow-300 hover:-translate-y-1"
+          >
+            + Tambah Sighting
+          </Link>
+
+          <Link
+            href="/dashboard/sighting"
+            className="inline-flex items-center gap-2 border border-white/20 bg-white/5 backdrop-blur-sm text-white px-7 py-3.5 rounded-xl font-semibold transition-all duration-300 hover:bg-white/10"
+          >
+            Lihat Sighting Saya
+          </Link>
+
+        </div>
+
       </div>
     </section>
   );

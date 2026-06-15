@@ -434,14 +434,7 @@ export default function SightingForm({
           name="tipe_organisme"
           value={form.tipe_organisme}
           onChange={handleChange}
-          className="
-          w-full
-          bg-black
-          border
-          border-yellow-500/20
-          rounded-lg
-          p-3
-          "
+          className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
         >
           <option value="">
             Pilih Organisme
@@ -516,14 +509,7 @@ export default function SightingForm({
                 name="nama_lokal"
                 value={newSpeciesData.nama_lokal}
                 onChange={handleNewSpeciesChange}
-                className="
-                w-full
-                bg-black
-                border
-                border-yellow-500/20
-                rounded-lg
-                p-3
-                "
+                className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
               />
             </div>
 
@@ -540,14 +526,7 @@ export default function SightingForm({
                 name="nama_ilmiah"
                 value={newSpeciesData.nama_ilmiah}
                 onChange={handleNewSpeciesChange}
-                className="
-                w-full
-                bg-black
-                border
-                border-yellow-500/20
-                rounded-lg
-                p-3
-                "
+                className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
               />
             </div>
           </div>
@@ -568,14 +547,7 @@ export default function SightingForm({
           name="nama_lokasi"
           value={form.nama_lokasi}
           onChange={handleChange}
-          className="
-          w-full
-          bg-black
-          border
-          border-yellow-500/20
-          rounded-lg
-          p-3
-          "
+          className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
         />
       </div>
 
@@ -592,14 +564,7 @@ export default function SightingForm({
           name="provinsi"
           value={form.provinsi}
           onChange={handleChange}
-          className="
-          w-full
-          bg-black
-          border
-          border-yellow-500/20
-          rounded-lg
-          p-3
-          "
+          className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
         >
           <option value="">
             Pilih Provinsi
@@ -620,14 +585,7 @@ export default function SightingForm({
       <button
         type="button"
         onClick={getCurrentLocation}
-        className="
-        mb-4
-        bg-yellow-400
-        text-black
-        px-4
-        py-2
-        rounded-lg
-        "
+        className="mb-4 bg-yellow-400 text-black px-4 py-2 rounded-lg"
       >
         📍 Gunakan Lokasi Saya
       </button>
@@ -647,14 +605,7 @@ export default function SightingForm({
             name="latitude"
             value={form.latitude}
             onChange={handleChange}
-            className="
-            w-full
-            bg-black
-            border
-            border-yellow-500/20
-            rounded-lg
-            p-3
-            "
+            className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
           />
         </div>
 
@@ -672,14 +623,7 @@ export default function SightingForm({
             name="longitude"
             value={form.longitude}
             onChange={handleChange}
-            className="
-            w-full
-            bg-black
-            border
-            border-yellow-500/20
-            rounded-lg
-            p-3
-            "
+            className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
           />
         </div>
 
@@ -698,14 +642,7 @@ export default function SightingForm({
           name="habitat"
           value={form.habitat}
           onChange={handleChange}
-          className="
-          w-full
-          bg-black
-          border
-          border-yellow-500/20
-          rounded-lg
-          p-3
-          "
+          className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
         >
           <option value="">
             Pilih Habitat
@@ -742,14 +679,7 @@ export default function SightingForm({
           name="substrat"
           value={form.substrat}
           onChange={handleChange}
-          className="
-          w-full
-          bg-black
-          border
-          border-yellow-500/20
-          rounded-lg
-          p-3
-          "
+          className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
         >
           <option value="">
             Pilih Substrat
@@ -791,14 +721,7 @@ export default function SightingForm({
           name="tanggal_temuan"
           value={form.tanggal_temuan}
           onChange={handleChange}
-          className="
-          w-full
-          bg-black
-          border
-          border-yellow-500/20
-          rounded-lg
-          p-3
-          "
+          className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
         />
       </div>
 
@@ -814,14 +737,7 @@ export default function SightingForm({
           value={form.deskripsi}
           onChange={handleChange}
           maxLength={1000}
-          className="
-          w-full
-          bg-black
-          border
-          border-yellow-500/20
-          rounded-lg
-          p-3
-          "
+          className="w-full bg-black border border-yellow-500/20 rounded-lg p-3"
         />
         <p className="text-sm text-gray-500 mt-2">
           {form.deskripsi.length} / 1000 karakter
@@ -884,15 +800,7 @@ export default function SightingForm({
         type="button"
         onClick={handleSubmit}
         disabled={uploading}
-        className="
-          bg-yellow-400
-          text-black
-          font-semibold
-          px-6
-          py-3
-          rounded-lg
-          disabled:opacity-50
-        "
+        className="bg-yellow-400 text-black font-semibold px-6 py-3 rounded-lg disabled:opacity-50"
       >
         {uploading
           ? "Mengirim..."

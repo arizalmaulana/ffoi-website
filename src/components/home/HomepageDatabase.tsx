@@ -94,282 +94,183 @@ export default function HomepageDatabase(
 
 return (
 
-<section className="relative text-white min-h-[600px] md:min-h-[950px]">
+<section className="relative text-white overflow-hidden">
 
-        {/* BACKGROUND IMAGE */}
-        <div className="absolute inset-0">
-          <img
-            src="/images/background database.png"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/70"></div>
-        </div>
+  {/* BACKGROUND */}
+  <div className="absolute inset-0">
+    <Image
+      src="/images/background database.png"
+      alt="Database Background"
+      fill
+      priority
+      className="object-cover"
+    />
 
-        <div className="relative z-10 py-20 px-6 md:px-10">
+    <div className="absolute inset-0 bg-black/75" />
+  </div>
 
-          {/* TITLE */}
-          <div className="mb-10 max-w-2xl">
-            <h2 className="text-4xl md:text-6xl font-bold leading-tight">
-              DATABASE IKAN <br />
-              <span className="text-yellow-400">
-                INDONESIA
-              </span>
-            </h2>
+  <div className="relative z-10 py-2 md:py-6 px-6 md:px-10">
 
-            <p className="mt-4 text-gray-300 text-sm">
-              Jelajahi lebih dari 1.700 spesies ikan asli Indonesia melalui database biodiversitas berbasis sains milik FFOI.
-            </p>
-          </div>
+    {/* HEADER */}
+    <div className="max-w-3xl mb-12">
 
-          {/* STATS */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 max-w-4xl">
-            {[
-              { title: "1.200+", label: "Spesies Terdokumentasi" },
-              { title: "37", label: "Provinsi Indonesia" },
-              { title: "1.000+", label: "Referensi Ilmiah" },
-              { title: "Terus", label: "Diperbarui" },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10"
-              >
-                <h3 className="font-bold text-lg">{item.title}</h3>
-                <p className="text-xs text-gray-300">{item.label}</p>
-              </div>
-            ))}
-          </div>
+      <span className="text-yellow-400 font-semibold uppercase tracking-[0.25em] text-sm">
+        Biodiversity Database
+      </span>
 
-          {/* SEARCH */}
-          <div className="flex gap-3 mb-10 max-w-4xl">
-            <input
-  value={search}
-  onChange={(e) =>
-    setSearch(
-      e.target.value
-    )
-  }
-  placeholder="Cari spesies ikan, family, ordo, lokasi..."
-  className="
-  flex-1
-  bg-white/10
-  backdrop-blur-md
-  border
-  border-white/10
-  rounded-lg
-  px-4
-  py-3
-  text-sm
-  outline-none
-  "
-/>
-          </div>
+      <h2 className="mt-3 text-4xl md:text-6xl font-bold leading-tight">
+        DATABASE IKAN <br />
+        <span className="text-yellow-400">
+          INDONESIA
+        </span>
+      </h2>
 
- {/* CARD LIST */}
-<div
-  className="
-  min-h-[400px]
-  mt-4
-  items-center
-  "
->
+      <p className="mt-5 text-gray-300 leading-relaxed max-w-2xl">
+        Jelajahi lebih dari 1.200 spesies ikan asli Indonesia melalui
+        database biodiversitas berbasis sains yang terus diperbarui oleh
+        tim peneliti dan kontributor FFOI.
+      </p>
 
-  {filteredData.length > 0 ? (
+    </div>
 
-    <div
-      className="
-      flex
-      gap-5
-      overflow-x-auto
-      pb-3
-      "
-    >
+    {/* STATS */}
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12 max-w-5xl">
 
-      {filteredData.map((item) => (
-
-        <Link
-          key={item.id}
-          href={`/database/sighting/${item.id}`}
-          className="
-          w-[280px]
-          h-[340px]
-          flex-none
-          bg-white/10
-          backdrop-blur-md
-          border
-          border-white/10
-          rounded-xl
-          overflow-hidden
-          hover:border-yellow-400
-          hover:-translate-y-1
-          transition-all
-          duration-300
-          "
-        >
-
-      <div className="h-[180px] w-full overflow-hidden">
-
-          
-        <img
-          src={
-            item.foto_url ??
-            "/images/no-image.png"
-          }
-          alt={item.species}
-          className="
-          w-full
-          h-[200px]
-          object-cover
-          object-center
-          "
-        />
-
-      </div>
-
-      <div
-        className="
-        p-4
-        flex
-        flex-col
-        h-[160px]
-        "
-      >
-
+      {[
+        { title: "1.200+", label: "Spesies Terdokumentasi" },
+        { title: "37", label: "Provinsi Indonesia" },
+        { title: "1.000+", label: "Referensi Ilmiah" },
+        { title: "Terus", label: "Diperbarui" },
+      ].map((item, i) => (
         <div
-          className="
-          flex
-          items-center
-          justify-between
-          mb-3
-          "
+          key={i}
+          className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-5 transition hover:border-yellow-400/50"
         >
+          <h3 className="text-2xl font-bold text-yellow-400">
+            {item.title}
+          </h3>
 
-          <span
-            className="
-            text-[10px]
-            uppercase
-            tracking-widest
-            text-yellow-400
-            font-semibold
-            "
-          >
-            Freshwater Fish
-          </span>
-
-          <span
-            className={`
-              px-3
-              py-1
-              rounded-full
-              text-xs
-              font-bold
-              shadow-lg
-              backdrop-blur-md
-              ${getConservationbadge(
-                item.status_konservasi ?? "NE"
-              )}
-            `}
-          >
-            {item.status_konservasi ?? "NE"}
-          </span>
-
-        </div>
-
-        <h4
-          className="
-          text-lg
-          font-bold
-          text-white
-          line-clamp-2
-          min-h-[56px]
-          "
-        >
-          {item.species}
-        </h4>
-
-        <p
-          className="
-          text-sm
-          text-yellow-300
-          mt-2
-          line-clamp-1
-          "
-        >
-          {item.family}
-        </p>
-
-        <p
-          className="
-          text-xs
-          text-gray-400
-          mt-1
-          line-clamp-1
-          "
-        >
-          {item.ordo}
-        </p>
-
-        <div className="mt-auto">
-
-          <div
-            className="
-            h-px
-            bg-white/10
-            mb-3
-            "
-          />
-
-          <p
-            className="
-            text-xs
-            text-gray-400
-            "
-          >
-            📍 {item.lokasi}
+          <p className="text-sm text-gray-300 mt-1">
+            {item.label}
           </p>
-
         </div>
-
-      </div>
-
-     </Link>
-
       ))}
 
     </div>
 
-  ) : (
+    {/* SEARCH */}
+    <div className="max-w-2xl mb-12">
 
-    <div
-      className="
-      h-[340px]
-      w-full
-      bg-white/10
-      backdrop-blur-md
-      border
-      border-white/10
-      rounded-xl
-      flex
-      items-center
-      justify-center
-      text-gray-300
-      "
-    >
-      Tidak ada data ditemukan
+      <input
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Cari spesies, family, ordo, atau lokasi..."
+        className="w-full bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl px-5 py-4 text-white placeholder:text-gray-400 focus:border-yellow-400 focus:outline-none transition"
+      />
+
     </div>
 
-  )}
+    {/* CARD LIST */}
+    {filteredData.length > 0 ? (
 
-</div>
+      <div className="flex gap-6 overflow-x-auto pb-4">
 
-          {/* BUTTON */}
-          <div className="mt-10">
-            <Link href="/database" className="inline-block border border-yellow-400 text-yellow-400 px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-black transition">
-              JELAJAHI SEMUA 1.700+ SPESIES →
-            </Link>
-          </div>
+        {filteredData.map((item) => (
 
-        </div>
-      </section>
+          <Link
+            key={item.id}
+            href={`/database/sighting/${item.id}`}
+            className="group w-[320px] h-[430px] flex-none bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-yellow-400 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(250,204,21,0.15)]"
+          >
+
+            {/* IMAGE */}
+            <div className="relative h-[220px]">
+
+              <Image
+                src={item.foto_url ?? "/images/no-image.png"}
+                alt={item.species}
+                fill
+                sizes="320px"
+                className="object-cover transition-transform duration-500 group-hover:scale-100"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+            </div>
+
+            {/* CONTENT */}
+            <div className="p-5 flex flex-col h-[210px]">
+
+              <div className="flex items-center justify-between mb-4">
+
+                <span className="text-[10px] uppercase tracking-[0.2em] text-yellow-400 font-semibold">
+                  Freshwater Fish
+                </span>
+
+                <span
+                  className={`px-3 py-1 rounded-full text-xs font-bold backdrop-blur-md ${getConservationbadge( item.status_konservasi ?? "NE" )}`}
+                >
+                  {item.status_konservasi ?? "NE"}
+                </span>
+
+              </div>
+
+              <h4 className="text-xl font-bold text-white line-clamp-2">
+                {item.species}
+              </h4>
+
+              <p className="text-yellow-300 mt-2 text-sm">
+                {item.family}
+              </p>
+
+              <p className="text-xs text-gray-400 mt-1">
+                {item.ordo}
+              </p>
+
+              <div className="mt-auto">
+
+                <div className="h-px bg-white/10 mb-4" />
+
+                <p className="text-sm text-gray-400">
+                  📍 {item.lokasi}
+                </p>
+
+              </div>
+
+            </div>
+
+          </Link>
+
+        ))}
+
+      </div>
+
+    ) : (
+
+      <div
+        className="h-[320px] bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl flex items-center justify-center text-gray-300"
+      >
+        Tidak ada data ditemukan
+      </div>
+
+    )}
+
+    {/* CTA */}
+    <div className="mt-14">
+
+      <Link
+        href="/database"
+        className="inline-flex items-center gap-2 bg-yellow-400 text-black px-8 py-4 rounded-full font-bold transition hover:bg-yellow-300 hover:-translate-y-1"
+      >
+        JELAJAHI 1.200+ SPESIES
+        <span>→</span>
+      </Link>
+
+    </div>
+
+  </div>
+
+</section>
 
 );
 }

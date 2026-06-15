@@ -219,36 +219,19 @@
         <div>
             <Link
             href="/admin/species-review"
-            className="
-            inline-flex
-            items-center
-            gap-2
-            text-yellow-400
-            hover:text-yellow-300
-            mb-6
-            "
+            className="inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 mb-6"
             >
             ← Kembali ke Review Species
             </Link>
 
         <h1
-            className="
-            text-4xl
-            font-bold
-            mb-8
-            "
+            className="text-4xl font-bold mb-8"
         >
             Review Species Baru
         </h1>
 
         <div
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-xl
-            p-8
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-8"
         >
 
             {sighting.foto_url && (
@@ -261,13 +244,7 @@
                 }
                 width={1200}
                 height={500}
-                className="
-                w-full
-                h-96
-                object-cover
-                rounded-xl
-                mb-8
-                "
+                className="w-full h-96 object-cover rounded-xl mb-8"
             />
             )}
 
@@ -311,20 +288,11 @@
             </div>
 
             <div
-            className="
-            mt-10
-            border-t
-            border-yellow-500/20
-            pt-8
-            "
+            className="mt-10 border-t border-yellow-500/20 pt-8"
             >
 
             <h2
-                className="
-                text-2xl
-                font-bold
-                mb-6
-                "
+                className="text-2xl font-bold mb-6"
             >
                 Data Species
             </h2>
@@ -465,24 +433,13 @@
 
 {sighting.status === "menunggu" ? (
           <div
-            className="
-            flex
-            gap-4
-            mt-8
-            "
+            className="flex gap-4 mt-8"
           >
 
             <button
               onClick={handleApprove}
               disabled={saving}
-              className="
-              bg-green-600
-              px-6
-              py-3
-              rounded-lg
-              font-semibold
-              disabled:opacity-50
-              "
+              className="bg-green-600 px-6 py-3 rounded-lg font-semibold disabled:opacity-50"
             >
               {saving
                 ? "Menyimpan..."
@@ -492,14 +449,7 @@
             <button
               onClick={handleReject}
               disabled={saving}
-              className="
-              bg-red-600
-              px-6
-              py-3
-              rounded-lg
-              font-semibold
-              disabled:opacity-50
-              "
+              className="bg-red-600 px-6 py-3 rounded-lg font-semibold disabled:opacity-50"
             >
               Tolak Species
             </button>

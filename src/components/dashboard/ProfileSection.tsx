@@ -10,21 +10,10 @@ export default function ProfileSection({
 }: ProfileSectionProps) {
   return (
     <section
-      className="
-      bg-neutral-950
-      border
-      border-yellow-500/20
-      rounded-2xl
-      p-6 sm:p-8
-      "
+      className="bg-neutral-950 border border-yellow-500/20 rounded-2xl p-6 sm:p-8"
     >
       <h2
-        className="
-        text-yellow-400
-        text-xl sm:text-2xl
-        font-bold
-        mb-8
-        "
+        className="text-yellow-400 text-xl sm:text-2xl font-bold mb-8"
       >
         Profil Saya
       </h2>
@@ -36,17 +25,10 @@ export default function ProfileSection({
           <img
             src={
               profile.foto_profil ||
-              "/images/avatar-default.png"
+              "/avatar-kosong.png"
             }
             alt={profile.nama_lengkap}
-            className="
-            w-40
-            h-40
-            rounded-full
-            object-cover
-            border
-            border-yellow-500/30
-            "
+            className="w-40 h-40 rounded-full object-cover border border-yellow-500/30"
           />
         </div>
 
@@ -97,18 +79,7 @@ export default function ProfileSection({
       <Link
 
         href="/profile/edit"
-        className="
-        mt-8
-        px-5
-        py-3
-        rounded-lg
-        border
-        border-yellow-400
-        text-yellow-400
-        hover:bg-yellow-400
-        hover:text-black
-        transition
-        "
+        className="mt-8 px-5 py-3 rounded-lg border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black transition"
       >
         Edit Profil
       </Link>

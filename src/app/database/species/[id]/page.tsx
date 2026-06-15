@@ -77,14 +77,7 @@ export default async function SpeciesDetailPage(
     return (
 
       <div
-        className="
-        min-h-screen
-        bg-black
-        text-white
-        flex
-        items-center
-        justify-center
-        "
+        className="min-h-screen bg-black text-white flex items-center justify-center"
       >
         Species tidak ditemukan
       </div>
@@ -117,51 +110,29 @@ const provinces =
   return (
 
     <main
-      className="
-      min-h-screen
-      bg-black
-      text-white
-      "
+      className="min-h-screen bg-black text-white"
     >
 
       <div
-        className="
-        max-w-7xl
-        mx-auto
-        px-6
-        py-10
-        "
+        className="max-w-7xl mx-auto px-6 py-10"
       >
 
         <Link
           href="/database"
-          className="
-          text-yellow-400
-          hover:text-yellow-300
-          "
+          className="text-yellow-400 hover:text-yellow-300"
         >
           ← Kembali ke Database
         </Link>
 
         {/* HERO SECTION */}
         <div
-          className="
-          mt-6
-          rounded-3xl
-          overflow-hidden
-          border
-          border-yellow-500/20
-          "
+          className="mt-6 rounded-3xl overflow-hidden border border-yellow-500/20"
         >
 
           <img
             src={latestPhoto}
             alt={species.species}
-            className="
-            w-full
-            h-[500px]
-            object-cover
-            "
+            className="w-full h-[500px] object-cover"
           />
 
         </div>
@@ -169,40 +140,17 @@ const provinces =
         <div className="mt-8">
 
           <div
-            className="
-            flex
-            flex-wrap
-            gap-3
-            mb-4
-            "
+            className="flex flex-wrap gap-3 mb-4"
           >
 
             <span
-              className={`
-                px-3
-                py-1
-                rounded-full
-                text-xs
-                font-semibold
-                ${getConservationBadge(
-                  species.status_konservasi
-                )}
-              `}
+              className={`px-3 py-1 rounded-full text-xs font-semibold ${getConservationBadge( species.status_konservasi )}`}
             >
               {species.status_konservasi ?? "NE"}
             </span>
 
             <span
-              className={`
-                px-3
-                py-1
-                rounded-full
-                text-xs
-                font-semibold
-                ${getOccurrenceBadge(
-                  species.occurrence
-                )}
-              `}
+              className={`px-3 py-1 rounded-full text-xs font-semibold ${getOccurrenceBadge( species.occurrence )}`}
             >
               {species.occurrence}
             </span>
@@ -210,20 +158,13 @@ const provinces =
           </div>
 
           <h1
-            className="
-            text-5xl
-            font-bold
-            "
+            className="text-5xl font-bold"
           >
             {species.species}
           </h1>
 
           <p
-            className="
-            text-yellow-400
-            text-xl
-            mt-2
-            "
+            className="text-yellow-400 text-xl mt-2"
           >
             {species.nama_lokal}
           </p>
@@ -231,10 +172,7 @@ const provinces =
           {species.nama_internasional && (
 
             <p
-              className="
-              text-gray-400
-              mt-2
-              "
+              className="text-gray-400 mt-2"
             >
               {species.nama_internasional}
             </p>
@@ -245,32 +183,17 @@ const provinces =
 
         {/* INFORMASI SPESIES */}
         <div
-          className="
-          mt-10
-          bg-neutral-950
-          border
-          border-yellow-500/20
-          rounded-2xl
-          p-8
-          "
+          className="mt-10 bg-neutral-950 border border-yellow-500/20 rounded-2xl p-8"
         >
 
           <h2
-            className="
-            text-2xl
-            font-bold
-            mb-6
-            "
+            className="text-2xl font-bold mb-6"
           >
             Informasi Spesies
           </h2>
 
           <div
-            className="
-            grid
-            md:grid-cols-2
-            gap-6
-            "
+            className="grid md:grid-cols-2 gap-6"
           >
 
             <div>
@@ -352,20 +275,13 @@ const provinces =
             <div className="mt-8">
 
               <h3
-                className="
-                text-lg
-                font-semibold
-                mb-3
-                "
+                className="text-lg font-semibold mb-3"
               >
                 Deskripsi
               </h3>
 
               <p
-                className="
-                text-gray-300
-                leading-relaxed
-                "
+                className="text-gray-300 leading-relaxed"
               >
                 {species.deskripsi}
               </p>
@@ -378,22 +294,11 @@ const provinces =
 
         {/* STATISTIK */}
         <div
-          className="
-          grid
-          md:grid-cols-3
-          gap-4
-          mt-10
-          "
+          className="grid md:grid-cols-3 gap-4 mt-10"
         >
 
           <div
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-xl
-            p-5
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-5"
           >
 
             <p className="text-gray-400">
@@ -401,11 +306,7 @@ const provinces =
             </p>
 
             <p
-              className="
-              text-3xl
-              font-bold
-              mt-2
-              "
+              className="text-3xl font-bold mt-2"
             >
               {totalSightings}
             </p>
@@ -413,13 +314,7 @@ const provinces =
           </div>
 
           <div
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-xl
-            p-5
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-5"
           >
 
             <p className="text-gray-400">
@@ -427,11 +322,7 @@ const provinces =
             </p>
 
             <p
-              className="
-              text-3xl
-              font-bold
-              mt-2
-              "
+              className="text-3xl font-bold mt-2"
             >
               {provinces.length}
             </p>
@@ -439,13 +330,7 @@ const provinces =
           </div>
 
           <div
-            className="
-            bg-neutral-950
-            border
-            border-yellow-500/20
-            rounded-xl
-            p-5
-            "
+            className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-5"
           >
 
             <p className="text-gray-400">
@@ -453,11 +338,7 @@ const provinces =
             </p>
 
             <p
-              className="
-              text-3xl
-              font-bold
-              mt-2
-              "
+              className="text-3xl font-bold mt-2"
             >
               {species.status_konservasi ?? "NE"}
             </p>
@@ -468,22 +349,11 @@ const provinces =
 
         {/* PERSEBARAN */}
         <div
-          className="
-          mt-10
-          bg-neutral-950
-          border
-          border-yellow-500/20
-          rounded-2xl
-          p-8
-          "
+          className="mt-10 bg-neutral-950 border border-yellow-500/20 rounded-2xl p-8"
         >
 
           <h2
-            className="
-            text-2xl
-            font-bold
-            mb-6
-            "
+            className="text-2xl font-bold mb-6"
           >
             Persebaran Pengamatan
           </h2>
@@ -491,11 +361,7 @@ const provinces =
           {provinces.length > 0 ? (
 
             <div
-              className="
-              flex
-              flex-wrap
-              gap-3
-              "
+              className="flex flex-wrap gap-3"
             >
 
               {provinces.map(
@@ -503,16 +369,7 @@ const provinces =
 
                 <span
                   key={province}
-                  className="
-                  px-4
-                  py-2
-                  rounded-full
-                  bg-yellow-500/10
-                  border
-                  border-yellow-500/20
-                  text-yellow-300
-                  text-sm
-                  "
+                  className="px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-300 text-sm"
                 >
                   {province}
                 </span>
@@ -535,11 +392,7 @@ const provinces =
         <div className="mt-10">
 
           <h2
-            className="
-            text-2xl
-            font-bold
-            mb-6
-            "
+            className="text-2xl font-bold mb-6"
           >
             Pengamatan Terbaru
           </h2>
@@ -547,12 +400,7 @@ const provinces =
           {sightings.length > 0 ? (
 
             <div
-              className="
-              grid
-              md:grid-cols-2
-              lg:grid-cols-4
-              gap-5
-              "
+              className="grid md:grid-cols-2 lg:grid-cols-4 gap-5"
             >
 
               {sightings
@@ -562,15 +410,7 @@ const provinces =
                 <Link
                   key={item.id}
                   href={`/database/sighting/${item.id}`}
-                  className="
-                  bg-neutral-950
-                  border
-                  border-yellow-500/20
-                  rounded-xl
-                  overflow-hidden
-                  hover:border-yellow-400
-                  transition
-                  "
+                  className="bg-neutral-950 border border-yellow-500/20 rounded-xl overflow-hidden hover:border-yellow-400 transition"
                 >
 
                   <img
@@ -581,40 +421,25 @@ const provinces =
                     alt={
                       species.species
                     }
-                    className="
-                    w-full
-                    h-48
-                    object-cover
-                    "
+                    className="w-full h-48 object-cover"
                   />
 
                   <div className="p-4">
 
                     <p
-                      className="
-                      font-semibold
-                      line-clamp-2
-                      "
+                      className="font-semibold line-clamp-2"
                     >
                       {species.species}
                     </p>
 
                     <p
-                      className="
-                      text-sm
-                      text-gray-400
-                      mt-2
-                      "
+                      className="text-sm text-gray-400 mt-2"
                     >
                       📍 {item.nama_lokasi}
                     </p>
 
                     <p
-                      className="
-                      text-xs
-                      text-gray-500
-                      mt-1
-                      "
+                      className="text-xs text-gray-500 mt-1"
                     >
                       {item.provinsi}
                     </p>
@@ -630,14 +455,7 @@ const provinces =
           ) : (
 
             <div
-              className="
-              bg-neutral-950
-              border
-              border-yellow-500/20
-              rounded-xl
-              p-6
-              text-gray-400
-              "
+              className="bg-neutral-950 border border-yellow-500/20 rounded-xl p-6 text-gray-400"
             >
               Belum ada pengamatan untuk spesies ini.
             </div>
