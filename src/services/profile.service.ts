@@ -19,7 +19,7 @@ export async function getProfile(): Promise<Profile | null> {
     .single();
 
   if (error) {
-    console.error("getProfile:", error);
+    console.error("getProfile ERROR:", JSON.stringify(error, null, 2));
     return null;
   }
 

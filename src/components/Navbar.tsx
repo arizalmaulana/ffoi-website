@@ -63,11 +63,16 @@ export default function Navbar() {
         return;
       }
 
+      
+
       const { data, error } = await supabase
         .from("profil")
         .select("id, username, nama_lengkap, foto_profil")
         .eq("id", session.user.id)
         .single();
+
+      console.log("PROFILE DATA:", data);
+      console.log("PROFILE ERROR:", error);
 
       if (!active) return;
 
@@ -107,10 +112,14 @@ export default function Navbar() {
         .eq("id", session.user.id)
         .single();
 
+      console.log("PROFILE DATA:", data);
+      console.log("PROFILE ERROR:", error);
+
       if (!error && data) {
         setProfile(data);
       }
 
+      console.log("SET LOADING FALSE");
       setLoading(false);
     });
 

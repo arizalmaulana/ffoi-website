@@ -152,7 +152,7 @@ export default function TentangPage() {
       {/* HERO SECTION */}
       <section className="relative h-[650px] overflow-hidden text-white">
         <img
-          src="/tim/Foto atas.jpeg"
+          src="/image/selam.jpeg"
           alt="Tentang Kami FFOI"
           className="absolute inset-0 w-full h-full object-cover"
         />
