@@ -99,7 +99,7 @@ return (
   {/* BACKGROUND */}
   <div className="absolute inset-0">
     <Image
-      src="/images/background database.png"
+      src="/image/bg-db.png"
       alt="Database Background"
       fill
       priority
