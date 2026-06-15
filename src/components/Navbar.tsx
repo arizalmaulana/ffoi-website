@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { supabase } from "@/lib/supabase";
+import { getProfile } from "@/services/profile.service";
 import UserMenu from "./navbar/UserMenu";
 
 type Profile = {
@@ -53,8 +54,6 @@ export default function Navbar() {
         data: { session },
       } = await supabase.auth.getSession();
 
-      console.log("SESSION:", session);
-
       if (!active) return;
 
       if (!session?.user) {
@@ -63,21 +62,17 @@ export default function Navbar() {
         return;
       }
 
-      
-
-      const { data, error } = await supabase
-        .from("profil")
-        .select("id, username, nama_lengkap, foto_profil")
-        .eq("id", session.user.id)
-        .single();
-
-      console.log("PROFILE DATA:", data);
-      console.log("PROFILE ERROR:", error);
+      const profileData = await getProfile();
 
       if (!active) return;
 
-      if (!error && data) {
-        setProfile(data);
+      if (profileData) {
+        setProfile({
+          id: profileData.id,
+          username: profileData.username,
+          nama_lengkap: profileData.nama_lengkap,
+          foto_profil: profileData.foto_profil,
+        });
       }
 
       setLoading(false);
@@ -88,10 +83,6 @@ export default function Navbar() {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(async (event, session) => {
-      console.log("AUTH EVENT:", event);
-      console.log("SESSION:", session);
-
-      // Abaikan event yang tidak perlu
       if (
         event !== "INITIAL_SESSION" &&
         event !== "SIGNED_IN" &&
@@ -106,20 +97,17 @@ export default function Navbar() {
         return;
       }
 
-      const { data, error } = await supabase
-        .from("profil")
-        .select("id, username, nama_lengkap, foto_profil")
-        .eq("id", session.user.id)
-        .single();
+      const profileData = await getProfile();
 
-      console.log("PROFILE DATA:", data);
-      console.log("PROFILE ERROR:", error);
-
-      if (!error && data) {
-        setProfile(data);
+      if (profileData) {
+        setProfile({
+          id: profileData.id,
+          username: profileData.username,
+          nama_lengkap: profileData.nama_lengkap,
+          foto_profil: profileData.foto_profil,
+        });
       }
 
-      console.log("SET LOADING FALSE");
       setLoading(false);
     });
 

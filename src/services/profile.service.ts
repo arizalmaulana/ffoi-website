@@ -1,4 +1,5 @@
 import { supabase, waitForAuth } from "@/lib/supabase";
+import { ensureProfile } from "@/lib/profile/ensure-profile";
 import { Profile } from "@/types/profile";
 
 export async function getProfile(): Promise<Profile | null> {
@@ -12,18 +13,7 @@ export async function getProfile(): Promise<Profile | null> {
 
   if (!user) return null;
 
-  const { data, error } = await supabase
-    .from("profil")
-    .select("*")
-    .eq("id", user.id)
-    .single();
-
-  if (error) {
-    console.error("getProfile ERROR:", JSON.stringify(error, null, 2));
-    return null;
-  }
-
-  return data as Profile;
+  return ensureProfile(supabase, user);
 }
 
 export async function updateProfile(

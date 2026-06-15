@@ -17,18 +17,29 @@ export async function waitForAuth(): Promise<void> {
   if (session) return;
 
   await new Promise<void>((resolve) => {
+    let settled = false;
+
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      subscription.unsubscribe();
+      resolve();
+    };
+
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((event, nextSession) => {
-      if (event === "INITIAL_SESSION" || nextSession) {
-        subscription.unsubscribe();
-        resolve();
+    } = supabase.auth.onAuthStateChange((_event, nextSession) => {
+      if (nextSession) {
+        finish();
       }
     });
 
-    setTimeout(() => {
-      subscription.unsubscribe();
-      resolve();
-    }, 3000);
+    void supabase.auth.getSession().then(({ data: { session: retrySession } }) => {
+      if (retrySession) {
+        finish();
+      }
+    });
+
+    setTimeout(finish, 3000);
   });
 }

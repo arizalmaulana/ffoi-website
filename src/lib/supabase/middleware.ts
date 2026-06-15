@@ -89,7 +89,7 @@ export async function handleAuthMiddleware(request: NextRequest) {
       .from("profil")
       .select("role")
       .eq("id", user.id)
-      .single();
+      .maybeSingle();
 
     if (profile?.role !== "admin") {
       const url = request.nextUrl.clone();
@@ -111,7 +111,7 @@ export async function handleAuthMiddleware(request: NextRequest) {
         .from("profil")
         .select("role")
         .eq("id", user.id)
-        .single();
+        .maybeSingle();
 
     const url = request.nextUrl.clone();
 

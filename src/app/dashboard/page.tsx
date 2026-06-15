@@ -51,8 +51,9 @@ export default function DashboardPage() {
   if (!data) {
     return (
       <main className="min-h-screen bg-black text-white p-4 sm:p-6 lg:p-10 flex items-center justify-center">
-        <p className="text-gray-400">
-          Silakan login untuk mengakses dashboard.
+        <p className="text-gray-400 text-center max-w-md">
+          Profil akun belum tersedia. Coba refresh halaman, atau logout lalu login
+          kembali. Jika masalah berlanjut, hubungi admin.
         </p>
       </main>
     );
