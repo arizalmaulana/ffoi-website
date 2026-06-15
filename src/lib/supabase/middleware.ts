@@ -42,13 +42,11 @@ export async function updateSession(request: NextRequest) {
   });
 
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  const user =
-    session?.user ?? null;
+    data: { user },
+  } = await supabase.auth.getUser();
   
-    console.log(
+
+  console.log(
     "[MIDDLEWARE]",
     request.nextUrl.pathname,
     !!user
